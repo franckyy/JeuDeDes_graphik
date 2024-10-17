@@ -13,10 +13,10 @@ public class Cadre extends JFrame {
 		//paramétrages cadre
 	    this.setTitle("Jeu de dés");
 	    this.setContentPane(panneau);
-	    this.setLocationRelativeTo(null);	//fenêtre centrée à l'écran
+//	    this.setLocationRelativeTo(null);	//fenêtre centrée à l'écran
 	    this.pack();
 	    this.setVisible(true);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//	    this.setResizable(false);
+	    this.setResizable(false);
 	}
 }
