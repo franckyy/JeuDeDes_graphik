@@ -8,12 +8,17 @@ import javax.swing.JPanel;
 
 public class PanPersonalScore extends JPanel {
 	public PanPersonalScore(int height) {
-		
-		
 		this.setPreferredSize(new Dimension(200, height));
-		this.setBackground(Color.CYAN);
-//		Graphics g = getGraphics();
-//		g.drawLine(100, 100, 100, 100);
-//		g.dispose();
 	}
+	
+    public void paint(Graphics g) {
+        super.paint(g);
+        Color c = g.getColor();
+        g.setColor(Color.RED);
+        g.fillRect(10,20,80,80);
+        g.setColor(Color.YELLOW);
+        g.fillOval(100,50,80,80);
+        g.setColor(c);
+        g.drawString("JOUEUR 1", 12, 12);
+    }
 }
