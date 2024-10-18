@@ -18,15 +18,15 @@ public class PanneauPrincipal extends JPanel {
 		
 		//Récupération de la taille de l'écran afin de gérer les tailles de Panels
 		Toolkit tk = Toolkit.getDefaultToolkit();  
-		int xSize = ((int) tk.getScreenSize().getWidth());  
-		int ySize = ((int) tk.getScreenSize().getHeight()); 
+		int xScreenSize = ((int) tk.getScreenSize().getWidth());  
+		int yScreenSize = ((int) tk.getScreenSize().getHeight()); 
 		
 		//insertions des différents panneaux
 		this.setLayout(new BorderLayout());
 		
-		PanScores_north scores = new PanScores_north(xSize, ySize);
-		PanCommands_south commandes = new PanCommands_south(xSize, ySize);
-		PanActualScore_east actualScore = new PanActualScore_east(xSize, ySize);
+		PanScores_north scores = new PanScores_north(xScreenSize, yScreenSize);
+		PanCommands_south commandes = new PanCommands_south(xScreenSize, yScreenSize);
+		PanActualScore_east actualScore = new PanActualScore_east(xScreenSize, yScreenSize);
 		PanDes_center des = new PanDes_center();
 		
 		this.add(scores ,BorderLayout.NORTH);
