@@ -19,9 +19,9 @@ public class PanScores_north extends JPanel {
 		int heightFils = (int) Math.round(height * 0.85);
 		this.setLayout(new FlowLayout(0, 10, (int) Math.round((height - heightFils) / 2)));	//FlowLayout​(int align, int hgap, int vgap)
 		
-		this.setBackground(Color.BLUE);
+		this.setBackground(Color.GRAY);
 		
-		PanPersonalScore psc = new PanPersonalScore(heightFils);
+		PanPersonalScore psc = new PanPersonalScore(x, heightFils);
 		
 		this.add(psc);
 	}

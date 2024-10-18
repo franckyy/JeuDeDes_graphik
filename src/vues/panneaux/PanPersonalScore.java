@@ -7,8 +7,8 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 public class PanPersonalScore extends JPanel {
-	public PanPersonalScore(int height) {
-		this.setPreferredSize(new Dimension(200, height));
+	public PanPersonalScore(int screenSize, int height) {
+		this.setPreferredSize(new Dimension((int) Math.round( screenSize / 8), height));
 	}
 	
     public void paint(Graphics g) {
