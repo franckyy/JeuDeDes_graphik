@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 public class PanScores_north extends JPanel {
 	
+	//x et y sont les tailles de l'écran
 	public PanScores_north(int x, int y) {
 		
 		//transformation de y double en entier avec calcul de pourcentage
