@@ -38,8 +38,8 @@ public class PanPersonalScore extends JPanel {
         g.drawString("LILIE", xTextPos, yTextPos + 20);
         g.setColor(Color.MAGENTA);
         g.setFont(new Font("default", Font.BOLD, 15));
-        g.drawString("SCORE ", xTextPos, yTextPos + 40);
+        g.drawString("SCORE ", xTextPos, yTextPos + 50);
         g.setColor(Color.GREEN);
-        g.drawString("1250", xTextPos, yTextPos + 60);
+        g.drawString("1250", xTextPos, yTextPos + 70);
     }
 }
