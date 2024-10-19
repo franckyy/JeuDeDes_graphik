@@ -21,7 +21,7 @@ public class PanScores_north extends JPanel {
 		
 		this.setBackground(Color.GRAY);
 		
-		for(int i = 0; i < 2; i++) {
+		for(int i = 0; i < 7; i++) {
 			PanPersonalScore psc = new PanPersonalScore(xScreenSize, yPanPersSize, i);
 			this.add(psc);
 		}
