@@ -31,13 +31,12 @@ public class PanPersonalScore extends JPanel {
 //        g.fillRect(10,20,80,80);
 //        g.setColor(Color.YELLOW);
 //        g.fillOval(100,50,80,80);
-        g.setColor(Color.MAGENTA);
         g.setFont(new Font("default", Font.BOLD, 15));
+        g.setColor(Color.MAGENTA);
         g.drawString("JOUEUR " + (rank + 1), xTextPos, yTextPos);
         g.setColor(Color.GREEN);
         g.drawString("LILIE", xTextPos, yTextPos + 20);
         g.setColor(Color.MAGENTA);
-        g.setFont(new Font("default", Font.BOLD, 15));
         g.drawString("SCORE ", xTextPos, yTextPos + 50);
         g.setColor(Color.GREEN);
         g.drawString("1250", xTextPos, yTextPos + 70);
