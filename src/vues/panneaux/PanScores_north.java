@@ -17,7 +17,7 @@ public class PanScores_north extends JPanel {
 		
 		//hauteur du panneauPersonnel affiché
 		int yPanPersSize = (int) Math.round(yPanSize * 0.85);
-		this.setLayout(new FlowLayout(1, 10, (int) Math.round((yPanSize - yPanPersSize) / 2)));	//FlowLayout​(int align, int hgap, int vgap)
+		this.setLayout(new FlowLayout(1, 15, (int) Math.round((yPanSize - yPanPersSize) / 2)));	//FlowLayout​(int align, int hgap, int vgap)
 		
 		this.setBackground(Color.GRAY);
 		
