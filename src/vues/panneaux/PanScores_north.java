@@ -8,10 +8,8 @@ import javax.swing.JPanel;
 
 public class PanScores_north extends JPanel {
 	
-	//x et y sont les tailles de l'écran
 	public PanScores_north(int xScreenSize, int yScreenSize) {
 		
-		//transformation de y double en entier avec calcul de pourcentage
 		int yPanSize = (int) Math.round(yScreenSize * 0.2); //hauteur du panneau de scores NORTH
 		this.setPreferredSize(new Dimension(xScreenSize, yPanSize));
 		

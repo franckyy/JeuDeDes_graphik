@@ -15,8 +15,8 @@ public class PanPersonalScore extends JPanel {
 	int yTextPos = 40;
 	int rank;
 	
-	public PanPersonalScore(int screenSize_, int yPanSize, int rank_) {
-		this.xScreenSize = screenSize_;
+	public PanPersonalScore(int xScreenSize_, int yPanSize, int rank_) {
+		this.xScreenSize = xScreenSize_;
 		this.xPanSize = (int) Math.round( xScreenSize / 8);
 		this.xTextPos = (int) Math.round(xPanSize / 4);
 		this.rank = rank_;
