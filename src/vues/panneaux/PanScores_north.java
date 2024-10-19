@@ -8,10 +8,9 @@ import javax.swing.JPanel;
 
 public class PanScores_north extends JPanel {
 	
-	public PanScores_north(int xScreenSize, int yScreenSize) {
+	public PanScores_north(int xPanSize, int yPanSize) {
 		
-		int yPanSize = (int) Math.round(yScreenSize * 0.2); //hauteur du panneau de scores NORTH
-		this.setPreferredSize(new Dimension(xScreenSize, yPanSize));
+		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
 		
 		//hauteur du panneauPersonnel affiché
 		int yPanPersSize = (int) Math.round(yPanSize * 0.85);
@@ -20,7 +19,7 @@ public class PanScores_north extends JPanel {
 		this.setBackground(Color.GRAY);
 		
 		for(int i = 0; i < 7; i++) {
-			PanPersonalScore psc = new PanPersonalScore(xScreenSize, yPanPersSize, i);
+			PanPersonalScore psc = new PanPersonalScore(xPanSize, yPanPersSize, i);
 			this.add(psc);
 		}
 	}

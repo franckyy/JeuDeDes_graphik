@@ -24,10 +24,23 @@ public class PanneauPrincipal extends JPanel {
 		//insertions des différents panneaux
 		this.setLayout(new BorderLayout());
 		
-		PanScores_north scores = new PanScores_north(xScreenSize, yScreenSize);
-		PanCommands_south commandes = new PanCommands_south(xScreenSize, yScreenSize);
-		PanActualScore_east actualScore = new PanActualScore_east(xScreenSize, yScreenSize);
-		PanDes_center des = new PanDes_center();
+		//Paramétrages des dimensions de tous les sous panneaux
+		int xPanNorth = xScreenSize;
+		int yPanNorth = (int) Math.round(yScreenSize * 0.2);
+		
+		int xPanSouth = xScreenSize;
+		int yPanSouth = (int) Math.round(yScreenSize * 0.1);
+		
+		int xPanEast = (int) Math.round(xScreenSize * 0.2);
+		int yPanEast = (int) Math.round(yScreenSize * 0.3);
+		
+		int xPanCenter = (int) Math.round(xScreenSize * 0.8);
+		int yPanCenter = (int) Math.round(yScreenSize * 0.3);
+		
+		PanScores_north scores = new PanScores_north(xPanNorth, yPanNorth);
+		PanCommands_south commandes = new PanCommands_south(xPanSouth, yPanSouth);
+		PanActualScore_east actualScore = new PanActualScore_east(xPanEast, yPanEast);
+		PanDes_center des = new PanDes_center(xPanCenter, yPanCenter);
 		
 		this.add(scores ,BorderLayout.NORTH);
 		this.add(des,BorderLayout.CENTER);

@@ -12,18 +12,17 @@ import javax.swing.JPanel;
 
 public class PanCommands_south extends JPanel {
 
-	public PanCommands_south(int x, int y) {
-		this.setLayout(new FlowLayout(1, x / 8, 0));	//FlowLayout​(int align, int hgap, int vgap)
-		//transformation de y double en entier avec calcul de pourcentage
-		int heightPan = (int) Math.round(y * 0.1);
-		this.setPreferredSize(new Dimension(x, heightPan));
+	public PanCommands_south(int xPanSize, int yPanSize) {
+		this.setLayout(new FlowLayout(1, xPanSize / 8, 0));	//FlowLayout​(int align, int hgap, int vgap)
+
+		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
 		
 		//calculs des tailles pour les boutons
-		int heightBout = (int) Math.round(heightPan * 0.8);
-		int widhtBout = (int) Math.round(x * 0.45);
+		int heightBout = (int) Math.round(yPanSize * 0.8);
+		int widhtBout = (int) Math.round(xPanSize * 0.45);
 		
 		//calcul des tailles de fonts
-		int sizeFont = (int) Math.round(x * 0.02);
+		int sizeFont = (int) Math.round(xPanSize * 0.02);
 		
 		//Load font from file
 		Font font = null;
@@ -43,8 +42,8 @@ public class PanCommands_south extends JPanel {
 		JPanel panLancer = new JPanel();
 		JPanel panArret = new JPanel();
 		
-		panLancer.setPreferredSize(new Dimension(x / 3, heightPan));
-		panArret.setPreferredSize(new Dimension(x / 3, heightPan));
+		panLancer.setPreferredSize(new Dimension(xPanSize / 3, yPanSize));
+		panArret.setPreferredSize(new Dimension(xPanSize / 3, yPanSize));
 		
 		JButton boutLancer = new JButton("Lancer les des"); 
 		JButton boutArreter = new JButton("Arreter le tour");

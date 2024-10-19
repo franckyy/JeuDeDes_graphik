@@ -12,7 +12,7 @@ public class PanActualScore extends JPanel {
 	
 	public PanActualScore(int xScreenSize_, int yScreenSize_) {
 		this.xPanSize = (int) Math.round(yScreenSize_ * 0.8);
-		this.yPanSize = (int) Math.round(yScreenSize_ * 0.95);
+		this.yPanSize = (int) Math.round(yScreenSize_);
 		
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
 		
