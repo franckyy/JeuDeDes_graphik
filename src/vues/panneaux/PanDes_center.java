@@ -1,14 +1,17 @@
 package vues.panneaux;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import vues.PanneauPrincipal;
 
 public class PanDes_center extends JPanel {
 
@@ -17,7 +20,7 @@ public class PanDes_center extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	int xPanSize, yPanSize;
+	int xPanSize, yPanSize, nbreJoueurs;
 	
 	JLabel l1;
 	JTextField jtf;
@@ -30,6 +33,7 @@ public class PanDes_center extends JPanel {
 	}
 	
 	public void initNbreJoueurs() {
+		
 	    l1 = new JLabel("Quel est le nombre de joueurs ? (entre 2 et 7 joueurs)");
 	    
 	    Font font = new Font("Arial", Font.BOLD, 35);
@@ -52,5 +56,17 @@ public class PanDes_center extends JPanel {
 	    this.add(button);
 	    
 	    this.setBackground(Color.GRAY);
+	    
+	    button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String text = jtf.getText();
+								
+				if (text.matches("^([2-7])$")) {
+					new PanneauPrincipal().setNbreJoueurs(Integer.parseInt(jtf.getText()));
+				}
+			}
+		});
 	}
 }

@@ -2,6 +2,8 @@ package vues;
 
 import javax.swing.JFrame;
 
+import ctrl.Start_Jeu;
+
 public class Cadre extends JFrame {
 	
 	/**
@@ -10,6 +12,7 @@ public class Cadre extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	PanneauPrincipal panneau = null;
+	int nbreJoueurs;
 	
 	public Cadre() {
 		panneau = new PanneauPrincipal();
@@ -26,5 +29,10 @@ public class Cadre extends JFrame {
 	
 	public void initNbreJoueurs() {
 		panneau.initNbreJoueurs();
+	}
+	
+
+	public void setNbreJoueurs(int NbreJoueurs_) {
+		new Start_Jeu().setNbreJoueurs(NbreJoueurs_);
 	}
 }

@@ -4,6 +4,8 @@ import vues.Cadre;
 
 public class Start_Jeu {
 
+	int nbreJoueurs;
+	
 	public static void main(String[] args) {
 		Cadre cadre = new Cadre();
 		
@@ -16,4 +18,8 @@ public class Start_Jeu {
 		cadre.initNbreJoueurs();
 	}
 
+
+	public void setNbreJoueurs(int NbreJoueurs_) {
+		this.nbreJoueurs = NbreJoueurs_;
+	}
 }

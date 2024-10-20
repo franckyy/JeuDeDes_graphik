@@ -3,7 +3,6 @@ package vues;
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import vues.panneaux.PanActualScore_east;
@@ -19,6 +18,8 @@ public class PanneauPrincipal extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	PanDes_center des = null;
+	String text;
+	int nbreJoueurs;
 
 	public PanneauPrincipal() {
 		this.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
@@ -57,5 +58,9 @@ public class PanneauPrincipal extends JPanel {
 	
 	public void initNbreJoueurs() {
 		des.initNbreJoueurs();
+	}
+	
+	public void setNbreJoueurs(int NbreJoueurs_) {
+		new Cadre().setNbreJoueurs(NbreJoueurs_);
 	}
 }
