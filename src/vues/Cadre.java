@@ -24,7 +24,7 @@ public class Cadre extends JFrame {
 	    this.setResizable(false);
 	}
 	
-	public void initJeu() {
-		panneau.initJeu();
+	public void initNbreJoueurs() {
+		panneau.initNbreJoueurs();
 	}
 }

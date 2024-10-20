@@ -55,7 +55,7 @@ public class PanneauPrincipal extends JPanel {
 		this.add(commandes,BorderLayout.SOUTH);		
 	}
 	
-	public void initJeu() {
-		des.initJeu();
+	public void initNbreJoueurs() {
+		des.initNbreJoueurs();
 	}
 }

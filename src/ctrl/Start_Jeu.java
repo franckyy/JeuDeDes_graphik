@@ -13,7 +13,7 @@ public class Start_Jeu {
 			e.printStackTrace();
 		}
 	    
-		cadre.initJeu();
+		cadre.initNbreJoueurs();
 	}
 
 }
