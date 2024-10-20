@@ -13,6 +13,13 @@ import vues.panneaux.PanScores_north;
 
 public class PanneauPrincipal extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	PanDes_center des = null;
+
 	public PanneauPrincipal() {
 		this.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 		
@@ -40,11 +47,15 @@ public class PanneauPrincipal extends JPanel {
 		PanScores_north scores = new PanScores_north(xPanNorth, yPanNorth);
 		PanCommands_south commandes = new PanCommands_south(xPanSouth, yPanSouth);
 		PanActualScore_east actualScore = new PanActualScore_east(xPanEast, yPanEast);
-		PanDes_center des = new PanDes_center(xPanCenter, yPanCenter);
+		des = new PanDes_center(xPanCenter, yPanCenter);
 		
 		this.add(scores ,BorderLayout.NORTH);
 		this.add(des,BorderLayout.CENTER);
 		this.add(actualScore,BorderLayout.EAST);
 		this.add(commandes,BorderLayout.SOUTH);		
+	}
+	
+	public void initJeu() {
+		des.initJeu();
 	}
 }

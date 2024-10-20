@@ -1,14 +1,18 @@
 package vues;
 
-import java.awt.Toolkit;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 public class Cadre extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	PanneauPrincipal panneau = null;
+	
 	public Cadre() {
-		PanneauPrincipal panneau = new PanneauPrincipal();
+		panneau = new PanneauPrincipal();
 		
 		//paramétrages cadre
 	    this.setTitle("Jeu de dés");
@@ -18,5 +22,9 @@ public class Cadre extends JFrame {
 	    this.setVisible(true);
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setResizable(false);
+	}
+	
+	public void initJeu() {
+		panneau.initJeu();
 	}
 }
