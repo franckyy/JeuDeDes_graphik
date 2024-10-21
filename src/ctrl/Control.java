@@ -39,5 +39,9 @@ public class Control {
 
 	public void setNbreJoueurs(int nbreJoueurs_) {
 		this.nbreJoueurs = nbreJoueurs_;
+		
+		cadre.initPrenoms(this.getNbreJoueurs());
 	}
+	
+	public void 
 }

@@ -64,4 +64,8 @@ public class PanneauPrincipal extends JPanel {
 	public void initNbreJoueurs() {
 		des.initNbreJoueurs();
 	}
+
+	public void initPrenoms(int nbreJoueurs_) {
+		des.initPrenoms(nbreJoueurs_);
+	}
 }

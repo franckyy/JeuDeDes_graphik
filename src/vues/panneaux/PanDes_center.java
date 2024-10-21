@@ -74,4 +74,9 @@ public class PanDes_center extends JPanel {
 			}
 		});
 	}
+	
+
+	public void initPrenoms(int nbreJoueurs_) {
+		
+	}
 }

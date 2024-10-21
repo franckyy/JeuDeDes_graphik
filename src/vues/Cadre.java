@@ -13,8 +13,8 @@ public class Cadre extends JFrame {
 
 	Control ctrl = null;
 	PanneauPrincipal panneau = null;
-	int nbreJoueurs;
 	
+	//*********CONSTRUCTEUR*********
 	public Cadre(Control ctrl_) {
 		this.ctrl = ctrl_;
 		
@@ -30,7 +30,13 @@ public class Cadre extends JFrame {
 	    this.setResizable(false);
 	}
 	
+	
+	//*********METHODES*********
 	public void initNbreJoueurs() {
 		panneau.initNbreJoueurs();
+	}
+
+	public void initPrenoms(int nbreJoueurs_) {
+		panneau.initPrenoms(nbreJoueurs_);
 	}
 }
