@@ -15,7 +15,7 @@ public class Cadre extends JFrame {
 	int nbreJoueurs;
 	
 	public Cadre() {
-		panneau = new PanneauPrincipal();
+		panneau = new PanneauPrincipal(this);
 		
 		//paramétrages cadre
 	    this.setTitle("Jeu de dés");

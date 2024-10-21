@@ -64,7 +64,6 @@ public class PanDes_center extends JPanel {
 				String text = jtf.getText();
 								
 				if (text.matches("^([2-7])$")) {
-					new PanneauPrincipal().setNbreJoueurs(Integer.parseInt(jtf.getText()));
 				}
 			}
 		});

@@ -17,11 +17,15 @@ public class PanneauPrincipal extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	Cadre cadre = null;
 	PanDes_center des = null;
 	String text;
 	int nbreJoueurs;
 
-	public PanneauPrincipal() {
+	public PanneauPrincipal(Cadre cadre_) {
+		
+		this.cadre = cadre_;
+		
 		this.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 		
 		//Récupération de la taille de l'écran afin de gérer les tailles de Panels
