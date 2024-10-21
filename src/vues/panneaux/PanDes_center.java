@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import ctrl.Control;
 import vues.Cadre;
 import vues.PanneauPrincipal;
 
@@ -21,7 +22,7 @@ public class PanDes_center extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	Cadre cadre = null;
+	Control ctrl = null;
 	
 	int xPanSize, yPanSize, nbreJoueurs;
 	
@@ -29,8 +30,8 @@ public class PanDes_center extends JPanel {
 	JTextField jtf;
 	JButton button;
 
-	public PanDes_center(Cadre cadre_, int xPanSize_, int yPanSize_) {
-		this.cadre = cadre_;
+	public PanDes_center(Control ctrl_, int xPanSize_, int yPanSize_) {
+		this.ctrl = ctrl_;
 		this.xPanSize = xPanSize_;
 		this.yPanSize = yPanSize_;
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
@@ -68,7 +69,7 @@ public class PanDes_center extends JPanel {
 				String text = jtf.getText();
 								
 				if (text.matches("^([2-7])$")) {
-					cadre.setNbreJoueurs((int) Integer.parseInt(text));
+					ctrl.setNbreJoueurs((int) Integer.parseInt(text));
 				}
 			}
 		});

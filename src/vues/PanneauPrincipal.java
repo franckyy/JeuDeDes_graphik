@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JPanel;
 
+import ctrl.Control;
 import vues.panneaux.PanActualScore_east;
 import vues.panneaux.PanCommands_south;
 import vues.panneaux.PanDes_center;
@@ -17,14 +18,14 @@ public class PanneauPrincipal extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	Cadre cadre = null;
+	Control ctrl = null;
 	PanDes_center des = null;
 	String text;
 	int nbreJoueurs;
 
-	public PanneauPrincipal(Cadre cadre_) {
+	public PanneauPrincipal(Control ctrl_) {
 		
-		this.cadre = cadre_;
+		this.ctrl = ctrl_;
 		
 		this.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 		
@@ -52,7 +53,8 @@ public class PanneauPrincipal extends JPanel {
 		PanScores_north scores = new PanScores_north(xPanNorth, yPanNorth);
 		PanCommands_south commandes = new PanCommands_south(xPanSouth, yPanSouth);
 		PanActualScore_east actualScore = new PanActualScore_east(xPanEast, yPanEast);
-		des = new PanDes_center(cadre_, xPanCenter, yPanCenter);
+		des = new PanDes_center(ctrl, xPanCenter, yPanCenter);
+		
 		this.add(scores ,BorderLayout.NORTH);
 		this.add(des,BorderLayout.CENTER);
 		this.add(actualScore,BorderLayout.EAST);
@@ -61,9 +63,5 @@ public class PanneauPrincipal extends JPanel {
 	
 	public void initNbreJoueurs() {
 		des.initNbreJoueurs();
-	}
-	
-	public void setNbreJoueurs(int NbreJoueurs_) {
-		new Cadre().setNbreJoueurs(NbreJoueurs_);
 	}
 }

@@ -2,7 +2,7 @@ package vues;
 
 import javax.swing.JFrame;
 
-import ctrl.Start_Jeu;
+import ctrl.Control;
 
 public class Cadre extends JFrame {
 	
@@ -11,11 +11,14 @@ public class Cadre extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	Control ctrl = null;
 	PanneauPrincipal panneau = null;
 	int nbreJoueurs;
 	
-	public Cadre() {
-		panneau = new PanneauPrincipal(this);
+	public Cadre(Control ctrl_) {
+		this.ctrl = ctrl_;
+		
+		panneau = new PanneauPrincipal(ctrl);
 		
 		//paramétrages cadre
 	    this.setTitle("Jeu de dés");
@@ -29,10 +32,5 @@ public class Cadre extends JFrame {
 	
 	public void initNbreJoueurs() {
 		panneau.initNbreJoueurs();
-	}
-	
-
-	public void setNbreJoueurs(int NbreJoueurs_) {
-		this.nbreJoueurs = NbreJoueurs_;
 	}
 }
