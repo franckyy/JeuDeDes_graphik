@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import vues.Cadre;
 import vues.PanneauPrincipal;
 
 public class PanDes_center extends JPanel {
@@ -19,6 +20,8 @@ public class PanDes_center extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	Cadre cadre = null;
 	
 	int xPanSize, yPanSize, nbreJoueurs;
 	
@@ -26,7 +29,8 @@ public class PanDes_center extends JPanel {
 	JTextField jtf;
 	JButton button;
 
-	public PanDes_center(int xPanSize_, int yPanSize_) {
+	public PanDes_center(Cadre cadre_, int xPanSize_, int yPanSize_) {
+		this.cadre = cadre_;
 		this.xPanSize = xPanSize_;
 		this.yPanSize = yPanSize_;
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
