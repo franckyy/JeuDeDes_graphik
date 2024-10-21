@@ -33,6 +33,6 @@ public class Cadre extends JFrame {
 	
 
 	public void setNbreJoueurs(int NbreJoueurs_) {
-		new Start_Jeu().setNbreJoueurs(NbreJoueurs_);
+		this.nbreJoueurs = NbreJoueurs_;
 	}
 }
