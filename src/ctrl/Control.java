@@ -8,7 +8,7 @@ public class Control {
 	Cadre cadre = null;
 	Joueur joueur = null;
 	
-	int nbreJoueurs;
+	Integer nbreJoueurs = null;
 	
 	public static void main(String[] args) {
 		Control ctrl = new Control();
@@ -27,9 +27,14 @@ public class Control {
 		}
 	    
 		//affichage question nombre de joueurs
-		cadre.initNbreJoueurs();
+		nbreJoueurs = cadre.initNbreJoueurs();
 		
-		
+		do {
+			//on attends que la valeur du nbreJoueurs soit validée par l'utilisateur
+		}while(nbreJoueurs == 0);
+			
+		//affichage question prénoms des joueurs
+		cadre.initPrenoms(nbreJoueurs);
 	}
 
 //*********METHODES***********
@@ -39,9 +44,5 @@ public class Control {
 
 	public void setNbreJoueurs(int nbreJoueurs_) {
 		this.nbreJoueurs = nbreJoueurs_;
-		
-		cadre.initPrenoms(this.getNbreJoueurs());
 	}
-	
-	public void 
 }

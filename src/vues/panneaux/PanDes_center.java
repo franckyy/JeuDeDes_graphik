@@ -12,19 +12,15 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ctrl.Control;
-import vues.Cadre;
-import vues.PanneauPrincipal;
 
 public class PanDes_center extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	Control ctrl = null;
 	
-	int xPanSize, yPanSize, nbreJoueurs;
+	int xPanSize, yPanSize;
+	int nbreJoueurs = 0;
 	
 	JLabel l1;
 	JTextField jtf;
@@ -37,7 +33,8 @@ public class PanDes_center extends JPanel {
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
 	}
 	
-	public void initNbreJoueurs() {
+	public int initNbreJoueurs() {
+		
 		
 	    l1 = new JLabel("Quel est le nombre de joueurs ? (entre 2 et 7 joueurs)");
 	    
@@ -70,13 +67,32 @@ public class PanDes_center extends JPanel {
 								
 				if (text.matches("^([2-7])$")) {
 					ctrl.setNbreJoueurs((int) Integer.parseInt(text));
+//					nbreJoueurs = (int) Integer.parseInt(text);
 				}
 			}
 		});
+	    
+	    return nbreJoueurs;
 	}
 	
 
 	public void initPrenoms(int nbreJoueurs_) {
+		l1.setText("youpi");
+
+		//attente
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		
+		jtf.setBackground(Color.red);
+
+		//attente
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

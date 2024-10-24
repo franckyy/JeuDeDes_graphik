@@ -32,8 +32,8 @@ public class Cadre extends JFrame {
 	
 	
 	//*********METHODES*********
-	public void initNbreJoueurs() {
-		panneau.initNbreJoueurs();
+	public int initNbreJoueurs() {
+		return panneau.initNbreJoueurs();
 	}
 
 	public void initPrenoms(int nbreJoueurs_) {

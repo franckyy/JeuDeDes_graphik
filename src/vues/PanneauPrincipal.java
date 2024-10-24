@@ -21,7 +21,6 @@ public class PanneauPrincipal extends JPanel {
 	Control ctrl = null;
 	PanDes_center des = null;
 	String text;
-	int nbreJoueurs;
 
 	public PanneauPrincipal(Control ctrl_) {
 		
@@ -61,8 +60,8 @@ public class PanneauPrincipal extends JPanel {
 		this.add(commandes,BorderLayout.SOUTH);		
 	}
 	
-	public void initNbreJoueurs() {
-		des.initNbreJoueurs();
+	public int initNbreJoueurs() {
+		return des.initNbreJoueurs();
 	}
 
 	public void initPrenoms(int nbreJoueurs_) {
