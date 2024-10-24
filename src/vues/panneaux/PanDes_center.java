@@ -77,22 +77,8 @@ public class PanDes_center extends JPanel {
 	
 
 	public void initPrenoms(int nbreJoueurs_) {
+		//les éléments suivants sont pour essayer
 		l1.setText("youpi");
-
-		//attente
-		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
 		jtf.setBackground(Color.red);
-
-		//attente
-		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 	}
 }
