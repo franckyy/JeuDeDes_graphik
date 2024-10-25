@@ -39,4 +39,9 @@ public class Cadre extends JFrame {
 	public void initPrenoms(int nbreJoueurs_) {
 		panneau.initPrenoms(nbreJoueurs_);
 	}
+
+
+	public void initPanScores(int nbreJoueurs) {
+		panneau.initPanScores(nbreJoueurs);
+	}
 }

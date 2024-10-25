@@ -25,6 +25,9 @@ public class Control {
 		do {
 		}while( nbreJoueurs == 0);
 			
+		//instanciations des panneaux de score des joueurs
+		cadre.initPanScores(nbreJoueurs);
+		
 		//affichage question prénoms des joueurs
 		cadre.initPrenoms(nbreJoueurs);
 	}

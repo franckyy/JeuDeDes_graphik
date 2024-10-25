@@ -21,7 +21,8 @@ public class PanneauPrincipal extends JPanel {
 	Control ctrl = null;
 	PanDes_center des = null;
 	String text;
-
+	PanScores_north scores = null;
+	
 	public PanneauPrincipal(Control ctrl_) {
 		
 		this.ctrl = ctrl_;
@@ -49,7 +50,7 @@ public class PanneauPrincipal extends JPanel {
 		int xPanCenter = (int) Math.round(xScreenSize * 0.8);
 		int yPanCenter = (int) Math.round(yScreenSize * 0.3);
 		
-		PanScores_north scores = new PanScores_north(xPanNorth, yPanNorth);
+		scores = new PanScores_north(xPanNorth, yPanNorth);
 		PanCommands_south commandes = new PanCommands_south(xPanSouth, yPanSouth);
 		PanActualScore_east actualScore = new PanActualScore_east(xPanEast, yPanEast);
 		des = new PanDes_center(ctrl, xPanCenter, yPanCenter);
@@ -66,5 +67,9 @@ public class PanneauPrincipal extends JPanel {
 
 	public void initPrenoms(int nbreJoueurs_) {
 		des.initPrenoms(nbreJoueurs_);
+	}
+
+	public void initPanScores(int nbreJoueurs) {
+		scores.initPanScores(nbreJoueurs);
 	}
 }
