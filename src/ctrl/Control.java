@@ -23,7 +23,7 @@ public class Control {
 		nbreJoueurs = cadre.initNbreJoueurs();
 		
 		do {
-		}while( nbreJoueurs == 0);
+		}while(nbreJoueurs == 0);
 			
 		//instanciations des panneaux de score des joueurs
 		cadre.initPanScores(nbreJoueurs);

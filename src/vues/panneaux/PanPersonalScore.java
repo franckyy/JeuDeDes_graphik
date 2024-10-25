@@ -9,19 +9,16 @@ import javax.swing.JPanel;
 
 public class PanPersonalScore extends JPanel {
 	
-	int xScreenSize;
-	int xPanSize;
-	int xTextPos;
+	int xScreenSize, xPanSize, xTextPos, rank;
 	int yTextPos = 40;
-	int rank;
 	
-	public PanPersonalScore(int xScreenSize_, int yPanSize, int rank_) {
+	public PanPersonalScore(int xScreenSize_, int yPanSize_, int rank_) {
 		this.xScreenSize = xScreenSize_;
 		this.xPanSize = (int) Math.round( xScreenSize / 8);
 		this.xTextPos = (int) Math.round(xPanSize / 4);
 		this.rank = rank_;
 		
-		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
+		this.setPreferredSize(new Dimension(xPanSize, yPanSize_));
 	}
 	
     public void paint(Graphics g) {
@@ -35,7 +32,7 @@ public class PanPersonalScore extends JPanel {
         g.setColor(Color.MAGENTA);
         g.drawString("JOUEUR " + (rank + 1), xTextPos, yTextPos);
         g.setColor(Color.GREEN);
-        g.drawString("LILIE", xTextPos, yTextPos + 20);
+        g.drawString("JOHN", xTextPos, yTextPos + 20);
         g.setColor(Color.MAGENTA);
         g.drawString("SCORE ", xTextPos, yTextPos + 50);
         g.setColor(Color.GREEN);

@@ -67,7 +67,7 @@ public class PanDes_center extends JPanel {
 								
 				if (text.matches("^([2-7])$")) {
 					ctrl.setNbreJoueurs((int) Integer.parseInt(text));
-//					nbreJoueurs = (int) Integer.parseInt(text);
+	//					nbreJoueurs = (int) Integer.parseInt(text);
 				}
 			}
 		});

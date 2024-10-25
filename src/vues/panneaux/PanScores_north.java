@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 public class PanScores_north extends JPanel {
 	
+	private static final long serialVersionUID = 1L;
 	PanPersonalScore psc = null;
 	int xPanSize, yPanSize, yPanPersSize;
 	
@@ -18,15 +19,14 @@ public class PanScores_north extends JPanel {
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
 		
 		//hauteur du panneauPersonnel affiché
-		int yPanPersSize = (int) Math.round(yPanSize * 0.85);
-		this.setLayout(new FlowLayout(1, 15, (int) Math.round((yPanSize - yPanPersSize) / 2)));	//FlowLayout​(int align, int hgap, int vgap)
+		yPanPersSize = (int) Math.round(yPanSize * 0.85);
 		
 		this.setBackground(Color.GRAY);
 		
 	}
 
 	public void initPanScores(int nbreJoueurs_) {
-
+		this.setLayout(new FlowLayout(1, 15, (int) Math.round((yPanSize - yPanPersSize) / 2)));	//FlowLayout​(int align, int hgap, int vgap)
 		for(int i = 0; i < nbreJoueurs_; i++) {
 			psc = new PanPersonalScore(xPanSize, yPanPersSize, i);
 			this.add(psc);
