@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 
 public class PanCommands_south extends JPanel {
 
+	private static final long serialVersionUID = 1L;
+
 	public PanCommands_south(int xPanSize, int yPanSize) {
 		this.setLayout(new FlowLayout(1, xPanSize / 8, 0));	//FlowLayout​(int align, int hgap, int vgap)
 
@@ -29,10 +31,8 @@ public class PanCommands_south extends JPanel {
 		try {
 			font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/font/Eracake.ttf"));
 		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -51,8 +51,8 @@ public class PanCommands_south extends JPanel {
 		boutLancer.setPreferredSize(new Dimension(widhtBout, heightBout));
 		boutArreter.setPreferredSize(new Dimension(widhtBout, heightBout));
 		
-		boutArreter.setFont(new Font("Eracake", font.ITALIC, sizeFont));
-		boutLancer.setFont(new Font("Eracake", font.ITALIC, sizeFont));
+		boutArreter.setFont(new Font("Eracake", Font.ITALIC, sizeFont));
+		boutLancer.setFont(new Font("Eracake", Font.ITALIC, sizeFont));
 		
 		
 		panLancer.add(boutLancer);

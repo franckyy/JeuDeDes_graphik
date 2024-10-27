@@ -22,7 +22,8 @@ public class PanneauPrincipal extends JPanel {
 	PanDes_center des = null;
 	String text;
 	PanScores_north scores = null;
-	
+
+	//*********CONSTRUCTEUR*********
 	public PanneauPrincipal(Control ctrl_) {
 		
 		this.ctrl = ctrl_;
@@ -60,7 +61,8 @@ public class PanneauPrincipal extends JPanel {
 		this.add(actualScore,BorderLayout.EAST);
 		this.add(commandes,BorderLayout.SOUTH);		
 	}
-	
+
+	//*********METHODES*********
 	public int initNbreJoueurs() {
 		return des.initNbreJoueurs();
 	}

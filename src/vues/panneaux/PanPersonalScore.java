@@ -9,9 +9,11 @@ import javax.swing.JPanel;
 
 public class PanPersonalScore extends JPanel {
 	
+	private static final long serialVersionUID = 1L;
 	int xScreenSize, xPanSize, xTextPos, rank;
 	int yTextPos = 40;
 	
+	//*********CONSTRUCTEUR*********
 	public PanPersonalScore(int xScreenSize_, int yPanSize_, int rank_) {
 		this.xScreenSize = xScreenSize_;
 		this.xPanSize = (int) Math.round( xScreenSize / 8);
@@ -21,13 +23,9 @@ public class PanPersonalScore extends JPanel {
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize_));
 	}
 	
+	//*********METHODES*********
     public void paint(Graphics g) {
         super.paint(g);
-        Color c = g.getColor();
-//        g.setColor(Color.RED);
-//        g.fillRect(10,20,80,80);
-//        g.setColor(Color.YELLOW);
-//        g.fillOval(100,50,80,80);
         g.setFont(new Font("default", Font.BOLD, 15));
         g.setColor(Color.MAGENTA);
         g.drawString("JOUEUR " + (rank + 1), xTextPos, yTextPos);
