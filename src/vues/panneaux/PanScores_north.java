@@ -9,9 +9,10 @@ import javax.swing.JPanel;
 public class PanScores_north extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-	PanPersonalScore psc = null;
-	int xPanSize, yPanSize, yPanPersSize;
 	
+	int xPanSize, yPanSize, yPanPersSize;
+
+	PanPersonalScore[] pans = null;
 	
 	//*********CONSTRUCTEUR*********
 	public PanScores_north(int xPanSize_, int yPanSize_) {
@@ -30,8 +31,8 @@ public class PanScores_north extends JPanel {
 	//*********METHODES*********
 	public void initPanScores(int nbreJoueurs_) {
 		for(int i = 0; i < nbreJoueurs_; i++) {
-			psc = new PanPersonalScore(xPanSize, yPanPersSize, i);
-			this.add(psc);
+			pans[i] = new PanPersonalScore(xPanSize, yPanPersSize, i);
+			this.add(pans[i]);
 			this.setBackground(Color.RED);
 		}
 	}
