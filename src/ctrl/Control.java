@@ -21,9 +21,6 @@ public class Control {
 	    
 		//affichage question nombre de joueurs
 		nbreJoueurs = cadre.initNbreJoueurs();
-		
-		do {
-		}while(nbreJoueurs == 0);
 			
 		//instanciations des panneaux de score des joueurs
 		cadre.initPanScores(nbreJoueurs);

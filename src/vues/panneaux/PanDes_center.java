@@ -35,7 +35,6 @@ public class PanDes_center extends JPanel {
 	
 	public int initNbreJoueurs() {
 		
-		
 	    l1 = new JLabel("Quel est le nombre de joueurs ? (entre 2 et 7 joueurs)");
 	    
 	    Font font = new Font("Arial", Font.BOLD, 35);
@@ -66,12 +65,15 @@ public class PanDes_center extends JPanel {
 				String text = jtf.getText();
 								
 				if (text.matches("^([2-7])$")) {
-					ctrl.setNbreJoueurs((int) Integer.parseInt(text));
-	//					nbreJoueurs = (int) Integer.parseInt(text);
+//					ctrl.setNbreJoueurs((int) Integer.parseInt(text));
+						nbreJoueurs = (int) Integer.parseInt(text);
 				}
 			}
 		});
 	    
+		do {
+		}while(nbreJoueurs == 0); 
+		
 	    return nbreJoueurs;
 	}
 	
