@@ -71,6 +71,7 @@ public class PanDes_center extends JPanel {
 			}
 		});
 	    
+	    //Do NOTHING tant que nbreJoueurs est à zéro
 		do {
 		}while(nbreJoueurs == 0); 
 		
