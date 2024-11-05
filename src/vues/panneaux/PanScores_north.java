@@ -10,14 +10,13 @@ public class PanScores_north extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	
-	int xPanSize, yPanSize, yPanPersSize;
-
-	PanPersonalScore[] pans = null;
+	int xPanSize, yPanSize, yPanPersSize, nbreJoueurs;
 	
 	//*********CONSTRUCTEUR*********
-	public PanScores_north(int xPanSize_, int yPanSize_) {
+	public PanScores_north(int xPanSize_, int yPanSize_, int nbreJoueurs_) {
 		this.xPanSize = xPanSize_;
 		this.yPanSize = yPanSize_;
+		this.nbreJoueurs = nbreJoueurs_;
 		
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
 		
@@ -25,15 +24,13 @@ public class PanScores_north extends JPanel {
 		yPanPersSize = (int) Math.round(yPanSize * 0.85);
 		this.setLayout(new FlowLayout(1, 15, (int) Math.round((yPanSize - yPanPersSize) / 2)));	//FlowLayout​(int align, int hgap, int vgap)
 
+		for(int i = 0; i < nbreJoueurs; i++) {
+			this.add(new PanPersonalScore(xPanSize, yPanPersSize, i));
+			this.setBackground(Color.RED);
+		}
+		
 		this.setBackground(Color.GRAY);
 	}
 
 	//*********METHODES*********
-	public void initPanScores(int nbreJoueurs_) {
-		for(int i = 0; i < nbreJoueurs_; i++) {
-			pans[i] = new PanPersonalScore(xPanSize, yPanPersSize, i);
-			this.add(pans[i]);
-			this.setBackground(Color.RED);
-		}
-	}
 }

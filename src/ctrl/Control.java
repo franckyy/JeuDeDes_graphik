@@ -54,16 +54,7 @@ public class Control {
         }
         
 		//affichage de l'interface graphique
-		cadre = new Cadre(this);
-	    
-		//affichage question nombre de joueurs
-		nbreJoueurs = cadre.initNbreJoueurs();
-			
-		//instanciations des panneaux de score des joueurs
-		cadre.initPanScores(nbreJoueurs);
-		
-		//affichage question prénoms des joueurs
-		cadre.initPrenoms(nbreJoueurs);
+		cadre = new Cadre(this, nbreJoueurs);
 	}
 
 //*********METHODES***********

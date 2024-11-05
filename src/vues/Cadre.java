@@ -13,12 +13,14 @@ public class Cadre extends JFrame {
 
 	Control ctrl = null;
 	PanneauPrincipal panneau = null;
+	int nbreJoueurs;
 	
 	//*********CONSTRUCTEUR*********
-	public Cadre(Control ctrl_) {
+	public Cadre(Control ctrl_, int nbreJoueurs_) {
 		this.ctrl = ctrl_;
+		this.nbreJoueurs = nbreJoueurs_;
 		
-		panneau = new PanneauPrincipal(ctrl);
+		panneau = new PanneauPrincipal(ctrl, nbreJoueurs);
 		
 		//paramétrages cadre
 	    this.setTitle("Jeu de dés");
@@ -32,16 +34,4 @@ public class Cadre extends JFrame {
 	
 	
 	//*********METHODES*********
-	public int initNbreJoueurs() {
-		return panneau.initNbreJoueurs();
-	}
-
-	public void initPrenoms(int nbreJoueurs_) {
-		panneau.initPrenoms(nbreJoueurs_);
-	}
-
-
-	public void initPanScores(int nbreJoueurs) {
-		panneau.initPanScores(nbreJoueurs);
-	}
 }

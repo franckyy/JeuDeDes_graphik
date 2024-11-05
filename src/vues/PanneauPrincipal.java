@@ -22,11 +22,14 @@ public class PanneauPrincipal extends JPanel {
 	PanDes_center des = null;
 	String text;
 	PanScores_north scores = null;
+	int nbreJoueurs;
 
 	//*********CONSTRUCTEUR*********
-	public PanneauPrincipal(Control ctrl_) {
+	public PanneauPrincipal(Control ctrl_, int nbreJoueurs_) {
 		
 		this.ctrl = ctrl_;
+		
+		this.nbreJoueurs = nbreJoueurs_;
 		
 		this.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 		
@@ -51,7 +54,7 @@ public class PanneauPrincipal extends JPanel {
 		int xPanCenter = (int) Math.round(xScreenSize * 0.8);
 		int yPanCenter = (int) Math.round(yScreenSize * 0.3);
 		
-		scores = new PanScores_north(xPanNorth, yPanNorth);
+		scores = new PanScores_north(xPanNorth, yPanNorth, nbreJoueurs);
 		PanCommands_south commandes = new PanCommands_south(xPanSouth, yPanSouth);
 		PanActualScore_east actualScore = new PanActualScore_east(xPanEast, yPanEast);
 		des = new PanDes_center(ctrl, xPanCenter, yPanCenter);
@@ -63,15 +66,4 @@ public class PanneauPrincipal extends JPanel {
 	}
 
 	//*********METHODES*********
-	public int initNbreJoueurs() {
-		return des.initNbreJoueurs();
-	}
-
-	public void initPrenoms(int nbreJoueurs_) {
-		des.initPrenoms(nbreJoueurs_);
-	}
-
-	public void initPanScores(int nbreJoueurs) {
-		scores.initPanScores(nbreJoueurs);
-	}
 }
