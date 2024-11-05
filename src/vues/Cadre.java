@@ -1,5 +1,7 @@
 package vues;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 
 import ctrl.Control;
@@ -14,13 +16,15 @@ public class Cadre extends JFrame {
 	Control ctrl = null;
 	PanneauPrincipal panneau = null;
 	int nbreJoueurs;
+	String[] prénomsJoueurs = null;
 	
 	//*********CONSTRUCTEUR*********
-	public Cadre(Control ctrl_, int nbreJoueurs_) {
+	public Cadre(Control ctrl_, int nbreJoueurs_, String[] prénomsJoueurs_) {
 		this.ctrl = ctrl_;
 		this.nbreJoueurs = nbreJoueurs_;
+		this.prénomsJoueurs = prénomsJoueurs_;
 		
-		panneau = new PanneauPrincipal(ctrl, nbreJoueurs);
+		panneau = new PanneauPrincipal(ctrl, nbreJoueurs, prénomsJoueurs);
 		
 		//paramétrages cadre
 	    this.setTitle("Jeu de dés");

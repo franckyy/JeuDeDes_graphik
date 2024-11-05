@@ -14,6 +14,8 @@ public class Control {
 	
 	int nbreJoueurs = 0;
 	
+	String[] prenomsJoueurs = null;
+	
 	public static void main(String[] args) {
 		Control ctrl = new Control();
 	}
@@ -34,17 +36,16 @@ public class Control {
                 JOptionPane.showMessageDialog(null, "Veuillez entrer un nombre valide.");
             }
         }
+
+        prenomsJoueurs = new String[nbreJoueurs];
         
-        // Vérifie si une valeur a été saisie et si c'est un nombre valide
         try {
-            // Liste pour stocker les prénoms des joueurs
-            ArrayList<String> prénomsJoueurs = new ArrayList<>();
             
             // Demande le prénom de chaque joueur
-            for (int i = 1; i <= nbreJoueurs; i++) {
-                String prénom = JOptionPane.showInputDialog(null, "Veuillez entrer le prénom du joueur " + i + " :", "Demande de prénom", JOptionPane.QUESTION_MESSAGE);
-                if (prénom != null && !prénom.trim().isEmpty()) {
-                    prénomsJoueurs.add(prénom);
+            for (int i = 0; i <= nbreJoueurs - 1; i++) {
+                String prenom = JOptionPane.showInputDialog(null, "Veuillez entrer le prénom du joueur " + i + " :", "Demande de prénom", JOptionPane.QUESTION_MESSAGE);
+                if (prenom != null && !prenom.trim().isEmpty()) {
+                    prenomsJoueurs[i] = prenom;
                 } else {
                     JOptionPane.showMessageDialog(null, "Prénom non saisi pour le joueur " + i + ".", "Erreur", JOptionPane.ERROR_MESSAGE);
                 }
@@ -54,7 +55,7 @@ public class Control {
         }
         
 		//affichage de l'interface graphique
-		cadre = new Cadre(this, nbreJoueurs);
+		cadre = new Cadre(this, nbreJoueurs, prenomsJoueurs);
 	}
 
 //*********METHODES***********

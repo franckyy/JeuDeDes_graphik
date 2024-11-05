@@ -2,6 +2,7 @@ package vues;
 
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -23,15 +24,15 @@ public class PanneauPrincipal extends JPanel {
 	String text;
 	PanScores_north scores = null;
 	int nbreJoueurs;
+	String[] prénomsJoueurs = null;
 
 	//*********CONSTRUCTEUR*********
-	public PanneauPrincipal(Control ctrl_, int nbreJoueurs_) {
+	public PanneauPrincipal(Control ctrl_, int nbreJoueurs_, String[] prénomsJoueurs_) {
 		
 		this.ctrl = ctrl_;
-		
 		this.nbreJoueurs = nbreJoueurs_;
-		
 		this.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+		this.prénomsJoueurs = prénomsJoueurs_;
 		
 		//Récupération de la taille de l'écran afin de gérer les tailles de Panels
 		Toolkit tk = Toolkit.getDefaultToolkit();  
@@ -54,7 +55,7 @@ public class PanneauPrincipal extends JPanel {
 		int xPanCenter = (int) Math.round(xScreenSize * 0.8);
 		int yPanCenter = (int) Math.round(yScreenSize * 0.3);
 		
-		scores = new PanScores_north(xPanNorth, yPanNorth, nbreJoueurs);
+		scores = new PanScores_north(xPanNorth, yPanNorth, nbreJoueurs, prénomsJoueurs);
 		PanCommands_south commandes = new PanCommands_south(xPanSouth, yPanSouth);
 		PanActualScore_east actualScore = new PanActualScore_east(xPanEast, yPanEast);
 		des = new PanDes_center(ctrl, xPanCenter, yPanCenter);
