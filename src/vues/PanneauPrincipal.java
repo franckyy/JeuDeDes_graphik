@@ -1,6 +1,7 @@
 package vues;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
 
@@ -21,6 +22,7 @@ public class PanneauPrincipal extends JPanel {
 	PanScores_north scores = null;
 	String[] prénomsJoueurs = null;
 	Joueur[] joueurs = null;
+	Dimension dimCenter = null;
 
 	//*********CONSTRUCTEUR*********
 	public PanneauPrincipal(Control ctrl_, Joueur[] joueurs_) {
@@ -47,13 +49,12 @@ public class PanneauPrincipal extends JPanel {
 		int xPanEast = (int) Math.round(xScreenSize * 0.2);
 		int yPanEast = (int) Math.round(yScreenSize * 0.3);
 		
-		int xPanCenter = (int) Math.round(xScreenSize * 0.8);
-		int yPanCenter = (int) Math.round(yScreenSize * 0.3);
+		dimCenter = new Dimension((int) Math.round(xScreenSize * 0.8), (int) Math.round(yScreenSize * 0.3));
 		
 		scores = new PanScores_north(xPanNorth, yPanNorth, joueurs);
 		PanCommands_south commandes = new PanCommands_south(xPanSouth, yPanSouth);
 		PanActualScore_east actualScore = new PanActualScore_east(xPanEast, yPanEast);
-		des = new PanDes_center(ctrl, xPanCenter, yPanCenter);
+		des = new PanDes_center(ctrl, dimCenter);
 		
 		this.add(scores ,BorderLayout.NORTH);
 		this.add(des,BorderLayout.CENTER);
