@@ -13,15 +13,15 @@ public class PanActualScore_east extends JPanel {
 	private static final long serialVersionUID = 1L;
 	int xTextPos;
 	int yTextPos;
-	
-	public PanActualScore_east(int xPanSize, int yPanSize) {
+	Dimension dim = null;
 
-		this.xTextPos = (int) Math.round(xPanSize / 4);
-		this.yTextPos = (int) Math.round(yPanSize / 2);
+	public PanActualScore_east(Dimension dim_) {
+
+		this.dim = dim_;
 		
-		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
+		this.setPreferredSize(dim);
 
-		this.setLayout(new FlowLayout(1, 0, (int) Math.round(yPanSize / 2)));	//FlowLayout​(int align, int hgap, int vgap)
+		this.setLayout(new FlowLayout(1, 0, (int) Math.round(dim.getHeight() / 2)));	//FlowLayout​(int align, int hgap, int vgap)
 		
 		this.setBackground(Color.GREEN);
 	}

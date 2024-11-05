@@ -23,6 +23,7 @@ public class PanneauPrincipal extends JPanel {
 	String[] prénomsJoueurs = null;
 	Joueur[] joueurs = null;
 	Dimension dimCenter = null;
+	Dimension dimEast = null;
 
 	//*********CONSTRUCTEUR*********
 	public PanneauPrincipal(Control ctrl_, Joueur[] joueurs_) {
@@ -46,14 +47,13 @@ public class PanneauPrincipal extends JPanel {
 		int xPanSouth = xScreenSize;
 		int yPanSouth = (int) Math.round(yScreenSize * 0.1);
 		
-		int xPanEast = (int) Math.round(xScreenSize * 0.2);
-		int yPanEast = (int) Math.round(yScreenSize * 0.3);
+		dimEast = new Dimension((int) Math.round(xScreenSize * 0.2), (int) Math.round(yScreenSize * 0.3));
 		
 		dimCenter = new Dimension((int) Math.round(xScreenSize * 0.8), (int) Math.round(yScreenSize * 0.3));
 		
 		scores = new PanScores_north(xPanNorth, yPanNorth, joueurs);
 		PanCommands_south commandes = new PanCommands_south(xPanSouth, yPanSouth);
-		PanActualScore_east actualScore = new PanActualScore_east(xPanEast, yPanEast);
+		PanActualScore_east actualScore = new PanActualScore_east(dimEast);
 		des = new PanDes_center(ctrl, dimCenter);
 		
 		this.add(scores ,BorderLayout.NORTH);
