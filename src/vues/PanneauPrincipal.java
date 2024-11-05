@@ -13,9 +13,6 @@ import vues.panneaux.PanScores_north;
 
 public class PanneauPrincipal extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	Control ctrl = null;

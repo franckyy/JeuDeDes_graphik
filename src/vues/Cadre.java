@@ -7,9 +7,6 @@ import modeles.Joueur;
 
 public class Cadre extends JFrame {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	Control ctrl = null;
