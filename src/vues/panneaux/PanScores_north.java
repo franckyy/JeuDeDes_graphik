@@ -3,8 +3,6 @@ package vues.panneaux;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.util.ArrayList;
-
 import javax.swing.JPanel;
 
 public class PanScores_north extends JPanel {

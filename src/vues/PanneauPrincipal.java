@@ -2,8 +2,6 @@ package vues;
 
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
-import java.util.ArrayList;
-
 import javax.swing.JPanel;
 
 import ctrl.Control;

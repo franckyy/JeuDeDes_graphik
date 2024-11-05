@@ -1,7 +1,5 @@
 package vues;
 
-import java.util.ArrayList;
-
 import javax.swing.JFrame;
 
 import ctrl.Control;

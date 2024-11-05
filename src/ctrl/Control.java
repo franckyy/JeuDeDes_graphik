@@ -1,7 +1,5 @@
 package ctrl;
 
-import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
 import modeles.Joueur;
