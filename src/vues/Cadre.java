@@ -3,6 +3,7 @@ package vues;
 import javax.swing.JFrame;
 
 import ctrl.Control;
+import modeles.Joueur;
 
 public class Cadre extends JFrame {
 	
@@ -13,16 +14,15 @@ public class Cadre extends JFrame {
 
 	Control ctrl = null;
 	PanneauPrincipal panneau = null;
-	int nbreJoueurs;
 	String[] prénomsJoueurs = null;
+	Joueur[] joueurs = null;
 	
 	//*********CONSTRUCTEUR*********
-	public Cadre(Control ctrl_, int nbreJoueurs_, String[] prénomsJoueurs_) {
+	public Cadre(Control ctrl_, Joueur[] joueurs_) {
 		this.ctrl = ctrl_;
-		this.nbreJoueurs = nbreJoueurs_;
-		this.prénomsJoueurs = prénomsJoueurs_;
+		this.joueurs = joueurs_;
 		
-		panneau = new PanneauPrincipal(ctrl, nbreJoueurs, prénomsJoueurs);
+		panneau = new PanneauPrincipal(ctrl, joueurs);
 		
 		//paramétrages cadre
 	    this.setTitle("Jeu de dés");
@@ -33,7 +33,6 @@ public class Cadre extends JFrame {
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setResizable(false);
 	}
-	
-	
+		
 	//*********METHODES*********
 }

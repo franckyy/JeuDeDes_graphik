@@ -7,20 +7,22 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import modeles.Joueur;
+
 public class PanPersonalScore extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	int xScreenSize, xPanSize, xTextPos, rank;
 	int yTextPos = 40;
 	String prénomJoueur = "John";
+	Joueur joueur = null;
 	
 	//*********CONSTRUCTEUR*********
-	public PanPersonalScore(int xScreenSize_, int yPanSize_, int rank_, String prénomJoueur_) {
+	public PanPersonalScore(int xScreenSize_, int yPanSize_, Joueur joueur_) {
 		this.xScreenSize = xScreenSize_;
 		this.xPanSize = (int) Math.round( xScreenSize / 8);
 		this.xTextPos = (int) Math.round(xPanSize / 4);
-		this.rank = rank_;
-		this.prénomJoueur = prénomJoueur_;
+		this.joueur = joueur_;
 		
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize_));
 	}
@@ -30,12 +32,12 @@ public class PanPersonalScore extends JPanel {
         super.paint(g);
         g.setFont(new Font("default", Font.BOLD, 15));
         g.setColor(Color.MAGENTA);
-        g.drawString("JOUEUR " + (rank + 1), xTextPos, yTextPos);
+        g.drawString("JOUEUR " + joueur.getTour(), xTextPos, yTextPos);
         g.setColor(Color.GREEN);
-        g.drawString(prénomJoueur, xTextPos, yTextPos + 20);
+        g.drawString(joueur.getPrenom(), xTextPos, yTextPos + 20);
         g.setColor(Color.MAGENTA);
         g.drawString("SCORE ", xTextPos, yTextPos + 50);
         g.setColor(Color.GREEN);
-        g.drawString("1250", xTextPos, yTextPos + 70);
+        g.drawString(joueur.getNbrePts() + "", xTextPos, yTextPos + 70);
     }
 }

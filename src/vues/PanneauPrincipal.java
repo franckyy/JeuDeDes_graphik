@@ -5,6 +5,7 @@ import java.awt.Toolkit;
 import javax.swing.JPanel;
 
 import ctrl.Control;
+import modeles.Joueur;
 import vues.panneaux.PanActualScore_east;
 import vues.panneaux.PanCommands_south;
 import vues.panneaux.PanDes_center;
@@ -21,16 +22,15 @@ public class PanneauPrincipal extends JPanel {
 	PanDes_center des = null;
 	String text;
 	PanScores_north scores = null;
-	int nbreJoueurs;
 	String[] prénomsJoueurs = null;
+	Joueur[] joueurs = null;
 
 	//*********CONSTRUCTEUR*********
-	public PanneauPrincipal(Control ctrl_, int nbreJoueurs_, String[] prénomsJoueurs_) {
+	public PanneauPrincipal(Control ctrl_, Joueur[] joueurs_) {
 		
 		this.ctrl = ctrl_;
-		this.nbreJoueurs = nbreJoueurs_;
+		this.joueurs = joueurs_;
 		this.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
-		this.prénomsJoueurs = prénomsJoueurs_;
 		
 		//Récupération de la taille de l'écran afin de gérer les tailles de Panels
 		Toolkit tk = Toolkit.getDefaultToolkit();  
@@ -53,7 +53,7 @@ public class PanneauPrincipal extends JPanel {
 		int xPanCenter = (int) Math.round(xScreenSize * 0.8);
 		int yPanCenter = (int) Math.round(yScreenSize * 0.3);
 		
-		scores = new PanScores_north(xPanNorth, yPanNorth, nbreJoueurs, prénomsJoueurs);
+		scores = new PanScores_north(xPanNorth, yPanNorth, joueurs);
 		PanCommands_south commandes = new PanCommands_south(xPanSouth, yPanSouth);
 		PanActualScore_east actualScore = new PanActualScore_east(xPanEast, yPanEast);
 		des = new PanDes_center(ctrl, xPanCenter, yPanCenter);
@@ -63,6 +63,6 @@ public class PanneauPrincipal extends JPanel {
 		this.add(actualScore,BorderLayout.EAST);
 		this.add(commandes,BorderLayout.SOUTH);		
 	}
-
+	
 	//*********METHODES*********
 }

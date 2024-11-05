@@ -7,6 +7,10 @@ public class Joueur{
 	String prenom;
 	
 	//******constructeurs
+	public Joueur(int _tour, String _prenom){
+		this(5000, _tour, _prenom);
+	}
+
 	public Joueur(int _nbrePts, int _tour, String _prenom){
 		this.nbrePts = _nbrePts;
 		this.tour = _tour;

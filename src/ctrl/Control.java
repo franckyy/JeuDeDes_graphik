@@ -8,8 +8,7 @@ import vues.Cadre;
 public class Control {
 
 	Cadre cadre = null;
-	Joueur joueur = null;
-	
+	Joueur[] joueurs = null;
 	int nbreJoueurs = 0;
 	
 	String[] prenomsJoueurs = null;
@@ -52,8 +51,15 @@ public class Control {
             JOptionPane.showMessageDialog(null, "Veuillez entrer un nombre valide.", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
         
+        //Instanciation des joueurs
+        joueurs = new Joueur[nbreJoueurs];
+        
+        for (int i = 0; i <= nbreJoueurs - 1; i++) {
+        	joueurs[i] = new Joueur(i, prenomsJoueurs[i]);
+        }
+        
 		//affichage de l'interface graphique
-		cadre = new Cadre(this, nbreJoueurs, prenomsJoueurs);
+		cadre = new Cadre(this, joueurs);
 	}
 
 //*********METHODES***********
