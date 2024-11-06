@@ -15,9 +15,13 @@ public class PanActualScore_east extends JPanel {
 	int yTextPos;
 	Dimension dim = null;
 
+	//*********CONSTRUCTEUR*********
 	public PanActualScore_east(Dimension dim_) {
 
 		this.dim = dim_;
+		
+		this.xTextPos = (int) Math.round(dim.width / 4);
+		this.yTextPos = (int) Math.round(dim.height / 2);
 		
 		this.setPreferredSize(dim);
 
@@ -25,7 +29,8 @@ public class PanActualScore_east extends JPanel {
 		
 		this.setBackground(Color.GREEN);
 	}
-	
+
+	//*********METHODES*********
     public void paint(Graphics g) {
         super.paint(g);
         g.setFont(new Font("default", Font.BOLD, 15));
