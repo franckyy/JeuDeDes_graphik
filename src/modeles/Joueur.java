@@ -8,7 +8,7 @@ public class Joueur{
 	
 	//******constructeurs
 	public Joueur(int _tour, String _prenom){
-		this(5000, _tour, _prenom);
+		this(5000, _tour + 1, _prenom);
 	}
 
 	public Joueur(int _nbrePts, int _tour, String _prenom){
