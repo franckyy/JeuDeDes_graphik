@@ -3,7 +3,6 @@ package vues.panneaux.center;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
@@ -22,8 +21,6 @@ public class PanneauMessages_Center extends JPanel{
 	//*********METHODES*********
     public void paint(Graphics g) {
         super.paint(g);
-        
-        FontMetrics metrics = g.getFontMetrics();
         
         g.setFont(new Font("default", Font.BOLD, this.getHeight() / 5));
         g.setColor(Color.MAGENTA);
