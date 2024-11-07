@@ -2,6 +2,8 @@ package vues.panneaux.center;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
@@ -9,12 +11,20 @@ public class PanneauMessages_Center extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
+	String message = "BONJOUR !";
+	
 	//*********CONSTRUCTEUR*********
 	public PanneauMessages_Center() {
 		this.setBackground(Color.red);
 	}
 
 	//*********METHODES*********
+    public void paint(Graphics g) {
+        super.paint(g);
+        g.setFont(new Font("default", Font.BOLD, 15));
+        g.setColor(Color.MAGENTA);
+        g.drawString(message, this.getWidth() / 2, this.getHeight() / 2);
+    }
 
     @Override
     public Dimension getPreferredSize() {
