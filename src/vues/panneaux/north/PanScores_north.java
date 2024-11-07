@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 
 import ctrl.Control;
 import modeles.Joueur;
-import vues.panneaux.PanPersonalScore;
 
 public class PanScores_north extends JPanel {
 	

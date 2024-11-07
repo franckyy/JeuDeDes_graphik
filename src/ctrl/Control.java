@@ -65,7 +65,7 @@ public class Control {
 		cadre = new Cadre(this, joueurs);
 	}
 
-//*********METHODES***********
+	//*********METHODES***********
 	public int getNbreJoueurs() {
 		return this.nbreJoueurs;
 	}
