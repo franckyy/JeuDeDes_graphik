@@ -17,6 +17,7 @@ public class PanScores_north extends JPanel {
 	String[] prénomsJoueurs = null;
 	Joueur[] joueurs = null;
 	Control ctrl = null;
+	PanPersonalScore[] PanScores = null;
 	
 	//*********CONSTRUCTEUR*********
 	public PanScores_north(int xPanSize_, int yPanSize_, Joueur[] joueurs_, Control ctrl_) {
@@ -25,7 +26,7 @@ public class PanScores_north extends JPanel {
 		this.joueurs = joueurs_;
 		this.ctrl = ctrl_;
 		
-		ctrl.setPanScores_north(this);
+		ctrl.setPanScores_north(this);	//on instancie this chez le controlleur afin qu'il puisse envoyer les données directement sans passer par Cadre ... etc
 		
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
 		
@@ -33,8 +34,15 @@ public class PanScores_north extends JPanel {
 		yPanPersSize = (int) Math.round(yPanSize * 0.85);
 		this.setLayout(new FlowLayout(1, 15, (int) Math.round((yPanSize - yPanPersSize) / 2)));	//FlowLayout​(int align, int hgap, int vgap)
 
+		PanScores = new PanPersonalScore[joueurs.length];
+		
+		//Création d'un tableau de PanScores
 		for(int i = 0; i < joueurs.length; i++) {
-			this.add(new PanPersonalScore(xPanSize, yPanPersSize, joueurs[i]));
+			PanScores[i] = new PanPersonalScore(xPanSize, yPanPersSize, joueurs[i]);
+		}
+		
+		for(int i = 0; i < joueurs.length; i++) {
+			this.add(PanScores[i]);
 			this.setBackground(Color.RED);
 		}
 		
@@ -42,5 +50,7 @@ public class PanScores_north extends JPanel {
 	}
 	
 	//*********METHODES*********
-	//TODO prévoir méthode pour mettre à jour les scores des joueurs une fois que leur tour est terminé
+	public void setScorePanScores(Joueur joueur) {
+		PanScores[joueur.getTour()].setScore(joueur.getNbrePts());
+	}
 }
