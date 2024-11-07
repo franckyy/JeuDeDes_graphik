@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 import ctrl.Control;
 import modeles.Joueur;
 import vues.panneaux.PanActualScore_east;
-import vues.panneaux.PanCommands_south;
 import vues.panneaux.center.Pan_center;
 import vues.panneaux.north.PanScores_north;
+import vues.panneaux.south.PanCommands_south;
 
 public class PanneauPrincipal extends JPanel {
 

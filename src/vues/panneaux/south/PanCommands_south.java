@@ -1,4 +1,4 @@
-package vues.panneaux;
+package vues.panneaux.south;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
