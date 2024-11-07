@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import modeles.Joueur;
 import vues.Cadre;
+import vues.panneaux.center.Pan_center;
 import vues.panneaux.north.PanScores_north;
 
 public class Control {
@@ -11,7 +12,7 @@ public class Control {
 	Cadre cadre = null;
 	Joueur[] joueurs = null;
 	PanScores_north panScores_north = null;
-	
+	Pan_center pan_center = null;
 	int nbreJoueurs = 0;
 	
 	String[] prenomsJoueurs = null;
@@ -63,6 +64,15 @@ public class Control {
         
 		//affichage de l'interface graphique
 		cadre = new Cadre(this, joueurs);
+		
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		joueurs[1].setNbrePts(521);
+		pan_center.setScorePanScores(joueurs[1]);
+		pan_center.repaint();
 	}
 
 	//*********METHODES***********
@@ -76,5 +86,9 @@ public class Control {
 
 	public void setPanScores_north(PanScores_north panScores_north_) {
 		this.panScores_north = panScores_north_;
+	}
+
+	public void setPan_center(Pan_center pan_center) {
+		this.pan_center = pan_center;
 	}
 }

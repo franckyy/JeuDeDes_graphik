@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ctrl.Control;
+import modeles.Joueur;
 
 public class Pan_center extends JPanel {
 
@@ -32,6 +33,7 @@ public class Pan_center extends JPanel {
 	//*********CONSTRUCTEUR*********
 	public Pan_center(Control ctrl_) {
 		this.ctrl = ctrl_;
+		ctrl.setPan_center(this);
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
@@ -53,4 +55,8 @@ public class Pan_center extends JPanel {
         dim.height = getParent().getHeight();  // La hauteur sera déterminée par la fenêtre principale
         return dim;
     }
+
+	public void setScorePanScores(Joueur joueur) {
+		panMessages.setMessage("points : " + joueur.getNbrePts());
+	}
 }

@@ -34,4 +34,12 @@ public class PanneauMessages_Center extends JPanel{
         return dim;
     }
 
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 }
