@@ -47,9 +47,7 @@ public class PanDes_center extends JPanel {
 		this.add(panDes);
 	}
 
-
 	//*********METHODES*********
-
 
     @Override
     public Dimension getPreferredSize() {
