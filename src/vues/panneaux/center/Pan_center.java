@@ -57,6 +57,6 @@ public class Pan_center extends JPanel {
     }
 
 	public void setScorePanScores(Joueur joueur) {
-		panMessages.setMessage("points : " + joueur.getNbrePts());
+		panMessages.setMessage("" + joueur.getNbrePts());
 	}
 }
