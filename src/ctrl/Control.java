@@ -75,7 +75,6 @@ public class Control {
 	}
 
 	public void setPanScores_north(PanScores_north panScores_north_) {
-		this.panScores_north = panScores_north_a
-				;
+		this.panScores_north = panScores_north_;
 	}
 }
