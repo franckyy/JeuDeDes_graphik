@@ -26,16 +26,12 @@ public class PanDes_center extends JPanel {
 	JTextField jtf;
 	JButton button;
 	
-	Dimension dim = null;
-	
 	JPanel panMessages = null;
 	JPanel panDes = null;
 
 	//*********CONSTRUCTEUR*********
-	public PanDes_center(Control ctrl_, Dimension dim_) {
+	public PanDes_center(Control ctrl_) {
 		this.ctrl = ctrl_;
-		this.dim = dim_;
-		this.setPreferredSize(dim);
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
@@ -53,4 +49,13 @@ public class PanDes_center extends JPanel {
 
 
 	//*********METHODES*********
+
+
+    @Override
+    public Dimension getPreferredSize() {
+        // Retourner la taille préférée du panneau centre
+        Dimension dim = super.getPreferredSize();
+        dim.height = getParent().getHeight();  // La hauteur sera déterminée par la fenêtre principale
+        return dim;
+    }
 }
