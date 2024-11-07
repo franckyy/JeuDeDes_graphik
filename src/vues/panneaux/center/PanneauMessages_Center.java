@@ -9,10 +9,13 @@ public class PanneauMessages_Center extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
+	//*********CONSTRUCTEUR*********
 	public PanneauMessages_Center() {
 		this.setBackground(Color.red);
 	}
-	
+
+	//*********METHODES*********
+
     @Override
     public Dimension getPreferredSize() {
         // Définir la taille du panneau haut à un tiers de la hauteur du PanneauCentre
