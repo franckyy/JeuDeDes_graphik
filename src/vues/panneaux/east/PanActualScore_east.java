@@ -1,4 +1,4 @@
-package vues.panneaux;
+package vues.panneaux.east;
 
 import java.awt.Color;
 import java.awt.Dimension;
