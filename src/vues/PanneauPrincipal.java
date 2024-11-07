@@ -10,7 +10,7 @@ import modeles.Joueur;
 import vues.panneaux.PanActualScore_east;
 import vues.panneaux.PanCommands_south;
 import vues.panneaux.PanDes_center;
-import vues.panneaux.PanScores_north;
+import vues.panneaux.north.PanScores_north;
 
 public class PanneauPrincipal extends JPanel {
 

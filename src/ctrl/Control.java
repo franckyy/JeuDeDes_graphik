@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 import modeles.Joueur;
 import vues.Cadre;
-import vues.panneaux.PanScores_north;
+import vues.panneaux.north.PanScores_north;
 
 public class Control {
 

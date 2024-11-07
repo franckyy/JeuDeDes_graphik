@@ -1,4 +1,4 @@
-package vues.panneaux;
+package vues.panneaux.north;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import ctrl.Control;
 import modeles.Joueur;
+import vues.panneaux.PanPersonalScore;
 
 public class PanScores_north extends JPanel {
 	
