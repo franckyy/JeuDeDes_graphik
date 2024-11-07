@@ -4,11 +4,14 @@ import javax.swing.JOptionPane;
 
 import modeles.Joueur;
 import vues.Cadre;
+import vues.panneaux.PanScores_north;
 
 public class Control {
 
 	Cadre cadre = null;
 	Joueur[] joueurs = null;
+	PanScores_north panScores_north = null;
+	
 	int nbreJoueurs = 0;
 	
 	String[] prenomsJoueurs = null;
@@ -69,5 +72,10 @@ public class Control {
 
 	public void setNbreJoueurs(int nbreJoueurs_) {
 		this.nbreJoueurs = nbreJoueurs_;
+	}
+
+	public void setPanScores_north(PanScores_north panScores_north_) {
+		this.panScores_north = panScores_north_a
+				;
 	}
 }

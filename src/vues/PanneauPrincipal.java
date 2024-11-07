@@ -51,7 +51,7 @@ public class PanneauPrincipal extends JPanel {
 		
 		dimCenter = new Dimension((int) Math.round(xScreenSize * 0.8), (int) Math.round(yScreenSize * 0.3));
 		
-		scores = new PanScores_north(xPanNorth, yPanNorth, joueurs);
+		scores = new PanScores_north(xPanNorth, yPanNorth, joueurs, ctrl);
 		PanCommands_south commandes = new PanCommands_south(xPanSouth, yPanSouth);
 		PanActualScore_east actualScore = new PanActualScore_east(dimEast);
 		des = new PanDes_center(ctrl, dimCenter);

@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
 
+import ctrl.Control;
 import modeles.Joueur;
 
 public class PanScores_north extends JPanel {
@@ -14,12 +15,16 @@ public class PanScores_north extends JPanel {
 	int xPanSize, yPanSize, yPanPersSize;
 	String[] prénomsJoueurs = null;
 	Joueur[] joueurs = null;
+	Control ctrl = null;
 	
 	//*********CONSTRUCTEUR*********
-	public PanScores_north(int xPanSize_, int yPanSize_, Joueur[] joueurs_) {
+	public PanScores_north(int xPanSize_, int yPanSize_, Joueur[] joueurs_, Control ctrl_) {
 		this.xPanSize = xPanSize_;
 		this.yPanSize = yPanSize_;
 		this.joueurs = joueurs_;
+		this.ctrl = ctrl_;
+		
+		ctrl.setPanScores_north(this);
 		
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
 		
@@ -36,4 +41,5 @@ public class PanScores_north extends JPanel {
 	}
 	
 	//*********METHODES*********
+	//TODO prévoir méthode pour mettre à jour les scores des joueurs une fois que leur tour est terminé
 }
