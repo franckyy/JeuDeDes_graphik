@@ -72,7 +72,9 @@ public class Control {
 		}
 		joueurs[1].setNbrePts(521);
 		pan_center.setScorePanScores(joueurs[1]);
+		panScores_north.setScorePanScores(joueurs[1]);
 		pan_center.repaint();
+		panScores_north.repaint();
 	}
 
 	//*********METHODES***********
