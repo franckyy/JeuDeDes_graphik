@@ -9,7 +9,7 @@ import ctrl.Control;
 import modeles.Joueur;
 import vues.panneaux.PanActualScore_east;
 import vues.panneaux.PanCommands_south;
-import vues.panneaux.PanDes_center;
+import vues.panneaux.center.Pan_center;
 import vues.panneaux.north.PanScores_north;
 
 public class PanneauPrincipal extends JPanel {
@@ -17,7 +17,7 @@ public class PanneauPrincipal extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	Control ctrl = null;
-	PanDes_center des = null;
+	Pan_center des = null;
 	String text;
 	PanScores_north scores = null;
 	String[] prénomsJoueurs = null;
@@ -52,7 +52,7 @@ public class PanneauPrincipal extends JPanel {
 		scores = new PanScores_north(xPanNorth, yPanNorth, joueurs, ctrl);
 		PanCommands_south commandes = new PanCommands_south(xPanSouth, yPanSouth);
 		PanActualScore_east actualScore = new PanActualScore_east(dimEast);
-		des = new PanDes_center(ctrl);
+		des = new Pan_center(ctrl);
 		
 		this.add(scores ,BorderLayout.NORTH);
 		this.add(des,BorderLayout.CENTER);

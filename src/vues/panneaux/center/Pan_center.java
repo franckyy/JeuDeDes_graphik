@@ -1,4 +1,4 @@
-package vues.panneaux;
+package vues.panneaux.center;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 
 import ctrl.Control;
 
-public class PanDes_center extends JPanel {
+public class Pan_center extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
@@ -30,7 +30,7 @@ public class PanDes_center extends JPanel {
 	JPanel panDes = null;
 
 	//*********CONSTRUCTEUR*********
-	public PanDes_center(Control ctrl_) {
+	public Pan_center(Control ctrl_) {
 		this.ctrl = ctrl_;
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
