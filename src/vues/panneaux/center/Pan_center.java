@@ -26,8 +26,8 @@ public class Pan_center extends JPanel {
 	JTextField jtf;
 	JButton button;
 	
-	JPanel panMessages = null;
-	JPanel panDes = null;
+	PanneauMessages_Center panMessages = null;
+	PanneauDes_Center panDes = null;
 
 	//*********CONSTRUCTEUR*********
 	public Pan_center(Control ctrl_) {
@@ -35,11 +35,8 @@ public class Pan_center extends JPanel {
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
-		panMessages = new JPanel();
-		panDes = new JPanel();
-		
-		panMessages.setBackground(Color.red);
-		panDes.setBackground(Color.pink);
+		panMessages = new PanneauMessages_Center();
+		panDes = new PanneauDes_Center();
 		
 		this.setAlignmentX(CENTER_ALIGNMENT);
 		
