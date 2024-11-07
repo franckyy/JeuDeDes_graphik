@@ -37,6 +37,8 @@ public class PanDes_center extends JPanel {
 		this.dim = dim_;
 		this.setPreferredSize(dim);
 		
+		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		
 		panMessages = new JPanel();
 		panDes = new JPanel();
 		
@@ -47,8 +49,6 @@ public class PanDes_center extends JPanel {
 		
 		this.add(panMessages);
 		this.add(panDes);
-		
-		
 	}
 
 
