@@ -14,6 +14,8 @@ public class Control {
 	PanScores_north panScores_north = null;
 	Pan_center pan_center = null;
 	int nbreJoueurs = 0;
+
+	int incrResult;	//commence à 1 pour nous montrer l'emplacement du premier dé dans le tableau
 	
 	String[] prenomsJoueurs = null;
 	
@@ -24,6 +26,8 @@ public class Control {
 //*********CONSTRUCTEUR***********
 	public Control() {
 
+		String relancer = "";
+		
         // Demande le nombre de joueurs
         while (true) {
             try {
@@ -67,7 +71,34 @@ public class Control {
 
 		this.messagesBienvenue();
 				
+
+		boolean gagne = false;
 		
+		do {
+			for(Joueur joueur : joueurs) {
+				if(gagne == false) {
+
+					boolean finTour = false;
+					int score = 0;
+					int[] desInterdits = new int[6];
+					incrResult = 1;
+		
+					//intialisation du tableau
+					desInterdits[0] = score;
+					desInterdits[1] = -1;
+					desInterdits[2] = -1;
+					desInterdits[3] = -1;
+					desInterdits[4] = -1;
+					desInterdits[5] = -1;
+					
+
+					do{	//boucle des lancers et vérifs pour un même joueur (un tour d'un joueur)
+						
+					}while(relancer.equals("o") && finTour == false);
+					
+				}	//end if(gangne == false)
+			}	//end for(joueur)
+		}while(gagne != true);
 		
 		
 		//essais
