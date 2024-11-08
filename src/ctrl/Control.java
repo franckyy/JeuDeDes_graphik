@@ -65,8 +65,11 @@ public class Control {
 		//affichage de l'interface graphique
 		cadre = new Cadre(this, joueurs);
 
-		this.messageBienvenue();
+		this.messagesBienvenue();
 				
+		
+		
+		
 		//essais
 		joueurs[0].setNbrePts(521);
 		panScores_north.setScorePanScores(joueurs[0]);
@@ -74,7 +77,7 @@ public class Control {
 	}
 
 	//*********METHODES***********
-	public void messageBienvenue() {
+	public void messagesBienvenue() {
 		pan_center.setMessage("Bonjour");
 		pan_center.repaint();
 		
