@@ -33,7 +33,7 @@ public class PanPersonalScore extends JPanel {
         super.paint(g);
         g.setFont(new Font("default", Font.BOLD, 15));
         g.setColor(Color.MAGENTA);
-        g.drawString("JOUEUR " + joueur.getTour(), xTextPos, yTextPos);
+        g.drawString("JOUEUR " + (joueur.getTour() + 1), xTextPos, yTextPos);
         g.setColor(Color.GREEN);
         g.drawString(joueur.getPrenom(), xTextPos, yTextPos + 20);
         g.setColor(Color.MAGENTA);

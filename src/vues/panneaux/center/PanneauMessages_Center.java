@@ -11,7 +11,7 @@ public class PanneauMessages_Center extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
-	String message = "Bonjour";
+	String message = null;
 	
 	//*********CONSTRUCTEUR*********
 	public PanneauMessages_Center() {

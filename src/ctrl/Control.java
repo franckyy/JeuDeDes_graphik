@@ -64,16 +64,22 @@ public class Control {
         
 		//affichage de l'interface graphique
 		cadre = new Cadre(this, joueurs);
+
+		pan_center.setMessage("Bonjour");
+		pan_center.repaint();
 		
 		try {
 			Thread.sleep(1500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		joueurs[1].setNbrePts(521);
-		pan_center.setScorePanScores(joueurs[1]);
-		panScores_north.setScorePanScores(joueurs[1]);
+
+		pan_center.setMessage("A vous de jouer " + joueurs[0].getPrenom());
 		pan_center.repaint();
+				
+		//essais
+		joueurs[0].setNbrePts(521);
+		panScores_north.setScorePanScores(joueurs[0]);
 		panScores_north.repaint();
 	}
 

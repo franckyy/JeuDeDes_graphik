@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ctrl.Control;
-import modeles.Joueur;
 
 public class Pan_center extends JPanel {
 
@@ -51,7 +50,7 @@ public class Pan_center extends JPanel {
         return dim;
     }
 
-	public void setScorePanScores(Joueur joueur) {
-		panMessages.setMessage("" + joueur.getNbrePts());
+	public void setMessage(String message) {
+		panMessages.setMessage(message);
 	}
 }
