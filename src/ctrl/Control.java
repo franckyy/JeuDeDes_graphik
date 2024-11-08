@@ -6,6 +6,7 @@ import modeles.Joueur;
 import vues.Cadre;
 import vues.panneaux.center.Pan_center;
 import vues.panneaux.north.PanScores_north;
+import vues.panneaux.south.PanCommands_south;
 
 public class Control {
 
@@ -13,6 +14,7 @@ public class Control {
 	Joueur[] joueurs = null;
 	PanScores_north panScores_north = null;
 	Pan_center pan_center = null;
+	PanCommands_south panCommands = null;
 	int nbreJoueurs = 0;
 
 	int incrResult;	//commence à 1 pour nous montrer l'emplacement du premier dé dans le tableau
@@ -69,57 +71,40 @@ public class Control {
 		//affichage de l'interface graphique
 		cadre = new Cadre(this, joueurs);
 
-		this.messagesBienvenue();
+		this.messBienvenue();
 				
-
 		boolean gagne = false;
 		
 		do {
 			for(Joueur joueur : joueurs) {
-				if(gagne == false) {
-
-					boolean finTour = false;
-					int score = 0;
-					int[] desInterdits = new int[6];
-					incrResult = 1;
-		
-					//intialisation du tableau
-					desInterdits[0] = score;
-					desInterdits[1] = -1;
-					desInterdits[2] = -1;
-					desInterdits[3] = -1;
-					desInterdits[4] = -1;
-					desInterdits[5] = -1;
-					
-
-					do{	//boucle des lancers et vérifs pour un même joueur (un tour d'un joueur)
-						
-					}while(relancer.equals("o") && finTour == false);
-					
-				}	//end if(gangne == false)
+				
+				this.messJoueurJoue(joueur);
+				
+				
 			}	//end for(joueur)
 		}while(gagne != true);
-		
-		
-		//essais
-		joueurs[0].setNbrePts(521);
-		panScores_north.setScorePanScores(joueurs[0]);
-		panScores_north.repaint();
 	}
 
 	//*********METHODES***********
-	public void messagesBienvenue() {
+	private void messBienvenue() {
 		pan_center.setMessage("Bonjour");
 		pan_center.repaint();
 		
-		try {
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		this.attendre(1500);
 
-		pan_center.setMessage("A vous de jouer " + joueurs[0].getPrenom());
+		pan_center.setMessage("Bienvenue dans notre jeu de dés");
 		pan_center.repaint();	
+		
+		this.attendre(1500);
+	}
+	
+	private void messJoueurJoue(Joueur joueur) {
+		pan_center.setMessage("à toi de lancer les dés " + joueur.getPrenom());
+		pan_center.repaint();
+		
+		panCommands.enableBoutons(true);
+		
+		this.attendre(1500);
 	}
 	
 	public int getNbreJoueurs() {
@@ -136,5 +121,17 @@ public class Control {
 
 	public void setPan_center(Pan_center pan_center) {
 		this.pan_center = pan_center;
+	}
+	
+	public void setPanCommands(PanCommands_south panCommands) {
+		this.panCommands = panCommands;
+	}
+
+	private void attendre(int temps) {
+		try {
+			Thread.sleep(temps);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

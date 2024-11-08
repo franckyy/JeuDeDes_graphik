@@ -10,11 +10,20 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import ctrl.Control;
+
 public class PanCommands_south extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public PanCommands_south(int xPanSize, int yPanSize) {
+	Control ctrl = null;
+	JButton boutLancer = null; 
+	JButton boutArreter = null;
+	
+	public PanCommands_south(int xPanSize, int yPanSize, Control ctrl_) {
+		this.ctrl = ctrl_;
+		ctrl.setPanCommands(this);
+		
 		this.setLayout(new FlowLayout(1, xPanSize / 8, 0));	//FlowLayout​(int align, int hgap, int vgap)
 
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
@@ -45,8 +54,8 @@ public class PanCommands_south extends JPanel {
 		panLancer.setPreferredSize(new Dimension(xPanSize / 3, yPanSize));
 		panArret.setPreferredSize(new Dimension(xPanSize / 3, yPanSize));
 		
-		JButton boutLancer = new JButton("Lancer les des"); 
-		JButton boutArreter = new JButton("Arreter le tour");
+		boutLancer = new JButton("Lancer les des"); 
+		boutArreter = new JButton("Arreter le tour");
 		
 		boutLancer.setPreferredSize(new Dimension(widhtBout, heightBout));
 		boutArreter.setPreferredSize(new Dimension(widhtBout, heightBout));
@@ -54,11 +63,19 @@ public class PanCommands_south extends JPanel {
 		boutArreter.setFont(new Font("Eracake", Font.ITALIC, sizeFont));
 		boutLancer.setFont(new Font("Eracake", Font.ITALIC, sizeFont));
 		
+		boutArreter.setEnabled(false);
+		boutLancer.setEnabled(false);
+		
 		
 		panLancer.add(boutLancer);
 		panArret.add(boutArreter);
 		
 		this.add(panLancer);
 		this.add(panArret);
+	}
+	
+	public void enableBoutons(boolean enabled) {
+		boutArreter.setEnabled(enabled);
+		boutLancer.setEnabled(enabled);
 	}
 }
