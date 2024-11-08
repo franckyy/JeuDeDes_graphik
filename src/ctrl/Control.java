@@ -65,6 +65,16 @@ public class Control {
 		//affichage de l'interface graphique
 		cadre = new Cadre(this, joueurs);
 
+		this.messageBienvenue();
+				
+		//essais
+		joueurs[0].setNbrePts(521);
+		panScores_north.setScorePanScores(joueurs[0]);
+		panScores_north.repaint();
+	}
+
+	//*********METHODES***********
+	public void messageBienvenue() {
 		pan_center.setMessage("Bonjour");
 		pan_center.repaint();
 		
@@ -75,15 +85,9 @@ public class Control {
 		}
 
 		pan_center.setMessage("A vous de jouer " + joueurs[0].getPrenom());
-		pan_center.repaint();
-				
-		//essais
-		joueurs[0].setNbrePts(521);
-		panScores_north.setScorePanScores(joueurs[0]);
-		panScores_north.repaint();
+		pan_center.repaint();	
 	}
-
-	//*********METHODES***********
+	
 	public int getNbreJoueurs() {
 		return this.nbreJoueurs;
 	}
