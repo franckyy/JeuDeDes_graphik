@@ -16,8 +16,7 @@ public class Control {
 	Pan_center pan_center = null;
 	PanCommands_south panCommands = null;
 	int nbreJoueurs = 0;
-
-	int incrResult;	//commence à 1 pour nous montrer l'emplacement du premier dé dans le tableau
+	int joueurActuel = 0;
 	
 	String[] prenomsJoueurs = null;
 	
@@ -27,8 +26,6 @@ public class Control {
 	
 //*********CONSTRUCTEUR***********
 	public Control() {
-
-		String relancer = "";
 		
         // Demande le nombre de joueurs
         while (true) {
@@ -71,40 +68,25 @@ public class Control {
 		//affichage de l'interface graphique
 		cadre = new Cadre(this, joueurs);
 
-		this.messBienvenue();
-				
-		boolean gagne = false;
-		
-		do {
-			for(Joueur joueur : joueurs) {
-				
-				this.messJoueurJoue(joueur);
-				
-				
-			}	//end for(joueur)
-		}while(gagne != true);
+		this.messBienvenue(joueurs[joueurActuel]);
 	}
 
 	//*********METHODES***********
-	private void messBienvenue() {
+	private void messBienvenue(Joueur joueur) {
 		pan_center.setMessage("Bonjour");
 		pan_center.repaint();
 		
-		this.attendre(1500);
+		this.attendre(2000);
 
 		pan_center.setMessage("Bienvenue dans notre jeu de dés");
 		pan_center.repaint();	
 		
-		this.attendre(1500);
-	}
-	
-	private void messJoueurJoue(Joueur joueur) {
+		this.attendre(2000);
+
 		pan_center.setMessage("à toi de lancer les dés " + joueur.getPrenom());
 		pan_center.repaint();
 		
 		panCommands.enableBoutons(true);
-		
-		this.attendre(1500);
 	}
 	
 	public int getNbreJoueurs() {
@@ -133,5 +115,15 @@ public class Control {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void lancerDes() {
+		pan_center.setMessage("coucou clic !!");
+		pan_center.repaint();
+	}
+
+	public void finirTour() {
+		pan_center.setMessage("coucou clic !! clic !!");
+		pan_center.repaint();
 	}
 }
