@@ -2,6 +2,7 @@ package ctrl;
 
 import javax.swing.JOptionPane;
 
+import modeles.Dice;
 import modeles.Joueur;
 import vues.Cadre;
 import vues.panneaux.center.Pan_center;
@@ -17,7 +18,8 @@ public class Control {
 	private PanCommands_south panCommands = null;
 	private int nbreJoueurs = 0;
 	private int joueurActuel = 0;
-	
+    private Dice dice;  // Instance de la classe Dice pour gérer les lancers
+    
 	private String[] prenomsJoueurs = null;
 	
 	public static void main(String[] args) {
@@ -58,6 +60,9 @@ public class Control {
             JOptionPane.showMessageDialog(null, "Veuillez entrer un nombre valide.", "Erreur", JOptionPane.ERROR_MESSAGE);
         }
         
+        //instanciation des dés
+        this.dice = new Dice(5);  // Par exemple, 5 dés par joueur
+        
         //Instanciation des joueurs
         joueurs = new Joueur[nbreJoueurs];
         
@@ -65,7 +70,7 @@ public class Control {
         	joueurs[i] = new Joueur(i, prenomsJoueurs[i]);
         }
         
-		//affichage de l'interface graphique
+		//création et affichage de l'interface graphique
 		cadre = new Cadre(this, joueurs);
 
 		this.messBienvenue(joueurs[joueurActuel]);
@@ -90,7 +95,14 @@ public class Control {
 	}
 
 	public void lancerDes() {
-		pan_center.setMessage("coucou clic !!");
+		String dices = "";
+        dice.lancerDes();  // Lancer les dés
+        
+        for(int des : dice.getValeursDes()) {
+        	dices += des + ", ";
+        }
+        
+		pan_center.setMessage("Dés = " + dices);
 		pan_center.repaint();
 	}
 
