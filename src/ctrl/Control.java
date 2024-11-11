@@ -1,6 +1,7 @@
 package ctrl;
 
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 import modeles.Dice;
 import modeles.Joueur;
@@ -101,9 +102,20 @@ public class Control {
                 
 		panDes.setValeursDes(dice.getValeursDes());
 		
-		panCommands.enableBoutons(true);
+		SwingUtilities.invokeLater(new Runnable() {
+		    @Override
+		    public void run() {
+		        panCommands.enableBoutons(true);
+		    }
+		});
+		
+		this.verificationDes(dice.getValeursDes());
 	}
 
+	private void verificationDes(int[] lancers) {
+		
+	}
+	
 	public void finirTour() {
 		pan_center.setMessage("coucou clic !! clic !!");
 		pan_center.repaint();
