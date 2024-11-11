@@ -32,7 +32,7 @@ public class Pan_center extends JPanel {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		panMessages = new PanneauMessages_Center();
-		panDes = new PanneauDes_Center();
+		panDes = new PanneauDes_Center(ctrl);
 		
 		this.setAlignmentX(CENTER_ALIGNMENT);
 		

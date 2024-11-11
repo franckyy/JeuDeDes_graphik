@@ -6,6 +6,7 @@ import modeles.Dice;
 import modeles.Joueur;
 import vues.Cadre;
 import vues.panneaux.center.Pan_center;
+import vues.panneaux.center.PanneauDes_Center;
 import vues.panneaux.north.PanScores_north;
 import vues.panneaux.south.PanCommands_south;
 
@@ -15,6 +16,7 @@ public class Control {
 	private Joueur[] joueurs = null;
 	private PanScores_north panScores_north = null;
 	private Pan_center pan_center = null;
+	private PanneauDes_Center panDes = null;
 	private PanCommands_south panCommands = null;
 	private int nbreJoueurs = 0;
 	private int joueurActuel = 0;
@@ -95,15 +97,11 @@ public class Control {
 	}
 
 	public void lancerDes() {
-		String dices = "";
-        dice.lancerDes();  // Lancer les dés
-        
-        for(int des : dice.getValeursDes()) {
-        	dices += des + ", ";
-        }
-        
-		pan_center.setMessage("Dés = " + dices);
-		pan_center.repaint();
+		dice.lancerDes();  // Lancer les dés
+                
+		panDes.setValeursDes(dice.getValeursDes());
+		
+		panCommands.enableBoutons(true);
 	}
 
 	public void finirTour() {
@@ -128,6 +126,10 @@ public class Control {
 		this.pan_center = pan_center;
 	}
 	
+	public void setPanDes(PanneauDes_Center panDes) {
+		this.panDes = panDes;
+	}
+
 	public void setPanCommands(PanCommands_south panCommands) {
 		this.panCommands = panCommands;
 	}
