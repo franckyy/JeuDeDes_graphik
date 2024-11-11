@@ -10,15 +10,15 @@ import vues.panneaux.south.PanCommands_south;
 
 public class Control {
 
-	Cadre cadre = null;
-	Joueur[] joueurs = null;
-	PanScores_north panScores_north = null;
-	Pan_center pan_center = null;
-	PanCommands_south panCommands = null;
-	int nbreJoueurs = 0;
-	int joueurActuel = 0;
+	private Cadre cadre = null;
+	private Joueur[] joueurs = null;
+	private PanScores_north panScores_north = null;
+	private Pan_center pan_center = null;
+	private PanCommands_south panCommands = null;
+	private int nbreJoueurs = 0;
+	private int joueurActuel = 0;
 	
-	String[] prenomsJoueurs = null;
+	private String[] prenomsJoueurs = null;
 	
 	public static void main(String[] args) {
 		Control ctrl = new Control();
