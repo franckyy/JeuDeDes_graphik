@@ -88,7 +88,18 @@ public class Control {
 		
 		panCommands.enableBoutons(true);
 	}
+
+	public void lancerDes() {
+		pan_center.setMessage("coucou clic !!");
+		pan_center.repaint();
+	}
+
+	public void finirTour() {
+		pan_center.setMessage("coucou clic !! clic !!");
+		pan_center.repaint();
+	}
 	
+	//*********GETTERS AND SETTERS*********
 	public int getNbreJoueurs() {
 		return this.nbreJoueurs;
 	}
@@ -115,15 +126,5 @@ public class Control {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public void lancerDes() {
-		pan_center.setMessage("coucou clic !!");
-		pan_center.repaint();
-	}
-
-	public void finirTour() {
-		pan_center.setMessage("coucou clic !! clic !!");
-		pan_center.repaint();
 	}
 }
