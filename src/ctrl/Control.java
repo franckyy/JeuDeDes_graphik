@@ -12,6 +12,7 @@ import modeles.Joueur;
 import vues.Cadre;
 import vues.panneaux.center.Pan_center;
 import vues.panneaux.center.PanneauDes_Center;
+import vues.panneaux.center.PanneauMessages_Center;
 import vues.panneaux.north.PanScores_north;
 import vues.panneaux.south.PanCommands_south;
 
@@ -105,6 +106,7 @@ public class Control {
 	public void lancerDes() {
 		dice.lancerDes();  // Lancer les dés
                 
+		//affiche les valeurs des dés dans le panneau Des
 		panDes.setValeursDes(dice.getValeursDes());
 		
 		SwingUtilities.invokeLater(new Runnable() {
@@ -158,20 +160,32 @@ public class Control {
 				}	//end switch			
 		}// fin de for(int chiffre : lancers) 
 		
+		//test des suites
+//		nbres.put("nbre1", 1);
+//		nbres.put("nbre2", 1);
+//		nbres.put("nbre3", 1);
+//		nbres.put("nbre4", 1);
+//		nbres.put("nbre5", 1);
+//		nbres.put("nbre6", 0);
+		
 		// voir si il n'y a aucun score :
 
 		int rangLancers = 0;
-		for(int chiffre : lancers) {
-			//je dois recréer le nom de la variable nbrex avec le chiffre du dé
-			String valeurDe = "nbre" + chiffre;
+		//Si nous avons une suite, aucun dé n'est interdit
+		if(!((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 &&nbres.get("nbre3") == 1 &&nbres.get("nbre4") == 1 &&nbres.get("nbre5") == 1) 
+					|| (nbres.get("nbre2") == 1 &&nbres.get("nbre3") == 1 &&nbres.get("nbre4") == 1 &&nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1))) {
 
-			if(chiffre != 1 && chiffre != 5 && nbres.get(valeurDe) <= 2) {
-				desInterdits[rangLancers] = -1;
+			for(int chiffre : lancers) {
+				//je dois recréer le nom de la variable nbrex avec le chiffre du dé
+				String valeurDe = "nbre" + chiffre;
+	
+				if(chiffre != 1 && chiffre != 5 && nbres.get(valeurDe) <= 2) {
+					desInterdits[rangLancers] = -1;
+				}
+				
+				rangLancers++;
 			}
-			
-			rangLancers++;
 		}
-		
 		//demander au panneauDes de griser les dés qui ne font pas de scores
 		panDes.griserDes(desInterdits);
 		
@@ -184,7 +198,8 @@ public class Control {
 		
 		//Avant de vérifier, je dois voir si tous les dés ne sont pas interdits.
 		
-		if(Arrays.stream(desInterdits).anyMatch(x -> x == 0)) {
+		if(Arrays.stream(desInterdits).anyMatch(x -> x == 0)) {			
+			
 			//Vérification d'une suite 
 			if((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1)
 				|| (nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1)){
@@ -197,29 +212,22 @@ public class Control {
 					switch(nbres.get("nbre1")){
 						case 1:
 							_score = _score + 100;
-							//Le dé qui contient le numéro 1 ne pourra pas être relancé
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 1);
-	//						nbreDesRestants = nbreDesRestants - 1;
+								//nbreDesRestants = nbreDesRestants - 1;
 							break;
 						case 2:
 							_score = _score + 200;
-							//Les dés contenant le numéro 1 ne pourront pas être relancés
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 1);
 	//						nbreDesRestants = nbreDesRestants - 2;
 							break;
 						case 3:
 							_score = _score + 1000;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 1);
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
 							_score = _score + 2000;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 1);
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
 							_score = _score + 3000;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 1);
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre1
@@ -229,17 +237,14 @@ public class Control {
 					switch(nbres.get("nbre2")){
 						case 3:
 							_score = _score + 200;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 2);
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
 							_score = _score + 400;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 2);
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
 							_score = _score + 600;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 2);
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre2
@@ -249,17 +254,14 @@ public class Control {
 					switch(nbres.get("nbre3")){
 						case 3:
 							_score = _score + 300;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 3);
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
 							_score = _score + 600;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 3);
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
 							_score = _score + 900;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 3);
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre3
@@ -269,17 +271,14 @@ public class Control {
 					switch(nbres.get("nbre4")){
 						case 3:
 							_score = _score + 400;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 4);
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
 							_score = _score + 800;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 4);
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
 							_score = _score + 1200;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 4);
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre4
@@ -289,27 +288,22 @@ public class Control {
 					switch(nbres.get("nbre5")){
 						case 1:
 							_score = _score + 50;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 5);
 	//						nbreDesRestants = nbreDesRestants - 1;
 							break;
 						case 2:
 							_score = _score + 100;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 5);
 	//						nbreDesRestants = nbreDesRestants - 2;
 							break;
 						case 3:
 							_score = _score + 500;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 5);
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
 							_score = _score + 1000;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 5);
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
 							_score = _score + 1500;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 5);
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre5
@@ -319,17 +313,14 @@ public class Control {
 					switch(nbres.get("nbre6")){
 						case 3:
 							_score = _score + 600;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 6);
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
 							_score = _score + 1200;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 6);
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
 							_score = _score + 1800;
-	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 6);
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre6
@@ -337,6 +328,7 @@ public class Control {
 			}//	fin du else
 		}
 
+		
 	}//	fin de verificationDes(int[] lancers)
 	
 	public void finirTour() {
