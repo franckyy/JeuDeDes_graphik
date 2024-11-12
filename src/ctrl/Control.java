@@ -107,8 +107,11 @@ public class Control {
 	public void lancerDes() {
 		dice.lancerDes();  // Lancer les dés
                 
-		//affiche les valeurs des dés dans le panneau Des
+		//affiche les valeurs des dés dans le panneau Des et rempli le tableau
 		panDes.setValeursDes(dice.getValeursDes());
+		
+		//affiche les valeurs de chaque dé dans le panneau actual score east
+		panScoreEast.setDes(dice.getValeursDes());
 		
 		SwingUtilities.invokeLater(new Runnable() {
 		    @Override
@@ -320,6 +323,7 @@ public class Control {
 			}//	fin du else
 		}
 
+		//affichage du score sur le panneauEast
 		panScoreEast.setScore(score);
 		panScoreEast.repaint();
 	}//	fin de verificationDes(int[] lancers)
