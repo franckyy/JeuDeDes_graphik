@@ -1,5 +1,8 @@
 package ctrl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -22,6 +25,7 @@ public class Control {
 	private int nbreJoueurs = 0;
 	private int joueurActuel = 0;
     private Dice dice;  // Instance de la classe Dice pour gérer les lancers
+    private int[] desInterdits = new int[5];	// tableau pour les dés qui ne devront pas être relancés
     
 	private String[] prenomsJoueurs = null;
 	
@@ -113,13 +117,19 @@ public class Control {
 	}//	fin lancerDes()
 
 	private void verificationDes(int[] lancers) {
+
+		//évaluation du score
+		int _score = 0;
 		
-		int nbre1 = 0; //nombre de fois où l'on a fait 1
-		int nbre2 = 0;
-		int nbre3 = 0;
-		int nbre4 = 0;
-		int nbre5 = 0;
-		int nbre6 = 0;
+		// Création d'une Map pour stocker les variables dynamiques
+        Map<String, Integer> nbres = new HashMap<>();
+		
+        nbres.put("nbre1", 0);
+        nbres.put("nbre2", 0);
+        nbres.put("nbre3", 0);
+        nbres.put("nbre4", 0);
+        nbres.put("nbre5", 0);
+        nbres.put("nbre6", 0);
 		
 		for(int chiffre : lancers) {
 		
@@ -127,30 +137,48 @@ public class Control {
 				
 				switch(chiffre){
 					case 1:
-						nbre1++;
+						nbres.put("nbre1", nbres.get("nbre1") + 1);
 						break;
 					case 2:
-						nbre2++;
+						nbres.put("nbre2", nbres.get("nbre2") + 1);
 						break;
 					case 3:
-						nbre3++;
+						nbres.put("nbre3", nbres.get("nbre3") + 1);
 						break;
 					case 4:
-						nbre4++;
+						nbres.put("nbre4", nbres.get("nbre4") + 1);
 						break;
 					case 5:
-						nbre5++;
+						nbres.put("nbre5", nbres.get("nbre5") + 1);
 						break;
 					case 6:
-						nbre6++;
+						nbres.put("nbre6", nbres.get("nbre6") + 1);
 						break;
 				}	//end switch			
 		}// fin de for(int chiffre : lancers) 
 		
+		//TODO voir si il n'y a aucun score : 
+		// - pas de 1 ni de 5
+		// - le nombre de dés 2, 3, 4, puis 6 doit être inférieur ou égal à 2
+		// si c'est le cas, score = 0 et on passe au joueur suivant
 
-		//évaluation du score
-		int _score = 0;
+		int rangLancers = 0;
+		for(int chiffre : lancers) {
+			//je dois recréer le nom de la variable nbrex avec le chiffre du dé
+			String valeurDe = "nbre" + chiffre;
+
+			if(chiffre != 1 && chiffre != 5 && nbres.get(valeurDe) <= 2) {
+				desInterdits[rangLancers] = -1;
+			}
+			
+			rangLancers++;
+		}
 		
+		//TODO demander au panneauDes de griser les dés qui ne font pas de scores
+		
+/*
+		
+		//Avant de vérifier, je dois voir si tous les dés ne sont pas interdits.
 		//Vérification d'une suite 
 		if((nbre1 == 1 && nbre2 == 1 && nbre3 == 1 && nbre4 == 1 && nbre5 == 1)
 			|| (nbre2 == 1 && nbre3 == 1 && nbre4 == 1 && nbre5 == 1 && nbre6 == 1)){
@@ -301,6 +329,8 @@ public class Control {
 				}	//fin switch nbre6
 			}	//fin if nbre6		
 		}//	fin du else
+		
+*/
 		
 	}//	fin de verificationDes(int[] lancers)
 	
