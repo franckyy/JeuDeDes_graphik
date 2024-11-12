@@ -110,11 +110,199 @@ public class Control {
 		});
 		
 		this.verificationDes(dice.getValeursDes());
-	}
+	}//	fin lancerDes()
 
 	private void verificationDes(int[] lancers) {
 		
-	}
+		int nbre1 = 0; //nombre de fois où l'on a fait 1
+		int nbre2 = 0;
+		int nbre3 = 0;
+		int nbre4 = 0;
+		int nbre5 = 0;
+		int nbre6 = 0;
+		
+		for(int chiffre : lancers) {
+		
+			//vérification des lancers
+				
+				switch(chiffre){
+					case 1:
+						nbre1++;
+						break;
+					case 2:
+						nbre2++;
+						break;
+					case 3:
+						nbre3++;
+						break;
+					case 4:
+						nbre4++;
+						break;
+					case 5:
+						nbre5++;
+						break;
+					case 6:
+						nbre6++;
+						break;
+				}	//end switch			
+		}// fin de for(int chiffre : lancers) 
+		
+
+		//évaluation du score
+		int _score = 0;
+		
+		//Vérification d'une suite 
+		if((nbre1 == 1 && nbre2 == 1 && nbre3 == 1 && nbre4 == 1 && nbre5 == 1)
+			|| (nbre2 == 1 && nbre3 == 1 && nbre4 == 1 && nbre5 == 1 && nbre6 == 1)){
+			
+			_score = _score + 500;
+		
+		//Vérification des autres possibilités
+		}else{
+			if(nbre1 != 0){
+				switch(nbre1){
+					case 1:
+						_score = _score + 100;
+						//Le dé qui contient le numéro 1 ne pourra pas être relancé
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 1);
+//						nbreDesRestants = nbreDesRestants - 1;
+						break;
+					case 2:
+						_score = _score + 200;
+						//Les dés contenant le numéro 1 ne pourront pas être relancés
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 1);
+//						nbreDesRestants = nbreDesRestants - 2;
+						break;
+					case 3:
+						_score = _score + 1000;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 1);
+//						nbreDesRestants = nbreDesRestants - 3;
+						break;
+					case 4:
+						_score = _score + 2000;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 1);
+//						nbreDesRestants = nbreDesRestants - 4;
+						break;
+					case 5:
+						_score = _score + 3000;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 1);
+//						nbreDesRestants = nbreDesRestants - 5;
+						break;
+				}	//fin switch nbre1
+			}	//fin if nbre1
+			
+			if(nbre2 == 3 || nbre2 == 4 || nbre2 == 5){
+				switch(nbre2){
+					case 3:
+						_score = _score + 200;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 2);
+//						nbreDesRestants = nbreDesRestants - 3;
+						break;
+					case 4:
+						_score = _score + 400;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 2);
+//						nbreDesRestants = nbreDesRestants - 4;
+						break;
+					case 5:
+						_score = _score + 600;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 2);
+//						nbreDesRestants = nbreDesRestants - 5;
+						break;
+				}	//fin switch nbre2
+			}	//fin du if nbre2
+			
+			if(nbre3 > 2){
+				switch(nbre3){
+					case 3:
+						_score = _score + 300;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 3);
+//						nbreDesRestants = nbreDesRestants - 3;
+						break;
+					case 4:
+						_score = _score + 600;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 3);
+//						nbreDesRestants = nbreDesRestants - 4;
+						break;
+					case 5:
+						_score = _score + 900;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 3);
+//						nbreDesRestants = nbreDesRestants - 5;
+						break;
+				}	//fin switch nbre3
+			}	//fin if nbre3
+			
+			if(nbre4 > 2){
+				switch(nbre4){
+					case 3:
+						_score = _score + 400;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 4);
+//						nbreDesRestants = nbreDesRestants - 3;
+						break;
+					case 4:
+						_score = _score + 800;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 4);
+//						nbreDesRestants = nbreDesRestants - 4;
+						break;
+					case 5:
+						_score = _score + 1200;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 4);
+//						nbreDesRestants = nbreDesRestants - 5;
+						break;
+				}	//fin switch nbre4
+			}	//fin if nbre4
+			
+			if(nbre5 != 0){
+				switch(nbre5){
+					case 1:
+						_score = _score + 50;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 5);
+//						nbreDesRestants = nbreDesRestants - 1;
+						break;
+					case 2:
+						_score = _score + 100;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 5);
+//						nbreDesRestants = nbreDesRestants - 2;
+						break;
+					case 3:
+						_score = _score + 500;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 5);
+//						nbreDesRestants = nbreDesRestants - 3;
+						break;
+					case 4:
+						_score = _score + 1000;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 5);
+//						nbreDesRestants = nbreDesRestants - 4;
+						break;
+					case 5:
+						_score = _score + 1500;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 5);
+//						nbreDesRestants = nbreDesRestants - 5;
+						break;
+				}	//fin switch nbre5
+			}	//fin if nbre5
+			
+			if(nbre6 > 2){
+				switch(nbre6){
+					case 3:
+						_score = _score + 600;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 6);
+//						nbreDesRestants = nbreDesRestants - 3;
+						break;
+					case 4:
+						_score = _score + 1200;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 6);
+//						nbreDesRestants = nbreDesRestants - 4;
+						break;
+					case 5:
+						_score = _score + 1800;
+//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 6);
+//						nbreDesRestants = nbreDesRestants - 5;
+						break;
+				}	//fin switch nbre6
+			}	//fin if nbre6		
+		}//	fin du else
+		
+	}//	fin de verificationDes(int[] lancers)
 	
 	public void finirTour() {
 		pan_center.setMessage("coucou clic !! clic !!");
