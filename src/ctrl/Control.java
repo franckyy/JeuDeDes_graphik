@@ -342,8 +342,11 @@ public class Control {
 		
 		//Lorsque le joueur arrete son tour, il faut ajouter le score actuel au score du joueur et l'afficher dans panneau north
 		//Il est alors demandé au joueur suivant de jouer
+		
+		//On met le score du joueur actuel à jour
 		joueurs[joueurActuel].setNbrePts(score);
 		
+		//On affiche le score du joueur actuel dans son panneau de score north
 		panScores_north.setScorePanScores(joueurs[joueurActuel]);
 		panScores_north.repaint();
 	}
