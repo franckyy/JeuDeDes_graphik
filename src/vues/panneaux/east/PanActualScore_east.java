@@ -8,16 +8,22 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+import ctrl.Control;
+
 public class PanActualScore_east extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	int xTextPos;
 	int yTextPos;
 	Dimension dim = null;
+	Control ctrl = null;
 
 	//*********CONSTRUCTEUR*********
-	public PanActualScore_east(Dimension dim_) {
+	public PanActualScore_east(Dimension dim_, Control _ctrl) {
 
+		this.ctrl = ctrl;
+		ctrl.setPanScoreEast(this);
+		
 		this.dim = dim_;
 		
 		this.xTextPos = (int) Math.round(dim.width / 4);

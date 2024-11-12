@@ -51,7 +51,7 @@ public class PanneauPrincipal extends JPanel {
 		
 		scores = new PanScores_north(xPanNorth, yPanNorth, joueurs, ctrl);
 		PanCommands_south commandes = new PanCommands_south(xPanSouth, yPanSouth, ctrl);
-		PanActualScore_east actualScore = new PanActualScore_east(dimEast);
+		PanActualScore_east actualScore = new PanActualScore_east(dimEast, ctrl);
 		des = new Pan_center(ctrl);
 		
 		this.add(scores ,BorderLayout.NORTH);

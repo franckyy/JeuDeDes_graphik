@@ -13,6 +13,7 @@ import vues.Cadre;
 import vues.panneaux.center.Pan_center;
 import vues.panneaux.center.PanneauDes_Center;
 import vues.panneaux.center.PanneauMessages_Center;
+import vues.panneaux.east.PanActualScore_east;
 import vues.panneaux.north.PanScores_north;
 import vues.panneaux.south.PanCommands_south;
 
@@ -24,6 +25,7 @@ public class Control {
 	private Pan_center pan_center = null;
 	private PanneauDes_Center panDes = null;
 	private PanCommands_south panCommands = null;
+	private PanActualScore_east panScoreEast = null;
 	private int nbreJoueurs = 0;
 	private int joueurActuel = 0;
     private Dice dice;  // Instance de la classe Dice pour gérer les lancers
@@ -327,7 +329,14 @@ public class Control {
 		pan_center.setMessage("coucou clic !! clic !!");
 		pan_center.repaint();
 	}
-	
+
+	private void attendre(int temps) {
+		try {
+			Thread.sleep(temps);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 	//*********GETTERS AND SETTERS*********
 	public int getNbreJoueurs() {
 		return this.nbreJoueurs;
@@ -353,11 +362,7 @@ public class Control {
 		this.panCommands = panCommands;
 	}
 
-	private void attendre(int temps) {
-		try {
-			Thread.sleep(temps);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	public void setPanScoreEast(PanActualScore_east panScoreEast) {
+		this.panScoreEast = panScoreEast;
 	}
 }
