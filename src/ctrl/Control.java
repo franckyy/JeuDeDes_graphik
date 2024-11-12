@@ -320,8 +320,8 @@ public class Control {
 			}//	fin du else
 		}
 
-		pan_center.setMessage("score : " + score);
-		pan_center.repaint();
+		panScoreEast.setScore(score);
+		panScoreEast.repaint();
 	}//	fin de verificationDes(int[] lancers)
 	
 	public void finirTour() {
