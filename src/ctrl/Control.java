@@ -12,7 +12,6 @@ import modeles.Joueur;
 import vues.Cadre;
 import vues.panneaux.center.Pan_center;
 import vues.panneaux.center.PanneauDes_Center;
-import vues.panneaux.center.PanneauMessages_Center;
 import vues.panneaux.east.PanActualScore_east;
 import vues.panneaux.north.PanScores_north;
 import vues.panneaux.south.PanCommands_south;
@@ -350,19 +349,19 @@ public class Control {
 		this.panScores_north = panScores_north_;
 	}
 
-	public void setPan_center(Pan_center pan_center) {
-		this.pan_center = pan_center;
+	public void setPan_center(Pan_center _pan_center) {
+		this.pan_center = _pan_center;
 	}
 	
-	public void setPanDes(PanneauDes_Center panDes) {
-		this.panDes = panDes;
+	public void setPanDes(PanneauDes_Center _panDes) {
+		this.panDes = _panDes;
 	}
 
-	public void setPanCommands(PanCommands_south panCommands) {
-		this.panCommands = panCommands;
+	public void setPanCommands(PanCommands_south _panCommands) {
+		this.panCommands = _panCommands;
 	}
 
-	public void setPanScoreEast(PanActualScore_east panScoreEast) {
-		this.panScoreEast = panScoreEast;
+	public void setPanScoreEast(PanActualScore_east _panScoreEast) {
+		this.panScoreEast = _panScoreEast;
 	}
 }

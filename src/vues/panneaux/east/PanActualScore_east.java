@@ -13,15 +13,17 @@ import ctrl.Control;
 public class PanActualScore_east extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	int xTextPos;
-	int yTextPos;
+	int xTextPos, yTextPos;
+	int score = 0;
+	
 	Dimension dim = null;
 	Control ctrl = null;
 
 	//*********CONSTRUCTEUR*********
 	public PanActualScore_east(Dimension dim_, Control _ctrl) {
 
-		this.ctrl = ctrl;
+		this.ctrl =_ctrl;
+		
 		ctrl.setPanScoreEast(this);
 		
 		this.dim = dim_;
@@ -37,7 +39,11 @@ public class PanActualScore_east extends JPanel {
 	}
 
 	//*********METHODES*********
-    public void paint(Graphics g) {
+	public void setMessage(int _score) {
+		this.setScore(_score);
+	}
+
+	public void paint(Graphics g) {
         super.paint(g);
         g.setFont(new Font("default", Font.BOLD, 15));
         g.setColor(Color.MAGENTA);
@@ -64,6 +70,15 @@ public class PanActualScore_east extends JPanel {
         g.setColor(Color.MAGENTA);
         g.drawString("Total", xTextPos, yTextPos + 220);
         g.setColor(Color.RED);
-        g.drawString("600", xTextPos + 5, yTextPos + 240);
+        g.drawString("" + score, xTextPos + 5, yTextPos + 240);
     }
+
+	//*********GETTERS and SETTERS*********
+    public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
 }
