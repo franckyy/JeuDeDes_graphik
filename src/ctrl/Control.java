@@ -193,8 +193,8 @@ public class Control {
 			
 			//Vérification des autres possibilités
 			}else{
-				if(nbre1 != 0){
-					switch(nbre1){
+				if(nbres.get("nbre1") != 0){
+					switch(nbres.get("nbre1")){
 						case 1:
 							_score = _score + 100;
 							//Le dé qui contient le numéro 1 ne pourra pas être relancé
@@ -225,8 +225,8 @@ public class Control {
 					}	//fin switch nbre1
 				}	//fin if nbre1
 				
-				if(nbre2 == 3 || nbre2 == 4 || nbre2 == 5){
-					switch(nbre2){
+				if(nbres.get("nbre2") == 3 || nbres.get("nbre2") == 4 || nbres.get("nbre2") == 5){
+					switch(nbres.get("nbre2")){
 						case 3:
 							_score = _score + 200;
 	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 2);
@@ -245,8 +245,8 @@ public class Control {
 					}	//fin switch nbre2
 				}	//fin du if nbre2
 				
-				if(nbre3 > 2){
-					switch(nbre3){
+				if(nbres.get("nbre3") > 2){
+					switch(nbres.get("nbre3")){
 						case 3:
 							_score = _score + 300;
 	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 3);
@@ -265,8 +265,8 @@ public class Control {
 					}	//fin switch nbre3
 				}	//fin if nbre3
 				
-				if(nbre4 > 2){
-					switch(nbre4){
+				if(nbres.get("nbre4") > 2){
+					switch(nbres.get("nbre4")){
 						case 3:
 							_score = _score + 400;
 	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 4);
@@ -285,8 +285,8 @@ public class Control {
 					}	//fin switch nbre4
 				}	//fin if nbre4
 				
-				if(nbre5 != 0){
-					switch(nbre5){
+				if(nbres.get("nbre5") != 0){
+					switch(nbres.get("nbre5")){
 						case 1:
 							_score = _score + 50;
 	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 5);
@@ -315,8 +315,8 @@ public class Control {
 					}	//fin switch nbre5
 				}	//fin if nbre5
 				
-				if(nbre6 > 2){
-					switch(nbre6){
+				if(nbres.get("nbre6") > 2){
+					switch(nbres.get("nbre6")){
 						case 3:
 							_score = _score + 600;
 	//						_desInterdits = rechercheDesInterdits(_lancers, _desInterdits, 6);
