@@ -342,9 +342,10 @@ public class Control {
 		
 		//Lorsque le joueur arrete son tour, il faut ajouter le score actuel au score du joueur et l'afficher dans panneau north
 		//Il est alors demandé au joueur suivant de jouer
+		joueurs[joueurActuel].setNbrePts(score);
 		
-		pan_center.setMessage("coucou clic !! clic !!");
-		pan_center.repaint();
+		panScores_north.setScorePanScores(joueurs[joueurActuel]);
+		panScores_north.repaint();
 	}
 
 	private void attendre(int temps) {

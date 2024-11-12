@@ -19,7 +19,7 @@ public class Joueur{
 	
 	//******Setters Getters
 	public void setNbrePts(int _nbrePts){
-			this.nbrePts = _nbrePts;
+		this.nbrePts = this.getNbrePts() - _nbrePts;
 	}
 	
 	public int getNbrePts(){
