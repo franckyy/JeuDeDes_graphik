@@ -157,10 +157,7 @@ public class Control {
 				}	//end switch			
 		}// fin de for(int chiffre : lancers) 
 		
-		//TODO voir si il n'y a aucun score : 
-		// - pas de 1 ni de 5
-		// - le nombre de dés 2, 3, 4, puis 6 doit être inférieur ou égal à 2
-		// si c'est le cas, score = 0 et on passe au joueur suivant
+		// voir si il n'y a aucun score :
 
 		int rangLancers = 0;
 		for(int chiffre : lancers) {
@@ -175,7 +172,12 @@ public class Control {
 		}
 		
 		//TODO demander au panneauDes de griser les dés qui ne font pas de scores
+		panDes.griserDes(desInterdits);
 		
+		//TODO ré initialiser le tableau desInterdits
+		for(int i = 0; i<= 4; i++) {
+			desInterdits[i] = 0;
+		}
 		
 /*
 		

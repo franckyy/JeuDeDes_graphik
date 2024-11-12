@@ -5,8 +5,10 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.util.Arrays;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import ctrl.Control;
 
@@ -17,11 +19,12 @@ public class PanneauDes_Center extends JPanel {
 
     // Tableau pour stocker les valeurs des dés
     private int[] valeursDes = {1, 2, 3, 4, 5};  // Valeurs initiales
+    private Color[] couleursDes = {Color.white, Color.white, Color.white, Color.white, Color.white};  // Couleurs initiales des dés
 
     //*********CONSTRUCTEUR*********
     public PanneauDes_Center(Control ctrl_) {
-    	this.ctrl = ctrl_;
-    	ctrl.setPanDes(this);
+        this.ctrl = ctrl_;
+        ctrl.setPanDes(this);
         this.setBackground(Color.pink);
     }
 
@@ -44,12 +47,23 @@ public class PanneauDes_Center extends JPanel {
         }
     }
 
+    // Méthode pour griser les dés spécifiés
     public void griserDes(int[] griserDes) {
-    	for(int i = 0; i <= griserDes.length; i++) {
-    		if(griserDes[i] == -1) {
-    			
-    		}
-    	}
+        for (int i = 0; i < griserDes.length; i++) {
+            if (griserDes[i] == -1) {
+                couleursDes[i] = Color.gray;  // Changer la couleur du dé en gris
+            }
+            else {
+                couleursDes[i] = Color.white;  // Changer la couleur du dé en gris
+            }
+        }
+
+        // Utiliser invokeLater pour garantir le redessin sur le thread d'interface graphique
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                repaint();
+            }
+        });
     }
     
     @Override
@@ -78,7 +92,7 @@ public class PanneauDes_Center extends JPanel {
             int x = xStart + i * (tailleDe + espacement);
 
             // Dessiner le dé (rectangle avec coins arrondis)
-            g2d.setColor(Color.white);
+            g2d.setColor(couleursDes[i]);
             g2d.fillRoundRect(x, yStart, tailleDe, tailleDe, 15, 15); // coins arrondis
 
             // Dessiner le contour du dé
