@@ -1,11 +1,14 @@
 package ctrl;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 import modeles.Dice;
 import modeles.Joueur;
@@ -78,7 +81,7 @@ public class Control {
         joueurs = new Joueur[nbreJoueurs];
         
         for (int i = 0; i <= nbreJoueurs - 1; i++) {
-        	joueurs[i] = new Joueur(i, prenomsJoueurs[i]);
+        	joueurs[i] = new Joueur(i, prenomsJoueurs[i], this);
         }
         
 		//création et affichage de l'interface graphique
@@ -89,18 +92,23 @@ public class Control {
 
 	//*********METHODES***********
 	private void messBienvenue(Joueur joueur) {
-		pan_center.setMessage("Bonjour");
-		pan_center.repaint();
 		
-		this.attendre(2000);
+	    attendre(2000, () -> {
+	        pan_center.setMessage("Bienvenue dans notre jeu de dés");
+	        pan_center.repaint();
+	        
+	        attendre(2000, () -> {
+	            pan_center.setMessage("à toi de lancer les dés " + joueur.getPrenom());
+	            pan_center.repaint();
+	            
+	            attendre(2000, () ->{
 
-		pan_center.setMessage("Bienvenue dans notre jeu de dés");
-		pan_center.repaint();	
-		
-		this.attendre(2000);
-
-		pan_center.setMessage("à toi de lancer les dés " + joueur.getPrenom());
-		pan_center.repaint();
+	        		pan_center.setMessage("à toi de lancer les dés " + joueur.getPrenom());
+	        		pan_center.repaint();
+	            });
+	            panCommands.enableBoutons(true);
+	        });
+	    });
 		
 		panCommands.enableBoutons(true);
 	}
@@ -358,12 +366,48 @@ public class Control {
 		pan_center.repaint();
 	}
 
-	private void attendre(int temps) {
-		try {
-			Thread.sleep(temps);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	public void gagne() {
+
+		//On affiche le score du joueur actuel dans son panneau de score north
+		panScores_north.setScorePanScores(joueurs[joueurActuel]);
+		panScores_north.repaint();
+		
+		//Message de félicitations
+		pan_center.setMessage("Bravo " + joueurs[joueurActuel].getPrenom() + " vous avez gagné !");
+		pan_center.repaint();
+		
+		//TODO fin du jeu -> recommencer ? 
+	}
+	
+	public void scoreNegatif() {
+		
+		//Message de félicitations
+		pan_center.setMessage("Votre lancer est supérieur à votre score. Passez votre tour");
+		pan_center.repaint();
+		
+		//on passe au joueur suivant
+		this.setJoueurActuel();
+		
+//		this.attendre(2000);
+		
+		//message pour le joueur suivant
+		pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
+		pan_center.repaint();
+	}
+	
+	// Méthode pour démarrer un délai
+	private void attendre(int milliseconds, Runnable action) {
+	    Timer timer = new Timer(milliseconds, new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	            // Code à exécuter après le délai
+	            action.run();
+	            // Arrête le Timer après exécution si c'est un délai unique
+	            ((Timer) e.getSource()).stop();
+	        }
+	    });
+	    timer.setRepeats(false); // Exécuter une seule fois
+	    timer.start();           // Démarrer le timer
 	}
 	//*********GETTERS AND SETTERS*********
 	public int getNbreJoueurs() {
