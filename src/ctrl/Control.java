@@ -349,6 +349,13 @@ public class Control {
 		//On affiche le score du joueur actuel dans son panneau de score north
 		panScores_north.setScorePanScores(joueurs[joueurActuel]);
 		panScores_north.repaint();
+		
+		//on passe au joueur suivant
+		this.setJoueurActuel();
+		
+		//message pour le joueur suivant
+		pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
+		pan_center.repaint();
 	}
 
 	private void attendre(int temps) {
@@ -385,5 +392,16 @@ public class Control {
 
 	public void setPanScoreEast(PanActualScore_east _panScoreEast) {
 		this.panScoreEast = _panScoreEast;
+	}
+
+	public void setJoueurActuel() {
+		//si le joueur actuel est le dernier, il faut alors réinitialiser pour revenir au premier joueur
+		//sinon, on incrémente
+		if(this.joueurActuel == joueurs.length - 1) {
+			joueurActuel = 0;
+		}else {
+			joueurActuel++;
+		}
+		this.joueurActuel = joueurActuel;
 	}
 }
