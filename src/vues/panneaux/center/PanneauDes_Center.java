@@ -44,6 +44,14 @@ public class PanneauDes_Center extends JPanel {
         }
     }
 
+    public void griserDes(int[] griserDes) {
+    	for(int i = 0; i <= griserDes.length; i++) {
+    		if(griserDes[i] == -1) {
+    			
+    		}
+    	}
+    }
+    
     @Override
     public void paint(Graphics g) {
         super.paint(g);

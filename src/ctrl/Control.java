@@ -176,6 +176,7 @@ public class Control {
 		
 		//TODO demander au panneauDes de griser les dés qui ne font pas de scores
 		
+		
 /*
 		
 		//Avant de vérifier, je dois voir si tous les dés ne sont pas interdits.
