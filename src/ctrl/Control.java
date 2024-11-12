@@ -122,7 +122,7 @@ public class Control {
 	private void verificationDes(int[] lancers) {
 
 		//évaluation du score
-		int _score = 0;
+		int score = 0;
 		
 		// Création d'une Map pour stocker les variables dynamiques
         Map<String, Integer> nbres = new HashMap<>();
@@ -160,16 +160,7 @@ public class Control {
 				}	//end switch			
 		}// fin de for(int chiffre : lancers) 
 		
-		//test des suites
-//		nbres.put("nbre1", 1);
-//		nbres.put("nbre2", 1);
-//		nbres.put("nbre3", 1);
-//		nbres.put("nbre4", 1);
-//		nbres.put("nbre5", 1);
-//		nbres.put("nbre6", 0);
-		
 		// voir si il n'y a aucun score :
-
 		int rangLancers = 0;
 		//Si nous avons une suite, aucun dé n'est interdit
 		if(!((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 &&nbres.get("nbre3") == 1 &&nbres.get("nbre4") == 1 &&nbres.get("nbre5") == 1) 
@@ -204,30 +195,30 @@ public class Control {
 			if((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1)
 				|| (nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1)){
 				
-				_score = _score + 500;
+				score = score + 500;
 			
 			//Vérification des autres possibilités
 			}else{
 				if(nbres.get("nbre1") != 0){
 					switch(nbres.get("nbre1")){
 						case 1:
-							_score = _score + 100;
+							score = score + 100;
 								//nbreDesRestants = nbreDesRestants - 1;
 							break;
 						case 2:
-							_score = _score + 200;
+							score = score + 200;
 	//						nbreDesRestants = nbreDesRestants - 2;
 							break;
 						case 3:
-							_score = _score + 1000;
+							score = score + 1000;
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
-							_score = _score + 2000;
+							score = score + 2000;
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
-							_score = _score + 3000;
+							score = score + 3000;
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre1
@@ -236,15 +227,15 @@ public class Control {
 				if(nbres.get("nbre2") == 3 || nbres.get("nbre2") == 4 || nbres.get("nbre2") == 5){
 					switch(nbres.get("nbre2")){
 						case 3:
-							_score = _score + 200;
+							score = score + 200;
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
-							_score = _score + 400;
+							score = score + 400;
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
-							_score = _score + 600;
+							score = score + 600;
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre2
@@ -253,15 +244,15 @@ public class Control {
 				if(nbres.get("nbre3") > 2){
 					switch(nbres.get("nbre3")){
 						case 3:
-							_score = _score + 300;
+							score = score + 300;
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
-							_score = _score + 600;
+							score = score + 600;
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
-							_score = _score + 900;
+							score = score + 900;
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre3
@@ -270,15 +261,15 @@ public class Control {
 				if(nbres.get("nbre4") > 2){
 					switch(nbres.get("nbre4")){
 						case 3:
-							_score = _score + 400;
+							score = score + 400;
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
-							_score = _score + 800;
+							score = score + 800;
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
-							_score = _score + 1200;
+							score = score + 1200;
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre4
@@ -287,23 +278,23 @@ public class Control {
 				if(nbres.get("nbre5") != 0){
 					switch(nbres.get("nbre5")){
 						case 1:
-							_score = _score + 50;
+							score = score + 50;
 	//						nbreDesRestants = nbreDesRestants - 1;
 							break;
 						case 2:
-							_score = _score + 100;
+							score = score + 100;
 	//						nbreDesRestants = nbreDesRestants - 2;
 							break;
 						case 3:
-							_score = _score + 500;
+							score = score + 500;
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
-							_score = _score + 1000;
+							score = score + 1000;
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
-							_score = _score + 1500;
+							score = score + 1500;
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre5
@@ -312,15 +303,15 @@ public class Control {
 				if(nbres.get("nbre6") > 2){
 					switch(nbres.get("nbre6")){
 						case 3:
-							_score = _score + 600;
+							score = score + 600;
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
-							_score = _score + 1200;
+							score = score + 1200;
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
-							_score = _score + 1800;
+							score = score + 1800;
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre6
@@ -328,7 +319,8 @@ public class Control {
 			}//	fin du else
 		}
 
-		
+		pan_center.setMessage("score : " + score);
+		pan_center.repaint();
 	}//	fin de verificationDes(int[] lancers)
 	
 	public void finirTour() {
