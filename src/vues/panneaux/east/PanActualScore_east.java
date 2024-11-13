@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.swing.JPanel;
 
 import ctrl.Control;
+import utils.PaletteColors;
 
 public class PanActualScore_east extends JPanel {
 
@@ -23,6 +24,10 @@ public class PanActualScore_east extends JPanel {
 	
 	Dimension dim = null;
 	Control ctrl = null;
+
+	final Color coulBackPanel = PaletteColors.POWDER_PINK;
+	final Color coulTextes = PaletteColors.HOT_GREY;
+	final Color coulTextesTitres = PaletteColors.VIOLET_DARK;
 
 	//*********CONSTRUCTEUR*********
 	public PanActualScore_east(Dimension dim_, Control _ctrl) {
@@ -47,7 +52,7 @@ public class PanActualScore_east extends JPanel {
 
 		this.setLayout(new FlowLayout(1, 0, (int) Math.round(dim.getHeight() / 2)));	//FlowLayout​(int align, int hgap, int vgap)
 		
-		this.setBackground(Color.GREEN);
+		this.setBackground(coulBackPanel);
 	}
 
 	//*********METHODES*********
@@ -59,30 +64,30 @@ public class PanActualScore_east extends JPanel {
 		System.out.println("PanActualScore_east - void paint(Graphics g)");
         super.paint(g);
         g.setFont(new Font("default", Font.BOLD, 15));
-        g.setColor(Color.MAGENTA);
+        g.setColor(coulTextesTitres);
         g.drawString("Dé 1", xTextPos, yTextPos);
-        g.setColor(Color.RED);
+        g.setColor(coulTextes);
         g.drawString(des.get("de1"), xTextPos + 5, yTextPos + 20);
-        g.setColor(Color.MAGENTA);
+        g.setColor(coulTextesTitres);
         g.drawString("Dé 2", xTextPos, yTextPos + 40);
-        g.setColor(Color.RED);
+        g.setColor(coulTextes);
         g.drawString(des.get("de2"), xTextPos + 5, yTextPos + 60);
-        g.setColor(Color.MAGENTA);
+        g.setColor(coulTextesTitres);
         g.drawString("Dé 3", xTextPos, yTextPos + 80);
-        g.setColor(Color.RED);
+        g.setColor(coulTextes);
         g.drawString(des.get("de3"), xTextPos + 5, yTextPos + 100);
-        g.setColor(Color.MAGENTA);
+        g.setColor(coulTextesTitres);
         g.drawString("Dé 4", xTextPos, yTextPos + 120);
-        g.setColor(Color.RED);
+        g.setColor(coulTextes);
         g.drawString(des.get("de4"), xTextPos + 5, yTextPos + 140);
-        g.setColor(Color.MAGENTA);
+        g.setColor(coulTextesTitres);
         g.drawString("Dé 5", xTextPos, yTextPos + 160);
-        g.setColor(Color.RED);
+        g.setColor(coulTextes);
         g.drawString(des.get("de5"), xTextPos + 5, yTextPos + 180);
 
-        g.setColor(Color.MAGENTA);
+        g.setColor(coulTextesTitres);
         g.drawString("Total", xTextPos, yTextPos + 220);
-        g.setColor(Color.RED);
+        g.setColor(coulTextes);
         g.drawString("" + score, xTextPos + 5, yTextPos + 240);
     }
 

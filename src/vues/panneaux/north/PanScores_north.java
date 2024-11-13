@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import ctrl.Control;
 import modeles.Joueur;
+import utils.PaletteColors;
 
 public class PanScores_north extends JPanel {
 	
@@ -17,6 +18,8 @@ public class PanScores_north extends JPanel {
 	Joueur[] joueurs = null;
 	Control ctrl = null;
 	PanPersonalScore[] PanScores = null;
+
+	final Color coulBackPanel = PaletteColors.POWDER_PINK;
 	
 	//*********CONSTRUCTEUR*********
 	public PanScores_north(int xPanSize_, int yPanSize_, Joueur[] joueurs_, Control ctrl_) {
@@ -46,7 +49,7 @@ public class PanScores_north extends JPanel {
 			this.setBackground(Color.RED);
 		}
 		
-		this.setBackground(Color.GRAY);
+		this.setBackground(coulBackPanel);
 	}
 	
 	//*********METHODES*********

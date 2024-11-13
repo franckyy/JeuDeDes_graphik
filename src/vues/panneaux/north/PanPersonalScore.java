@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 import modeles.Joueur;
+import utils.PaletteColors;
 
 public class PanPersonalScore extends JPanel {
 	
@@ -16,6 +17,8 @@ public class PanPersonalScore extends JPanel {
 	int yTextPos = 40;
 	String prénomJoueur = "John";
 	Joueur joueur = null;
+	
+	final Color coulBackPanel = PaletteColors.POWDER_PINK;
 	
 	//*********CONSTRUCTEUR*********
 	public PanPersonalScore(int xScreenSize_, int yPanSize_, Joueur joueur_) {
@@ -27,6 +30,8 @@ public class PanPersonalScore extends JPanel {
 		this.score = joueur.getNbrePts();
 		
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize_));
+		
+		this.setBackground(coulBackPanel);
 	}
 	
 	//*********METHODES*********

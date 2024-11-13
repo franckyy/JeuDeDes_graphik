@@ -36,7 +36,8 @@ public class PaletteColors {
     public static final Color VIOLET_DARK = new Color(75, 0, 130); // violet plus foncé
     public static final Color VIOLET_LIGHT = new Color(238, 130, 238); // violet clair
     public static final Color MYSTIC_PURPLE = new Color(153, 50, 204); // Violet mystique
-    public static final Color POWDER_PINK = new Color(219, 170, 194); // Violet mystique
+    public static final Color POWDER_PINK = new Color(219, 170, 194); // rose poudré
+    public static final Color HOT_GREY = new Color(85, 85, 85); // gris chaud
     
     public static final Color BACKGROUND = new Color(245, 245, 245); // couleur de fond neutre
 
