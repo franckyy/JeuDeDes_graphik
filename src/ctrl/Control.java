@@ -94,17 +94,22 @@ public class Control {
 	//*********METHODES***********
 	private void messBienvenue(Joueur joueur) {
 		System.out.println("Control - void messBienvenue(Joueur joueur)");
-		
-	    attendre(2000, () -> {
-	        pan_center.setMessage("Bienvenue dans notre jeu de dés");
+
+	    attendre(100, () -> {
+	        pan_center.setMessage("Bonjour");
 	        pan_center.repaint();
 	        
-	        attendre(2000, () -> {
-	            pan_center.setMessage("à toi de lancer les dés " + joueur.getPrenom());
-	            pan_center.repaint();
-	            
-	            panCommands.enableBoutons(true);
-	        });
+		    attendre(2000, () -> {
+		        pan_center.setMessage("Bienvenue dans notre jeu de dés");
+		        pan_center.repaint();
+		        
+		        attendre(2000, () -> {
+		            pan_center.setMessage("à toi de lancer les dés " + joueur.getPrenom());
+		            pan_center.repaint();
+		            
+		            panCommands.enableBoutons(true);
+		        });
+		    });
 	    });
 	}
 
