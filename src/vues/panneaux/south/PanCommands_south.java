@@ -16,6 +16,10 @@ public class PanCommands_south extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
+	final double BUTTON_HEIGHT_RATIO = 0.8;
+	final double BUTTON_WIDTH_RATIO = 0.45;
+	final double FONT_SIZE_RATIO = 0.02;
+	
 	Control ctrl = null;
 	JButton boutLancer = null; 
 	JButton boutArreter = null;
@@ -30,11 +34,11 @@ public class PanCommands_south extends JPanel {
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
 		
 		//calculs des tailles pour les boutons
-		int heightBout = (int) Math.round(yPanSize * 0.8);
-		int widhtBout = (int) Math.round(xPanSize * 0.45);
+		int heightBout = (int) Math.round(yPanSize * BUTTON_HEIGHT_RATIO);
+		int widhtBout = (int) Math.round(xPanSize * BUTTON_WIDTH_RATIO);
 		
 		//calcul des tailles de fonts
-		int sizeFont = (int) Math.round(xPanSize * 0.02);
+		int sizeFont = (int) Math.round(xPanSize * FONT_SIZE_RATIO);
 		
 		//Load font from file
 		Font font = null;
