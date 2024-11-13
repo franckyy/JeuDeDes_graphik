@@ -87,8 +87,8 @@ public class PanneauDes_Center extends JPanel {
         int centerY = getHeight() / 2;
         
         // Utiliser des rayons différents pour l'axe horizontal et l'axe vertical (créant un effet ovale)
-        int radiusX = getWidth() / 2;   // Rayon horizontal (plus large)
-        int radiusY = getHeight() / 2;  // Rayon vertical (plus étroit)
+        int radiusX = getWidth() / 5;   // Rayon horizontal (plus large)
+        int radiusY = getHeight() / 7;  // Rayon vertical (plus étroit)
         
         Color color1 = coulBackPanel;  // Couleur du centre
         Color color2 = PaletteColors.BACKGROUND_SECOND;  // Couleur des bords

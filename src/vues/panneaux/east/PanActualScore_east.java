@@ -27,7 +27,7 @@ public class PanActualScore_east extends JPanel {
 
 	final Color coulBackPanel = PaletteColors.BACKGROUND_SECOND;
 	final Color coulTextes = PaletteColors.HOT_GREY;
-	final Color coulTextesTitres = PaletteColors.VIOLET_DARK;
+	final Color coulTextesTitres = PaletteColors.VIOLET_5_FONCE;
 
 	//*********CONSTRUCTEUR*********
 	public PanActualScore_east(Dimension dim_, Control _ctrl) {

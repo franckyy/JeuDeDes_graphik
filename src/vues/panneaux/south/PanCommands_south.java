@@ -76,6 +76,8 @@ public class PanCommands_south extends JPanel {
 		boutLancer = new JButton("Lancer les des"); 
 		boutArreter = new JButton("Arreter le tour");
 		
+		boutLancer.setBackground(PaletteColors.BUTTON_PRINC);
+		
 		boutLancer.setPreferredSize(new Dimension(widhtBout, heightBout));
 		boutArreter.setPreferredSize(new Dimension(widhtBout, heightBout));
 		
