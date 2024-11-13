@@ -15,6 +15,9 @@ import ctrl.Control;
 public class PanCommands_south extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	
+    // Déclaration de la police statique
+    private static Font font;
 
 	final double BUTTON_HEIGHT_RATIO = 0.8;
 	final double BUTTON_WIDTH_RATIO = 0.45;
@@ -23,6 +26,17 @@ public class PanCommands_south extends JPanel {
 	Control ctrl = null;
 	JButton boutLancer = null; 
 	JButton boutArreter = null;
+
+    // Bloc static pour charger la police une seule fois
+    static {
+        try {
+            font = Font.createFont(Font.TRUETYPE_FONT, PanCommands_south.class.getResourceAsStream("/font/Eracake.ttf"));
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(font);
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
+    }
 	
 	public PanCommands_south(int xPanSize, int yPanSize, Control ctrl_) {
 		System.out.println("PanCommands_south(int xPanSize, int yPanSize, Control ctrl_)");
@@ -39,16 +53,6 @@ public class PanCommands_south extends JPanel {
 		
 		//calcul des tailles de fonts
 		int sizeFont = (int) Math.round(xPanSize * FONT_SIZE_RATIO);
-		
-		//Load font from file
-		Font font = null;
-		try {
-			font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("/font/Eracake.ttf"));
-		} catch (FontFormatException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		ge.registerFont(font);
