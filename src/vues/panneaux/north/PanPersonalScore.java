@@ -19,6 +19,7 @@ public class PanPersonalScore extends JPanel {
 	
 	//*********CONSTRUCTEUR*********
 	public PanPersonalScore(int xScreenSize_, int yPanSize_, Joueur joueur_) {
+		System.out.println("PanPersonalScore(int xScreenSize_, int yPanSize_, Joueur joueur_)");
 		this.xScreenSize = xScreenSize_;
 		this.xPanSize = (int) Math.round( xScreenSize / 8);
 		this.xTextPos = (int) Math.round(xPanSize / 4);
@@ -30,6 +31,7 @@ public class PanPersonalScore extends JPanel {
 	
 	//*********METHODES*********
     public void paint(Graphics g) {
+    	System.out.println("PanPersonalScore - void paint(Graphics g)");
         super.paint(g);
         g.setFont(new Font("default", Font.BOLD, 15));
         g.setColor(Color.MAGENTA);

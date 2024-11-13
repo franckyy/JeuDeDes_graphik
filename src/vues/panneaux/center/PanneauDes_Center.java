@@ -22,6 +22,7 @@ public class PanneauDes_Center extends JPanel {
 
     //*********CONSTRUCTEUR*********
     public PanneauDes_Center(Control ctrl_) {
+    	System.out.println("PanneauDes_Center(Control ctrl_)");
         this.ctrl = ctrl_;
         ctrl.setPanDes(this);
         this.setBackground(Color.pink);
@@ -40,6 +41,7 @@ public class PanneauDes_Center extends JPanel {
 
     // Méthode pour mettre à jour les valeurs des dés
     public void setValeursDes(int[] valeurs) {
+    	System.out.println("PanneauDes_Center - void setValeursDes(int[] valeurs)");
         if (valeurs != null && valeurs.length == 5) {
             this.valeursDes = valeurs;
             repaint();  // Redessiner le panneau avec les nouvelles valeurs
@@ -48,6 +50,7 @@ public class PanneauDes_Center extends JPanel {
 
     // Méthode pour griser les dés spécifiés
     public void griserDes(int[] griserDes) {
+    	System.out.println("PanneauDes_Center - void griserDes(int[] griserDes)");
         for (int i = 0; i < griserDes.length; i++) {
             if (griserDes[i] == -1) {
                 couleursDes[i] = Color.gray;  // Changer la couleur du dé en gris
@@ -67,6 +70,7 @@ public class PanneauDes_Center extends JPanel {
     
     @Override
     public void paint(Graphics g) {
+    	System.out.println("PanneauDes_Center - void paint(Graphics g)");
         super.paint(g);
 
         Graphics2D g2d = (Graphics2D) g;

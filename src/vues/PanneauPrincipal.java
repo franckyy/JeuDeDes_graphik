@@ -27,7 +27,7 @@ public class PanneauPrincipal extends JPanel {
 
 	//*********CONSTRUCTEUR*********
 	public PanneauPrincipal(Control ctrl_, Joueur[] joueurs_) {
-		
+		System.out.println("PanneauPrincipal(Control ctrl_, Joueur[] joueurs_)");
 		this.ctrl = ctrl_;
 		this.joueurs = joueurs_;
 		this.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());

@@ -11,15 +11,17 @@ public class PanneauMessages_Center extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 
-	String message = null;
+	String message = "";
 	
 	//*********CONSTRUCTEUR*********
 	public PanneauMessages_Center() {
+		System.out.println("PanneauMessages_Center()");
 		this.setBackground(Color.red);
 	}
 
 	//*********METHODES*********
     public void paint(Graphics g) {
+    	System.out.println("PanneauMessages_Center - void paint(Graphics g)");
         super.paint(g);
         
         g.setFont(new Font("default", Font.BOLD, this.getHeight() / 5));

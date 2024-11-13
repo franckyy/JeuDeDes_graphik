@@ -12,9 +12,11 @@ public class Joueur{
 	//******constructeurs
 	public Joueur(int _tour, String _prenom, Control _ctrl){
 		this(1000, _tour, _prenom, _ctrl);
+		System.out.println("Joueur(int _tour, String _prenom, Control _ctrl)");
 	}
 
 	public Joueur(int _nbrePts, int _tour, String _prenom, Control _ctrl){
+		System.out.println("Joueur(int _nbrePts, int _tour, String _prenom, Control _ctrl)");
 		this.nbrePts = _nbrePts;
 		this.tour = _tour;
 		this.prenom = _prenom;
@@ -24,6 +26,7 @@ public class Joueur{
 	
 	//******Setters Getters
 	public void setNbrePts(int _nbrePts){
+		System.out.println("Joueur - void setNbrePts(int _nbrePts)");
 		this.nbrePts = this.getNbrePts() - _nbrePts;
 		
 		if(this.nbrePts == 0) {

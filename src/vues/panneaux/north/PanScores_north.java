@@ -20,6 +20,7 @@ public class PanScores_north extends JPanel {
 	
 	//*********CONSTRUCTEUR*********
 	public PanScores_north(int xPanSize_, int yPanSize_, Joueur[] joueurs_, Control ctrl_) {
+		System.out.println("PanScores_north(int xPanSize_, int yPanSize_, Joueur[] joueurs_, Control ctrl_)");
 		this.xPanSize = xPanSize_;
 		this.yPanSize = yPanSize_;
 		this.joueurs = joueurs_;

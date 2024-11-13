@@ -42,6 +42,7 @@ public class Control {
 	
 //*********CONSTRUCTEUR***********
 	public Control() {
+		System.out.println("Control()");
 		
         // Demande le nombre de joueurs
         while (true) {
@@ -92,6 +93,7 @@ public class Control {
 
 	//*********METHODES***********
 	private void messBienvenue(Joueur joueur) {
+		System.out.println("Control - void messBienvenue(Joueur joueur)");
 		
 	    attendre(2000, () -> {
 	        pan_center.setMessage("Bienvenue dans notre jeu de dés");
@@ -114,6 +116,8 @@ public class Control {
 	}
 
 	public void lancerDes() {
+		System.out.println("Control - void lancerDes()");
+		
 		dice.lancerDes();  // Lancer les dés
                 
 		//affiche les valeurs des dés dans le panneau Des et rempli le tableau
@@ -144,7 +148,8 @@ public class Control {
 	}//	fin lancerDes()
 
 	private int verificationDes(int[] lancers) {
-
+		System.out.println("Control - int verificationDes(int[] lancers)");
+		
 		//évaluation du score
 		int _score = 0;
 		
@@ -347,6 +352,7 @@ public class Control {
 	}//	fin de verificationDes(int[] lancers)
 	
 	public void finirTour() {
+		System.out.println("Control - void finirTour()");
 		
 		//Lorsque le joueur arrete son tour, il faut ajouter le score actuel au score du joueur et l'afficher dans panneau north
 		//Il est alors demandé au joueur suivant de jouer
@@ -367,7 +373,7 @@ public class Control {
 	}
 
 	public void gagne() {
-
+		System.out.println("Control - void gagne()");
 		//On affiche le score du joueur actuel dans son panneau de score north
 		panScores_north.setScorePanScores(joueurs[joueurActuel]);
 		panScores_north.repaint();
@@ -380,15 +386,16 @@ public class Control {
 	}
 	
 	public void scoreNegatif() {
+		System.out.println("Control - void scoreNegatif()");
 		
-		//Message de félicitations
-		pan_center.setMessage("Votre lancer est supérieur à votre score. Passez votre tour");
-		pan_center.repaint();
+		 attendre(2000, () -> {
+				//Message de félicitations
+				pan_center.setMessage("Votre lancer est supérieur à votre score. Passez votre tour");
+				pan_center.repaint();
+		 });
 		
 		//on passe au joueur suivant
 		this.setJoueurActuel();
-		
-//		this.attendre(2000);
 		
 		//message pour le joueur suivant
 		pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
@@ -397,6 +404,7 @@ public class Control {
 	
 	// Méthode pour démarrer un délai
 	private void attendre(int milliseconds, Runnable action) {
+		System.out.println("Control - void attendre(int milliseconds, Runnable action)");
 	    Timer timer = new Timer(milliseconds, new ActionListener() {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
@@ -439,6 +447,7 @@ public class Control {
 	}
 
 	public void setJoueurActuel() {
+		System.out.println("Control - void setJoueurActuel()");
 		//si le joueur actuel est le dernier, il faut alors réinitialiser pour revenir au premier joueur
 		//sinon, on incrémente
 		if(this.joueurActuel == joueurs.length - 1) {

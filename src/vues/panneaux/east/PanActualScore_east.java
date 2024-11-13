@@ -26,7 +26,7 @@ public class PanActualScore_east extends JPanel {
 
 	//*********CONSTRUCTEUR*********
 	public PanActualScore_east(Dimension dim_, Control _ctrl) {
-
+		System.out.println("PanActualScore_east(Dimension dim_, Control _ctrl)");
 		this.ctrl =_ctrl;
 		
 		//initialisation de la Map qui contient les faces des dés
@@ -56,6 +56,7 @@ public class PanActualScore_east extends JPanel {
 	}
 
 	public void paint(Graphics g) {
+		System.out.println("PanActualScore_east - void paint(Graphics g)");
         super.paint(g);
         g.setFont(new Font("default", Font.BOLD, 15));
         g.setColor(Color.MAGENTA);
@@ -86,6 +87,7 @@ public class PanActualScore_east extends JPanel {
     }
 
 	public void setDes(int[] valeursDes) {
+		System.out.println("PanActualScore_east - void setDes(int[] valeursDes)");
 		for(int i = 1; i <= 5; i++) {
 			des.put("de" + i, valeursDes[i - 1] + "");
 		}

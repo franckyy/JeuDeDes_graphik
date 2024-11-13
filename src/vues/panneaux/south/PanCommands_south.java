@@ -21,6 +21,7 @@ public class PanCommands_south extends JPanel {
 	JButton boutArreter = null;
 	
 	public PanCommands_south(int xPanSize, int yPanSize, Control ctrl_) {
+		System.out.println("PanCommands_south(int xPanSize, int yPanSize, Control ctrl_)");
 		this.ctrl = ctrl_;
 		ctrl.setPanCommands(this);
 		
@@ -86,6 +87,7 @@ public class PanCommands_south extends JPanel {
 	}
 	
 	public void enableBoutons(boolean enabled) {
+		System.out.println("PanCommands_south - void enableBoutons(boolean enabled)");
 		boutArreter.setEnabled(enabled);
 		boutLancer.setEnabled(enabled);
 	}

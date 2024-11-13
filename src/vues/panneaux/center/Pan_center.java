@@ -26,6 +26,7 @@ public class Pan_center extends JPanel {
 
 	//*********CONSTRUCTEUR*********
 	public Pan_center(Control ctrl_) {
+		System.out.println("Pan_center(Control ctrl_)");
 		this.ctrl = ctrl_;
 		ctrl.setPan_center(this);
 		
