@@ -31,11 +31,11 @@ public class Joueur{
 		this.nbrePts = this.getNbrePts() - _nbrePts;
 		
 		if(this.nbrePts == 0) {
-			return 1;
-		} else if(this.nbrePts < 0) {
-			return 2;
-		}else {
 			return 0;
+		} else if(this.nbrePts < 0) {
+			return -1;
+		}else {
+			return 1;
 		}
 	}
 	
