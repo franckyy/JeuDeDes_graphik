@@ -1,5 +1,6 @@
 package vues.panneaux.south;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -11,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import ctrl.Control;
+import utils.PaletteColors;
 
 public class PanCommands_south extends JPanel {
 
@@ -22,6 +24,8 @@ public class PanCommands_south extends JPanel {
 	final double BUTTON_HEIGHT_RATIO = 0.8;
 	final double BUTTON_WIDTH_RATIO = 0.45;
 	final double FONT_SIZE_RATIO = 0.02;
+	
+	final Color coulBackPanel = PaletteColors.POWDER_PINK;
 	
 	Control ctrl = null;
 	JButton boutLancer = null; 
@@ -47,6 +51,9 @@ public class PanCommands_south extends JPanel {
 
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize));
 		
+		//Colorisation du background de PanCommands_south
+		this.setBackground(coulBackPanel);
+		
 		//calculs des tailles pour les boutons
 		int heightBout = (int) Math.round(yPanSize * BUTTON_HEIGHT_RATIO);
 		int widhtBout = (int) Math.round(xPanSize * BUTTON_WIDTH_RATIO);
@@ -59,6 +66,9 @@ public class PanCommands_south extends JPanel {
 		 
 		JPanel panLancer = new JPanel();
 		JPanel panArret = new JPanel();
+		
+		panLancer.setBackground(coulBackPanel);
+		panArret.setBackground(coulBackPanel);
 		
 		panLancer.setPreferredSize(new Dimension(xPanSize / 3, yPanSize));
 		panArret.setPreferredSize(new Dimension(xPanSize / 3, yPanSize));
