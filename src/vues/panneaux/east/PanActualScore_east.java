@@ -63,32 +63,32 @@ public class PanActualScore_east extends JPanel {
 	public void paint(Graphics g) {
 		System.out.println("PanActualScore_east - void paint(Graphics g)");
         super.paint(g);
-        g.setFont(new Font("default", Font.BOLD, 15));
+        g.setFont(new Font("default", Font.BOLD, 30));
         g.setColor(coulTextesTitres);
         g.drawString("Dé 1", xTextPos, yTextPos);
         g.setColor(coulTextes);
-        g.drawString(des.get("de1"), xTextPos + 5, yTextPos + 20);
+        g.drawString(des.get("de1"), xTextPos + 5, yTextPos + 30);
         g.setColor(coulTextesTitres);
-        g.drawString("Dé 2", xTextPos, yTextPos + 40);
+        g.drawString("Dé 2", xTextPos, yTextPos + 60);
         g.setColor(coulTextes);
-        g.drawString(des.get("de2"), xTextPos + 5, yTextPos + 60);
+        g.drawString(des.get("de2"), xTextPos + 5, yTextPos + 90);
         g.setColor(coulTextesTitres);
-        g.drawString("Dé 3", xTextPos, yTextPos + 80);
+        g.drawString("Dé 3", xTextPos, yTextPos + 120);
         g.setColor(coulTextes);
-        g.drawString(des.get("de3"), xTextPos + 5, yTextPos + 100);
+        g.drawString(des.get("de3"), xTextPos + 5, yTextPos + 150);
         g.setColor(coulTextesTitres);
-        g.drawString("Dé 4", xTextPos, yTextPos + 120);
+        g.drawString("Dé 4", xTextPos, yTextPos + 180);
         g.setColor(coulTextes);
-        g.drawString(des.get("de4"), xTextPos + 5, yTextPos + 140);
+        g.drawString(des.get("de4"), xTextPos + 5, yTextPos + 210);
         g.setColor(coulTextesTitres);
-        g.drawString("Dé 5", xTextPos, yTextPos + 160);
+        g.drawString("Dé 5", xTextPos, yTextPos + 240);
         g.setColor(coulTextes);
-        g.drawString(des.get("de5"), xTextPos + 5, yTextPos + 180);
+        g.drawString(des.get("de5"), xTextPos + 5, yTextPos + 270);
 
         g.setColor(coulTextesTitres);
-        g.drawString("Total", xTextPos, yTextPos + 220);
+        g.drawString("Total", xTextPos, yTextPos + 330);
         g.setColor(coulTextes);
-        g.drawString("" + score, xTextPos + 5, yTextPos + 240);
+        g.drawString("" + score, xTextPos + 5, yTextPos + 360);
     }
 
 	public void setDes(int[] valeursDes) {
