@@ -28,13 +28,14 @@ public class Joueur{
 	public int setNbrePts(int _nbrePts){
 		System.out.println("Joueur - void setNbrePts(int _nbrePts)");
 		//L'entier retourné aura la valeur 0  par défaut, 1 si le joueur a gagné et -1 si le score passe en négatif
-		this.nbrePts = this.getNbrePts() - _nbrePts;
 		
-		if(this.nbrePts == 0) {
+		if(this.getNbrePts() - _nbrePts == 0) {
+			this.nbrePts = this.getNbrePts() - _nbrePts;
 			return 0;
-		} else if(this.nbrePts < 0) {
+		} else if(this.getNbrePts() - _nbrePts < 0) {
 			return -1;
 		}else {
+			this.nbrePts = this.getNbrePts() - _nbrePts;
 			return 1;
 		}
 	}

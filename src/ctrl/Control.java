@@ -408,18 +408,19 @@ public class Control {
 		pan_center.setMessage("Votre lancer est supérieur à votre score.");
 		pan_center.repaint();
 		
-		 attendre(2000, () -> {
-				//Message de félicitations
-				pan_center.setMessage("Passez votre tour");
+
+		attendre(2000, () -> {
+			//Message de félicitations
+			pan_center.setMessage("Passez votre tour");
+			pan_center.repaint();
+			attendre(2000, () -> {
+				//message pour le joueur suivant
+				pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
 				pan_center.repaint();
-		 });
-		 
+			});
+		});
 			//on passe au joueur suivant
 		this.setJoueurActuel();
-
-		//message pour le joueur suivant
-		pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
-		pan_center.repaint();
 	}
 	
 	// Méthode pour démarrer un délai
