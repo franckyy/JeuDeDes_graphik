@@ -64,8 +64,7 @@ public class PanCommands_south extends JPanel {
 		boutArreter.setFont(new Font("Eracake", Font.ITALIC, sizeFont));
 		boutLancer.setFont(new Font("Eracake", Font.ITALIC, sizeFont));
 		
-		boutArreter.setEnabled(false);
-		boutLancer.setEnabled(false);
+		this.enableBoutons(false);
 		
 		 // Ajoute les actions pour les boutons
         boutLancer.addActionListener(e -> {
@@ -87,7 +86,7 @@ public class PanCommands_south extends JPanel {
 	}
 	
 	public void enableBoutons(boolean enabled) {
-		System.out.println("PanCommands_south - void enableBoutons(boolean enabled)");
+		System.out.println("PanCommands_south - void enableBoutons(boolean " + enabled + " )");
 		boutArreter.setEnabled(enabled);
 		boutLancer.setEnabled(enabled);
 	}

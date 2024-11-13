@@ -103,16 +103,9 @@ public class Control {
 	            pan_center.setMessage("à toi de lancer les dés " + joueur.getPrenom());
 	            pan_center.repaint();
 	            
-	            attendre(2000, () ->{
-
-	        		pan_center.setMessage("à toi de lancer les dés " + joueur.getPrenom());
-	        		pan_center.repaint();
-	            });
 	            panCommands.enableBoutons(true);
 	        });
 	    });
-		
-		panCommands.enableBoutons(true);
 	}
 
 	public void lancerDes() {
@@ -359,6 +352,8 @@ public class Control {
 		
 		//On met le score du joueur actuel à jour
 		joueurs[joueurActuel].setNbrePts(score);
+
+		System.out.println("Control - void finirTour()_suite");
 		
 		//On affiche le score du joueur actuel dans son panneau de score north
 		panScores_north.setScorePanScores(joueurs[joueurActuel]);
@@ -388,18 +383,16 @@ public class Control {
 	public void scoreNegatif() {
 		System.out.println("Control - void scoreNegatif()");
 		
+
+		//Message de félicitations
+		pan_center.setMessage("Votre lancer est supérieur à votre score. Passez votre tour");
+		pan_center.repaint();
+		
 		 attendre(2000, () -> {
 				//Message de félicitations
 				pan_center.setMessage("Votre lancer est supérieur à votre score. Passez votre tour");
 				pan_center.repaint();
 		 });
-		
-		//on passe au joueur suivant
-		this.setJoueurActuel();
-		
-		//message pour le joueur suivant
-		pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
-		pan_center.repaint();
 	}
 	
 	// Méthode pour démarrer un délai
@@ -455,6 +448,6 @@ public class Control {
 		}else {
 			joueurActuel++;
 		}
-		this.joueurActuel = joueurActuel;
+//		this.joueurActuel = joueurActuel;
 	}
 }
