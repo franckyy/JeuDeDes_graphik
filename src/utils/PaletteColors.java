@@ -52,5 +52,5 @@ public class PaletteColors {
     public static final Color BACKGROUND_JOUEURS = VIOLET_5_FONCE;    
     
     public static final Color BACKGROUND = new Color(245, 245, 245);
-    public static final Color BUTTON_PRINC = SECOND_VERT_3;
+    public static final Color BUTTON_PRINC = SECOND_ROSE_1_CLAIR;
 }
