@@ -358,7 +358,7 @@ public class Control {
 		//On met le score du joueur actuel à jour
 		int retour = joueurs[joueurActuel].setNbrePts(score);
 
-		//L'entier retour aura la valeur 0  par défaut, 1 si le joueur a gagné et 2 si le score passe en négatif
+		//L'entier retour aura la valeur 0  par défaut, 1 si le joueur a gagné et -1 si le score passe en négatif
 		
 		switch(retour) {
 			case 0:
@@ -367,7 +367,7 @@ public class Control {
 			case 1:
 				
 				break;
-			case 2:
+			case -1:
 				
 				break;
 		}

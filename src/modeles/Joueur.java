@@ -27,7 +27,7 @@ public class Joueur{
 	//******Setters Getters
 	public int setNbrePts(int _nbrePts){
 		System.out.println("Joueur - void setNbrePts(int _nbrePts)");
-		//L'entier retourné aura la valeur 0  par défaut, 1 si le joueur a gagné et 2 si le score passe en négatif
+		//L'entier retourné aura la valeur 0  par défaut, 1 si le joueur a gagné et -1 si le score passe en négatif
 		this.nbrePts = this.getNbrePts() - _nbrePts;
 		
 		if(this.nbrePts == 0) {
