@@ -416,6 +416,10 @@ public class Control {
 		 
 			//on passe au joueur suivant
 		this.setJoueurActuel();
+
+		//message pour le joueur suivant
+		pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
+		pan_center.repaint();
 	}
 	
 	// Méthode pour démarrer un délai

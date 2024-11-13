@@ -11,7 +11,7 @@ public class Joueur{
 	
 	//******constructeurs
 	public Joueur(int _tour, String _prenom, Control _ctrl){
-		this(600, _tour, _prenom, _ctrl);
+		this(400, _tour, _prenom, _ctrl);
 		System.out.println("Joueur(int _tour, String _prenom, Control _ctrl)");
 	}
 
