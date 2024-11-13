@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RadialGradientPaint;
 import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
@@ -81,6 +82,24 @@ public class PanneauDes_Center extends JPanel {
         // Améliorer la qualité du rendu graphique
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+        // Créer un dégradé radial qui part du centre du panneau vers les bords
+        int centerX = getWidth() / 2;
+        int centerY = getHeight() / 2;
+        
+        // Utiliser des rayons différents pour l'axe horizontal et l'axe vertical (créant un effet ovale)
+        int radiusX = getWidth() / 2;   // Rayon horizontal (plus large)
+        int radiusY = getHeight() / 2;  // Rayon vertical (plus étroit)
+        
+        Color color1 = coulBackPanel;  // Couleur du centre
+        Color color2 = PaletteColors.BACKGROUND_SECOND;  // Couleur des bords
+        // Créer un dégradé radial oval qui part du centre du panneau vers les bords
+        RadialGradientPaint gradient = new RadialGradientPaint(centerX, centerY, Math.max(radiusX, 50), new float[]{0.5f, 1.0f}, new Color[]{color1, color2});
+        
+        
+        // Appliquer le dégradé de fond
+        g2d.setPaint(gradient);
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+        
         // Déterminer les dimensions des dés en pourcentage de la taille du panneau
         int panelWidth = getWidth();
         int panelHeight = getHeight();
