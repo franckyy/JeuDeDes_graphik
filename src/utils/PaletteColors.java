@@ -32,12 +32,15 @@ Utiliser une couleur secondaire, comme le lavande clair, permet de créer une hi
  */
 
 public class PaletteColors {
-    public static final Color VIOLET = new Color(128, 0, 128); // violet neutre
-    public static final Color VIOLET_DARK = new Color(75, 0, 130); // violet plus foncé
-    public static final Color VIOLET_LIGHT = new Color(238, 130, 238); // violet clair
+    public static final Color VIOLET = new Color(144, 80, 194); // violet neutre
+    public static final Color VIOLET_DARK = new Color(97, 20, 157); // violet plus foncé
+    public static final Color VIOLET_LIGHT = new Color(206, 168, 235); // violet clair
     public static final Color MYSTIC_PURPLE = new Color(153, 50, 204); // Violet mystique
-    public static final Color POWDER_PINK = new Color(219, 170, 194); // rose poudré
+    public static final Color POWDER_PINK = new Color(179, 11, 124); // rose poudré
     public static final Color HOT_GREY = new Color(85, 85, 85); // gris chaud
+    public static final Color BACKGROUND_SECOND = VIOLET_LIGHT;
+    public static final Color BACKGROUND_DES = VIOLET;
+    public static final Color BACKGROUND_JOUEURS = VIOLET_DARK;    
     
     public static final Color BACKGROUND = new Color(245, 245, 245); // couleur de fond neutre
 

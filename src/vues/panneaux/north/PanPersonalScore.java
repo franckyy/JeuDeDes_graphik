@@ -18,7 +18,9 @@ public class PanPersonalScore extends JPanel {
 	String prénomJoueur = "John";
 	Joueur joueur = null;
 	
-	final Color coulBackPanel = PaletteColors.POWDER_PINK;
+	final Color coulBackPanel = PaletteColors.BACKGROUND_SECOND;
+	final Color coulTextes = PaletteColors.HOT_GREY;
+	final Color coulTextesTitres = PaletteColors.VIOLET_DARK;
 	
 	//*********CONSTRUCTEUR*********
 	public PanPersonalScore(int xScreenSize_, int yPanSize_, Joueur joueur_) {
@@ -39,13 +41,13 @@ public class PanPersonalScore extends JPanel {
     	System.out.println("PanPersonalScore - void paint(Graphics g)");
         super.paint(g);
         g.setFont(new Font("default", Font.BOLD, 20));
-        g.setColor(Color.BLACK);
+        g.setColor(coulTextesTitres);
         g.drawString("JOUEUR " + (joueur.getTour() + 1), xTextPos, yTextPos);
-        g.setColor(Color.BLACK);
+        g.setColor(coulTextes);
         g.drawString(joueur.getPrenom(), xTextPos, yTextPos + 20);
-        g.setColor(Color.BLACK);
+        g.setColor(coulTextesTitres);
         g.drawString("SCORE ", xTextPos, yTextPos + 50);
-        g.setColor(Color.BLACK);
+        g.setColor(coulTextes);
         g.drawString(score + "", xTextPos, yTextPos + 70);
     }
 

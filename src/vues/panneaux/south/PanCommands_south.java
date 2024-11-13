@@ -25,7 +25,7 @@ public class PanCommands_south extends JPanel {
 	final double BUTTON_WIDTH_RATIO = 0.45;
 	final double FONT_SIZE_RATIO = 0.02;
 	
-	final Color coulBackPanel = PaletteColors.POWDER_PINK;
+	final Color coulBackPanel = PaletteColors.BACKGROUND_SECOND;
 	
 	Control ctrl = null;
 	JButton boutLancer = null; 

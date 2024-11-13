@@ -10,10 +10,14 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import ctrl.Control;
+import utils.PaletteColors;
 
 public class PanneauDes_Center extends JPanel {
 
     private static final long serialVersionUID = 1L;
+
+	final Color coulBackPanel = PaletteColors.BACKGROUND_DES;
+	
     Control ctrl = null;
 
     // Tableau pour stocker les valeurs des dés
@@ -25,7 +29,7 @@ public class PanneauDes_Center extends JPanel {
     	System.out.println("PanneauDes_Center(Control ctrl_)");
         this.ctrl = ctrl_;
         ctrl.setPanDes(this);
-        this.setBackground(Color.pink);
+        this.setBackground(coulBackPanel);
     }
 
     //*********METHODES*********

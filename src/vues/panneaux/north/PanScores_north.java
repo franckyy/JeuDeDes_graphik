@@ -19,7 +19,7 @@ public class PanScores_north extends JPanel {
 	Control ctrl = null;
 	PanPersonalScore[] PanScores = null;
 
-	final Color coulBackPanel = PaletteColors.POWDER_PINK;
+	final Color coulBackPanel = PaletteColors.BACKGROUND_JOUEURS;
 	
 	//*********CONSTRUCTEUR*********
 	public PanScores_north(int xPanSize_, int yPanSize_, Joueur[] joueurs_, Control ctrl_) {

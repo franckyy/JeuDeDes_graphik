@@ -25,7 +25,7 @@ public class PanActualScore_east extends JPanel {
 	Dimension dim = null;
 	Control ctrl = null;
 
-	final Color coulBackPanel = PaletteColors.POWDER_PINK;
+	final Color coulBackPanel = PaletteColors.BACKGROUND_SECOND;
 	final Color coulTextes = PaletteColors.HOT_GREY;
 	final Color coulTextesTitres = PaletteColors.VIOLET_DARK;
 
