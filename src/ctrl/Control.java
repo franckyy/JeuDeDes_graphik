@@ -356,8 +356,22 @@ public class Control {
 		//Il est alors demandé au joueur suivant de jouer
 		
 		//On met le score du joueur actuel à jour
-		joueurs[joueurActuel].setNbrePts(score);
+		int retour = joueurs[joueurActuel].setNbrePts(score);
 
+		//L'entier retour aura la valeur 0  par défaut, 1 si le joueur a gagné et 2 si le score passe en négatif
+		
+		switch(retour) {
+			case 0:
+				
+				break;
+			case 1:
+				
+				break;
+			case 2:
+				
+				break;
+		}
+		
 		System.out.println("Control - void finirTour()_suite");
 		
 		//On affiche le score du joueur actuel dans son panneau de score north
