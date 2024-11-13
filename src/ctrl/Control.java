@@ -362,28 +362,29 @@ public class Control {
 		
 		switch(retour) {
 			case 0:
-				
+				System.out.println("Control - void finirTour() - switch(" + retour + ")");
+				this.gagne();
 				break;
 			case 1:
+				System.out.println("Control - void finirTour() - switch(" + retour + ")");
+
+				//On affiche le score du joueur actuel dans son panneau de score north
+				panScores_north.setScorePanScores(joueurs[joueurActuel]);
+				panScores_north.repaint();
+				
+				//on passe au joueur suivant
+				this.setJoueurActuel();
+				
+				//message pour le joueur suivant
+				pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
+				pan_center.repaint();
 				
 				break;
 			case -1:
-				
+				System.out.println("Control - void finirTour() - switch(" + retour + ")");
+				this.scoreNegatif();
 				break;
 		}
-		
-		System.out.println("Control - void finirTour()_suite");
-		
-		//On affiche le score du joueur actuel dans son panneau de score north
-		panScores_north.setScorePanScores(joueurs[joueurActuel]);
-		panScores_north.repaint();
-		
-		//on passe au joueur suivant
-		this.setJoueurActuel();
-		
-		//message pour le joueur suivant
-		pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
-		pan_center.repaint();
 	}
 
 	public void gagne() {
@@ -404,14 +405,17 @@ public class Control {
 		
 
 		//Message de félicitations
-		pan_center.setMessage("Votre lancer est supérieur à votre score. Passez votre tour");
+		pan_center.setMessage("Votre lancer est supérieur à votre score.");
 		pan_center.repaint();
 		
 		 attendre(2000, () -> {
 				//Message de félicitations
-				pan_center.setMessage("Votre lancer est supérieur à votre score. Passez votre tour");
+				pan_center.setMessage("Passez votre tour");
 				pan_center.repaint();
 		 });
+		 
+			//on passe au joueur suivant
+		this.setJoueurActuel();
 	}
 	
 	// Méthode pour démarrer un délai
