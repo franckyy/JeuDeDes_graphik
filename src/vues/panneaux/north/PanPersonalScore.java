@@ -23,7 +23,7 @@ public class PanPersonalScore extends JPanel {
 	final Color coulTextesTitres = PaletteColors.VIOLET_5_FONCE;
 	
 	//*********CONSTRUCTEUR*********
-	public PanPersonalScore(int xScreenSize_, int yPanSize_, Joueur joueur_) {
+	public PanPersonalScore(int xScreenSize_, int yPanSize_, Joueur joueur_, Color coul_) {
 		System.out.println("PanPersonalScore(int xScreenSize_, int yPanSize_, Joueur joueur_)");
 		this.xScreenSize = xScreenSize_;
 		this.xPanSize = (int) Math.round( xScreenSize / 8);
@@ -33,7 +33,7 @@ public class PanPersonalScore extends JPanel {
 		
 		this.setPreferredSize(new Dimension(xPanSize, yPanSize_));
 		
-		this.setBackground(coulBackPanel);
+		this.setBackground(coul_);
 	}
 	
 	//*********METHODES*********

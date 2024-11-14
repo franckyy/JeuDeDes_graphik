@@ -41,7 +41,11 @@ public class PanScores_north extends JPanel {
 		
 		//Création d'un tableau de PanScores
 		for(int i = 0; i < joueurs.length; i++) {
-			PanScores[i] = new PanPersonalScore(xPanSize, yPanPersSize, joueurs[i]);
+			if(i == ctrl_.getJoueurActuel()) {
+				PanScores[i] = new PanPersonalScore(xPanSize, yPanPersSize, joueurs[i], PaletteColors.COMPL_JAUNE_1_CLAIR);				
+			} else {
+				PanScores[i] = new PanPersonalScore(xPanSize, yPanPersSize, joueurs[i], PaletteColors.SECOND_ROSE_5_FONCE);
+			}
 		}
 		
 		for(int i = 0; i < joueurs.length; i++) {
