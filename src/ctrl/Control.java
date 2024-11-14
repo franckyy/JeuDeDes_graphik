@@ -407,7 +407,8 @@ public class Control {
 	public void scoreNegatif() {
 		System.out.println("Control - void scoreNegatif()");
 		
-
+		panCommands.enableBoutons(false);
+		
 		//Message de félicitations
 		pan_center.setMessage("Votre lancer est supérieur à votre score.");
 		pan_center.repaint();
@@ -426,6 +427,8 @@ public class Control {
 
 	            // On passe au joueur suivant après l'affichage du message
 	            attendre(500, this::setJoueurActuel);
+	            
+	            panCommands.enableBoutons(true);
 	        });
 		});
 	}
