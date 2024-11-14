@@ -375,9 +375,6 @@ public class Control {
 				//on passe au joueur suivant
 				this.setJoueurActuel();
 				
-				//Sélectionner le panneau du joueur actuel avec la couleur de sélection
-				panScores_north.repaint();
-				
 				//message pour le joueur suivant
 				pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
 				pan_center.repaint();
@@ -424,10 +421,6 @@ public class Control {
 		});
 			//on passe au joueur suivant
 		this.setJoueurActuel();
-		
-		//Sélectionner le panneau du joueur actuel avec la couleur de sélection
-		panScores_north.repaint();
-		panScores_north.validate();
 	}
 	
 	// Méthode pour démarrer un délai
@@ -480,8 +473,14 @@ public class Control {
 		//sinon, on incrémente
 		if(this.joueurActuel == joueurs.length - 1) {
 			joueurActuel = 0;
+		    if (panScores_north != null) {
+		    	panScores_north.updateBackgroundColors(joueurActuel);
+		    }
 		}else {
 			joueurActuel++;
+		    if (panScores_north != null) {
+		    	panScores_north.updateBackgroundColors(joueurActuel);
+		    }
 		}
 //		this.joueurActuel = joueurActuel;
 	}

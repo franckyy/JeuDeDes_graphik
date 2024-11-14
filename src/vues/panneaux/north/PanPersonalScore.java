@@ -17,8 +17,7 @@ public class PanPersonalScore extends JPanel {
 	int yTextPos = 40;
 	String prénomJoueur = "John";
 	Joueur joueur = null;
-	
-	final Color coulBackPanel = PaletteColors.BACKGROUND_SECOND;
+
 	final Color coulTextes = PaletteColors.HOT_GREY;
 	final Color coulTextesTitres = PaletteColors.VIOLET_5_FONCE;
 	

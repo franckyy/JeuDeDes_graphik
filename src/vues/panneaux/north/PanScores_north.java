@@ -41,10 +41,10 @@ public class PanScores_north extends JPanel {
 		
 		//Création d'un tableau de PanScores
 		for(int i = 0; i < joueurs.length; i++) {
-			if(i == ctrl_.getJoueurActuel()) {
+			if(i == ctrl_.getJoueurActuel()) {// panneau du joueur actuel
 				PanScores[i] = new PanPersonalScore(xPanSize, yPanPersSize, joueurs[i], PaletteColors.COMPL_JAUNE_1_CLAIR);				
-			} else {
-				PanScores[i] = new PanPersonalScore(xPanSize, yPanPersSize, joueurs[i], PaletteColors.SECOND_ROSE_5_FONCE);
+			} else {// panneau des autres joueurs
+				PanScores[i] = new PanPersonalScore(xPanSize, yPanPersSize, joueurs[i], PaletteColors.SECOND_ROSE_3);
 			}
 		}
 		
@@ -59,5 +59,16 @@ public class PanScores_north extends JPanel {
 	//*********METHODES*********
 	public void setScorePanScores(Joueur joueur) {
 		PanScores[joueur.getTour()].setScore(joueur.getNbrePts());
+	}
+	
+	public void updateBackgroundColors(int joueurActuel) {
+	    for (int i = 0; i < PanScores.length; i++) {
+	        if (i == joueurActuel) {
+	            PanScores[i].setBackground(PaletteColors.COMPL_JAUNE_1_CLAIR); // couleur du joueur actuel
+	        } else {
+	            PanScores[i].setBackground(PaletteColors.SECOND_ROSE_3); // couleur des autres joueurs
+	        }
+	        PanScores[i].repaint(); // Réactualise l'affichage
+	    }
 	}
 }
