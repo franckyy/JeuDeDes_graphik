@@ -71,4 +71,15 @@ public class PanScores_north extends JPanel {
 	        PanScores[i].repaint(); // Réactualise l'affichage
 	    }
 	}
+	
+	public void updateBackgroundColorsWinner(int joueurActuel) {
+	    for (int i = 0; i < PanScores.length; i++) {
+	        if (i == joueurActuel) {
+	            PanScores[i].setBackground(PaletteColors.SECOND_VERT_1_CLAIR); // couleur du joueur actuel
+	        } else {
+	            PanScores[i].setBackground(PaletteColors.SECOND_ROSE_3); // couleur des autres joueurs
+	        }
+	        PanScores[i].repaint(); // Réactualise l'affichage
+	    }
+	}
 }

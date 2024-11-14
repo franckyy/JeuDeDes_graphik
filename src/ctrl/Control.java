@@ -397,6 +397,10 @@ public class Control {
 		pan_center.setMessage("Bravo " + joueurs[joueurActuel].getPrenom() + " vous avez gagné !");
 		pan_center.repaint();
 		
+		//PanneauScore du joueur actuel et gagnant en vert.
+
+    	panScores_north.updateBackgroundColorsWinner(joueurActuel);
+		
 		//TODO fin du jeu -> recommencer ? 
 	}
 	
