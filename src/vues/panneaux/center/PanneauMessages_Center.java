@@ -29,7 +29,7 @@ public class PanneauMessages_Center extends JPanel{
         super.paint(g);
 
         g.setFont(new Font("default", Font.BOLD, this.getHeight() / 5));
-        g.setColor(PaletteColors.VIOLET_5_FONCE);
+        g.setColor(PaletteColors.COMPL_JAUNE_5_FONCE);
         
         // Calculer la largeur du message
         int messageWidth = g.getFontMetrics().stringWidth(message);
