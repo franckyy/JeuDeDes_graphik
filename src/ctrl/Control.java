@@ -413,15 +413,16 @@ public class Control {
 			//Message de félicitations
 			pan_center.setMessage("Passez votre tour");
 			pan_center.repaint();
-			attendre(2000, () -> {
-				//message pour le joueur suivant
-				pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
-				pan_center.repaint();
-				attendre(100, () -> {
-					//on passe au joueur suivant
-					this.setJoueurActuel();
-				});
-			});
+
+	        attendre(2000, () -> {
+	            // Message pour le joueur suivant sans changer immédiatement de joueur
+	            int joueurSuivant = (joueurActuel + 1) % joueurs.length;
+	            pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurSuivant].getPrenom());
+	            pan_center.repaint();
+
+	            // On passe au joueur suivant après l'affichage du message
+	            attendre(500, this::setJoueurActuel);
+	        });
 		});
 	}
 	
