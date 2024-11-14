@@ -417,10 +417,12 @@ public class Control {
 				//message pour le joueur suivant
 				pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
 				pan_center.repaint();
+				attendre(100, () -> {
+					//on passe au joueur suivant
+					this.setJoueurActuel();
+				});
 			});
 		});
-			//on passe au joueur suivant
-		this.setJoueurActuel();
 	}
 	
 	// Méthode pour démarrer un délai
