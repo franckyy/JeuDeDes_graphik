@@ -35,6 +35,8 @@ public class Control {
     private int[] desInterdits = new int[5];	// tableau pour les dés qui ne devront pas être relancés
     private int score = 0;
     
+    
+    
 	private String[] prenomsJoueurs = null;
 	
 	public static void main(String[] args) {
@@ -208,6 +210,7 @@ public class Control {
 		
 		//Message de félicitations
 		pan_center.setMessage("Bravo " + joueurs[joueurActuel].getPrenom() + " vous avez gagné !");
+		pan_center.setMessage2("");
 		pan_center.repaint();
 		
 		//PanneauScore du joueur actuel et gagnant en vert.
@@ -235,6 +238,7 @@ public class Control {
 		
 		//Message de félicitations
 		pan_center.setMessage("Votre lancer est supérieur à votre score.");
+		pan_center.setMessage2("");
 		pan_center.repaint();
 		
 

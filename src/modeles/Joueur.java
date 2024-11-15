@@ -4,7 +4,7 @@ import ctrl.Control;
 
 public class Joueur{
 	//******attributs
-	int nbrePts;	//nombre de points de départ pour chaque joueur
+	int nbrePts;	//nombre de points pour chaque joueur
 	int tour;	//ordre de départ
 	String prenom;
 	Control ctrl = null;
@@ -27,7 +27,7 @@ public class Joueur{
 	//******Setters Getters
 	public int setNbrePts(int _nbrePts){
 		System.out.println("Joueur - void setNbrePts(int _nbrePts)");
-		//L'entier retourné aura la valeur 0  par défaut, 1 si le joueur a gagné et -1 si le score passe en négatif
+		//L'entier retourné aura la valeur 0  si le joueur à gagné, 1 par défaut et -1 si le score passe en négatif
 		
 		if(this.getNbrePts() - _nbrePts == 0) {
 			this.nbrePts = this.getNbrePts() - _nbrePts;
