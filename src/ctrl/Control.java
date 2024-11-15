@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
@@ -415,7 +416,19 @@ public class Control {
 
     	panScores_north.updateBackgroundColorsWinner(joueurActuel);
 		
-		//TODO fin du jeu -> recommencer ? 
+	    Runnable restartAction = () -> {
+	        // Logique pour fermer le jeu
+	        cadre.dispose();
+	    	this.restartLogic(); // Ou this::restartApplication si JAR
+
+	    };
+    	
+	    Runnable arreterAction = () -> {
+	        // Logique pour fermer le jeu
+	    	System.exit(0);
+	    };
+    	
+		panCommands.updateButtons("Rejouer", restartAction, "Arreter le jeu", arreterAction);
 	}
 	
 	public void scoreNegatif() {
@@ -451,6 +464,13 @@ public class Control {
 	public void updatePanCommands(String lancerText, Runnable lancerAction, String arreterText, Runnable arreterAction) {
 	    panCommands.updateButtons(lancerText, lancerAction, arreterText, arreterAction);
 	}
+	
+	public void restartLogic() {
+	    // Réinitialiser tous les objets nécessaires
+	    // Exemple : recréer l'interface graphique
+	    this.main(null); // Si votre méthode `main` est accessible et initie le programme
+	}
+
 	
 	// Méthode pour démarrer un délai
 	private void attendre(int milliseconds, Runnable action) {
