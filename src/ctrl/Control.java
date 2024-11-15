@@ -112,19 +112,18 @@ public class Control {
 
 	    attendre(100, () -> {
 	        pan_center.setMessage("Bonjour");
+	        
+	        pan_center.setMessage2("Bienvenue dans notre jeu de dés");
 	        pan_center.repaint();
 	        
-		    attendre(2000, () -> {
-		        pan_center.setMessage("Bienvenue dans notre jeu de dés");
-		        pan_center.repaint();
-		        
-		        attendre(2000, () -> {
-		            pan_center.setMessage("à toi de lancer les dés " + joueur.getPrenom());
-		            pan_center.repaint();
-		            
-		            panCommands.enableBoutons(true);
-		        });
-		    });
+	        attendre(3000, () -> {
+	            pan_center.setMessage("à toi de lancer les dés " + joueur.getPrenom());
+
+		        pan_center.setMessage2("");
+	            pan_center.repaint();
+	            
+	            panCommands.enableBoutons(true);
+	        });
 	    });
 	}
 

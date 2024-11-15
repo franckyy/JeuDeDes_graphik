@@ -54,4 +54,8 @@ public class Pan_center extends JPanel {
 	public void setMessage(String message) {
 		panMessages.setMessage(message);
 	}
+
+	public void setMessage2(String message) {
+		panMessages.setMessage2(message);
+	}
 }
