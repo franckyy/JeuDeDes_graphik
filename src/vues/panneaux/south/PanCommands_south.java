@@ -73,8 +73,8 @@ public class PanCommands_south extends JPanel {
 		panLancer.setPreferredSize(new Dimension(xPanSize / 3, yPanSize));
 		panArret.setPreferredSize(new Dimension(xPanSize / 3, yPanSize));
 		
-		boutLancer = new JButton("Lancer les des"); 
-		boutArreter = new JButton("Arreter le tour");
+		boutLancer = new JButton(); 
+		boutArreter = new JButton();
 		
 //		boutLancer.setBackground(PaletteColors.BUTTON_PRINC);
 		
@@ -86,17 +86,17 @@ public class PanCommands_south extends JPanel {
 		
 		this.enableBoutons(false);
 		
-		 // Ajoute les actions pour les boutons
-        boutLancer.addActionListener(e -> {
-            // Lancer les dés ici
-            ctrl.lancerDes();  // Méthode à définir dans le contrôleur pour lancer les dés.
-            this.enableBoutons(false);  // Désactive les boutons après avoir lancé les dés.
-        });
-
-        boutArreter.addActionListener(e -> {
-            // Logique pour arrêter le tour (par exemple passer au joueur suivant)
-            ctrl.finirTour();  // Méthode à définir dans le contrôleur pour finir le tour.
-        });
+//		 // Ajoute les actions pour les boutons
+//        boutLancer.addActionListener(e -> {
+//            // Lancer les dés ici
+//            ctrl.lancerDes();  // Méthode à définir dans le contrôleur pour lancer les dés.
+//            this.enableBoutons(false);  // Désactive les boutons après avoir lancé les dés.
+//        });
+//
+//        boutArreter.addActionListener(e -> {
+//            // Logique pour arrêter le tour (par exemple passer au joueur suivant)
+//            ctrl.finirTour();  // Méthode à définir dans le contrôleur pour finir le tour.
+//        });
 		
 		panLancer.add(boutLancer);
 		panArret.add(boutArreter);
@@ -109,5 +109,19 @@ public class PanCommands_south extends JPanel {
 		System.out.println("PanCommands_south - void enableBoutons(boolean " + enabled + " )");
 		boutArreter.setEnabled(enabled);
 		boutLancer.setEnabled(enabled);
+	}
+	
+	public void updateButtons(String textLancer, Runnable actionLancer, String textArreter, Runnable actionArreter) {
+	    boutLancer.setText(textLancer);
+	    for (var al : boutLancer.getActionListeners()) {
+	        boutLancer.removeActionListener(al);
+	    }
+	    boutLancer.addActionListener(e -> actionLancer.run());
+
+	    boutArreter.setText(textArreter);
+	    for (var al : boutArreter.getActionListeners()) {
+	        boutArreter.removeActionListener(al);
+	    }
+	    boutArreter.addActionListener(e -> actionArreter.run());
 	}
 }

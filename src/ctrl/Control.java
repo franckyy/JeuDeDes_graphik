@@ -87,6 +87,20 @@ public class Control {
         
 		//création et affichage de l'interface graphique
 		cadre = new Cadre(this, joueurs);
+		
+		//Définir l'état des boutons par la méthode updateBoutons afin de pouvoir ultérieurement les redéfinir
+	    Runnable lancerAction = () -> {
+	        lancerDes();
+            panCommands.enableBoutons(false);
+	    };
+		
+
+	    Runnable arreterAction = () -> {
+	        // Logique pour l'action du bouton Arrêter (si nécessaire)
+	    	finirTour();
+	    };
+	    
+		panCommands.updateButtons("Lancer les des", lancerAction, "Arreter le tour", arreterAction);
 
 		this.messBienvenue(joueurs[joueurActuel]);
 	}
@@ -431,6 +445,11 @@ public class Control {
 	            panCommands.enableBoutons(true);
 	        });
 		});
+	}
+	
+	//Méthode pour paramétrer les ActionPerformed des boutons
+	public void updatePanCommands(String lancerText, Runnable lancerAction, String arreterText, Runnable arreterAction) {
+	    panCommands.updateButtons(lancerText, lancerAction, arreterText, arreterAction);
 	}
 	
 	// Méthode pour démarrer un délai

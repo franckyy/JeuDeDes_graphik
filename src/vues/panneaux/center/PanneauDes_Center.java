@@ -94,8 +94,14 @@ public class PanneauDes_Center extends JPanel {
             g2d.setColor(couleursDes[i]);
             g2d.fillRoundRect(x, yStart, tailleDe, tailleDe, 15, 15);
 
-            // Dessiner les points sur le dé en fonction de la valeur
-            dessinerPoints(g2d, valeursDes[i], x, yStart, tailleDe);
+            // Dessiner les points ou le moulin à vent sur le dé
+            if (valeursDes[i] == 0) {
+                // Si la valeur est 0, dessiner le moulin à vent (étape 3)
+                dessinerMoulin(g2d, x, yStart, tailleDe);
+            } else {
+                // Sinon, dessiner les points classiques
+                dessinerPoints(g2d, valeursDes[i], x, yStart, tailleDe);
+            }
         }
     }
 
@@ -138,5 +144,21 @@ public class PanneauDes_Center extends JPanel {
                 g2d.fillOval(x + 3 * taille / 4 - pointSize / 2, y + taille / 2 - pointSize / 2, pointSize, pointSize);
                 break;
         }
+    }
+
+    // Méthode pour dessiner un moulin à vent dans un dé
+    private void dessinerMoulin(Graphics2D g2d, int x, int y, int taille) {
+        g2d.setColor(Color.BLACK);
+        // Calcul des points de l'éolienne
+        int centerX = x + taille / 2;
+        int centerY = y + taille / 2;
+        int rayon = taille / 4;
+
+        // Dessiner les 4 branches du moulin à vent
+        g2d.fillPolygon(new int[] {centerX, centerX - rayon, centerX, centerX + rayon},
+                        new int[] {centerY - rayon, centerY, centerY + rayon, centerY},
+                        4);
+        // Optionnel: Dessiner un cercle central pour l'axe
+        g2d.fillOval(centerX - 5, centerY - 5, 10, 10);
     }
 }
