@@ -156,8 +156,134 @@ public class Control {
 			//S'il ne réalise pas de score au prochain lancer, le joueur perd tout son score
 		//si non, on ajoute le score actuel au score du joueur
 		
-		
+		pan_center.setMessage("Le score de votre lancer est de " + score + " points");
+		pan_center.setMessage2("Souhaitez vous relancer au risque de tout perdre ?");
+		pan_center.repaint();
 	}//	fin lancerDes()
+	
+	public void finirTour() {
+		System.out.println("Control - void finirTour()");
+		
+		//Lorsque le joueur arrete son tour, il faut ajouter le score actuel au score du joueur et l'afficher dans panneau north
+		//Il est alors demandé au joueur suivant de jouer
+		
+		//On met le score du joueur actuel à jour
+		int retour = joueurs[joueurActuel].setNbrePts(score);
+
+		//L'entier retour aura la valeur 0  par défaut, 1 si le joueur a gagné et -1 si le score passe en négatif
+		
+		switch(retour) {
+			case 0:
+				System.out.println("Control - void finirTour() - switch(" + retour + ")");
+				this.gagne();
+				break;
+			case 1:
+				System.out.println("Control - void finirTour() - switch(" + retour + ")");
+
+				//On affiche le score du joueur actuel dans son panneau de score north
+				panScores_north.setScorePanScores(joueurs[joueurActuel]);
+				panScores_north.repaint();
+				
+				//on passe au joueur suivant
+				this.setJoueurActuel();
+				
+				//message pour le joueur suivant
+				pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
+				pan_center.setMessage2("");
+				pan_center.repaint();
+				
+				break;
+			case -1:
+				System.out.println("Control - void finirTour() - switch(" + retour + ")");
+				this.scoreNegatif();
+				break;
+		}
+	}
+
+	public void gagne() {
+		System.out.println("Control - void gagne()");
+		//On affiche le score du joueur actuel dans son panneau de score north
+		panScores_north.setScorePanScores(joueurs[joueurActuel]);
+		panScores_north.repaint();
+		
+		//Message de félicitations
+		pan_center.setMessage("Bravo " + joueurs[joueurActuel].getPrenom() + " vous avez gagné !");
+		pan_center.repaint();
+		
+		//PanneauScore du joueur actuel et gagnant en vert.
+    	panScores_north.updateBackgroundColorsWinner(joueurActuel);
+		
+	    Runnable restartAction = () -> {
+	        // Logique pour fermer le jeu
+	        cadre.dispose();
+	    	this.restartLogic(); // Ou this::restartApplication si JAR
+
+	    };
+    	
+	    Runnable arreterAction = () -> {
+	        // Logique pour fermer le jeu
+	    	System.exit(0);
+	    };
+    	
+		panCommands.updateButtons("Rejouer", restartAction, "Arreter le jeu", arreterAction);
+	}
+	
+	public void scoreNegatif() {
+		System.out.println("Control - void scoreNegatif()");
+		
+		panCommands.enableBoutons(false);
+		
+		//Message de félicitations
+		pan_center.setMessage("Votre lancer est supérieur à votre score.");
+		pan_center.repaint();
+		
+
+		attendre(2000, () -> {
+			//Message de félicitations
+			pan_center.setMessage("Passez votre tour");
+			pan_center.repaint();
+
+	        attendre(2000, () -> {
+	            // Message pour le joueur suivant sans changer immédiatement de joueur
+	            int joueurSuivant = (joueurActuel + 1) % joueurs.length;
+	            pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurSuivant].getPrenom());
+	            pan_center.repaint();
+
+	            // On passe au joueur suivant après l'affichage du message
+	            attendre(500, this::setJoueurActuel);
+	            
+	            panCommands.enableBoutons(true);
+	        });
+		});
+	}
+	
+	//Méthode pour paramétrer les ActionPerformed des boutons
+	public void updatePanCommands(String lancerText, Runnable lancerAction, String arreterText, Runnable arreterAction) {
+	    panCommands.updateButtons(lancerText, lancerAction, arreterText, arreterAction);
+	}
+	
+	public void restartLogic() {
+	    // Réinitialiser tous les objets nécessaires
+	    // Exemple : recréer l'interface graphique
+	    this.main(null); // Si votre méthode `main` est accessible et initie le programme
+	}
+
+	
+	// Méthode pour démarrer un délai
+	private void attendre(int milliseconds, Runnable action) {
+		System.out.println("Control - void attendre(int milliseconds, Runnable action)");
+	    Timer timer = new Timer(milliseconds, new ActionListener() {
+	        @Override
+	        public void actionPerformed(ActionEvent e) {
+	            // Code à exécuter après le délai
+	            action.run();
+	            // Arrête le Timer après exécution si c'est un délai unique
+	            ((Timer) e.getSource()).stop();
+	        }
+	    });
+	    timer.setRepeats(false); // Exécuter une seule fois
+	    timer.start();           // Démarrer le timer
+	}
 
 	private int verificationDes(int[] lancers) {
 		System.out.println("Control - int verificationDes(int[] lancers)");
@@ -225,8 +351,6 @@ public class Control {
 		for(int i = 0; i<= 4; i++) {
 			desInterdits[i] = 0;
 		}
-		
-
 		
 		//Avant de vérifier, je dois voir si tous les dés ne sont pas interdits.
 		
@@ -363,128 +487,6 @@ public class Control {
 		return _score;
 	}//	fin de verificationDes(int[] lancers)
 	
-	public void finirTour() {
-		System.out.println("Control - void finirTour()");
-		
-		//Lorsque le joueur arrete son tour, il faut ajouter le score actuel au score du joueur et l'afficher dans panneau north
-		//Il est alors demandé au joueur suivant de jouer
-		
-		//On met le score du joueur actuel à jour
-		int retour = joueurs[joueurActuel].setNbrePts(score);
-
-		//L'entier retour aura la valeur 0  par défaut, 1 si le joueur a gagné et -1 si le score passe en négatif
-		
-		switch(retour) {
-			case 0:
-				System.out.println("Control - void finirTour() - switch(" + retour + ")");
-				this.gagne();
-				break;
-			case 1:
-				System.out.println("Control - void finirTour() - switch(" + retour + ")");
-
-				//On affiche le score du joueur actuel dans son panneau de score north
-				panScores_north.setScorePanScores(joueurs[joueurActuel]);
-				panScores_north.repaint();
-				
-				//on passe au joueur suivant
-				this.setJoueurActuel();
-				
-				//message pour le joueur suivant
-				pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
-				pan_center.repaint();
-				
-				break;
-			case -1:
-				System.out.println("Control - void finirTour() - switch(" + retour + ")");
-				this.scoreNegatif();
-				break;
-		}
-	}
-
-	public void gagne() {
-		System.out.println("Control - void gagne()");
-		//On affiche le score du joueur actuel dans son panneau de score north
-		panScores_north.setScorePanScores(joueurs[joueurActuel]);
-		panScores_north.repaint();
-		
-		//Message de félicitations
-		pan_center.setMessage("Bravo " + joueurs[joueurActuel].getPrenom() + " vous avez gagné !");
-		pan_center.repaint();
-		
-		//PanneauScore du joueur actuel et gagnant en vert.
-    	panScores_north.updateBackgroundColorsWinner(joueurActuel);
-		
-	    Runnable restartAction = () -> {
-	        // Logique pour fermer le jeu
-	        cadre.dispose();
-	    	this.restartLogic(); // Ou this::restartApplication si JAR
-
-	    };
-    	
-	    Runnable arreterAction = () -> {
-	        // Logique pour fermer le jeu
-	    	System.exit(0);
-	    };
-    	
-		panCommands.updateButtons("Rejouer", restartAction, "Arreter le jeu", arreterAction);
-	}
-	
-	public void scoreNegatif() {
-		System.out.println("Control - void scoreNegatif()");
-		
-		panCommands.enableBoutons(false);
-		
-		//Message de félicitations
-		pan_center.setMessage("Votre lancer est supérieur à votre score.");
-		pan_center.repaint();
-		
-
-		attendre(2000, () -> {
-			//Message de félicitations
-			pan_center.setMessage("Passez votre tour");
-			pan_center.repaint();
-
-	        attendre(2000, () -> {
-	            // Message pour le joueur suivant sans changer immédiatement de joueur
-	            int joueurSuivant = (joueurActuel + 1) % joueurs.length;
-	            pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurSuivant].getPrenom());
-	            pan_center.repaint();
-
-	            // On passe au joueur suivant après l'affichage du message
-	            attendre(500, this::setJoueurActuel);
-	            
-	            panCommands.enableBoutons(true);
-	        });
-		});
-	}
-	
-	//Méthode pour paramétrer les ActionPerformed des boutons
-	public void updatePanCommands(String lancerText, Runnable lancerAction, String arreterText, Runnable arreterAction) {
-	    panCommands.updateButtons(lancerText, lancerAction, arreterText, arreterAction);
-	}
-	
-	public void restartLogic() {
-	    // Réinitialiser tous les objets nécessaires
-	    // Exemple : recréer l'interface graphique
-	    this.main(null); // Si votre méthode `main` est accessible et initie le programme
-	}
-
-	
-	// Méthode pour démarrer un délai
-	private void attendre(int milliseconds, Runnable action) {
-		System.out.println("Control - void attendre(int milliseconds, Runnable action)");
-	    Timer timer = new Timer(milliseconds, new ActionListener() {
-	        @Override
-	        public void actionPerformed(ActionEvent e) {
-	            // Code à exécuter après le délai
-	            action.run();
-	            // Arrête le Timer après exécution si c'est un délai unique
-	            ((Timer) e.getSource()).stop();
-	        }
-	    });
-	    timer.setRepeats(false); // Exécuter une seule fois
-	    timer.start();           // Démarrer le timer
-	}
 	//*********GETTERS AND SETTERS*********
 	public int getNbreJoueurs() {
 		return this.nbreJoueurs;
