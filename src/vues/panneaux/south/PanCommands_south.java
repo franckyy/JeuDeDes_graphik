@@ -76,8 +76,6 @@ public class PanCommands_south extends JPanel {
 		boutLancer = new JButton(); 
 		boutArreter = new JButton();
 		
-//		boutLancer.setBackground(PaletteColors.BUTTON_PRINC);
-		
 		boutLancer.setPreferredSize(new Dimension(widhtBout, heightBout));
 		boutArreter.setPreferredSize(new Dimension(widhtBout, heightBout));
 		
@@ -85,18 +83,6 @@ public class PanCommands_south extends JPanel {
 		boutLancer.setFont(new Font("Eracake", Font.ITALIC, sizeFont));
 		
 		this.enableBoutons(false);
-		
-//		 // Ajoute les actions pour les boutons
-//        boutLancer.addActionListener(e -> {
-//            // Lancer les dés ici
-//            ctrl.lancerDes();  // Méthode à définir dans le contrôleur pour lancer les dés.
-//            this.enableBoutons(false);  // Désactive les boutons après avoir lancé les dés.
-//        });
-//
-//        boutArreter.addActionListener(e -> {
-//            // Logique pour arrêter le tour (par exemple passer au joueur suivant)
-//            ctrl.finirTour();  // Méthode à définir dans le contrôleur pour finir le tour.
-//        });
 		
 		panLancer.add(boutLancer);
 		panArret.add(boutArreter);

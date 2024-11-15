@@ -413,7 +413,6 @@ public class Control {
 		pan_center.repaint();
 		
 		//PanneauScore du joueur actuel et gagnant en vert.
-
     	panScores_north.updateBackgroundColorsWinner(joueurActuel);
 		
 	    Runnable restartAction = () -> {
