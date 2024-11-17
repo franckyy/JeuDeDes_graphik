@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
@@ -33,9 +32,9 @@ public class Control {
 	private int joueurActuel = 0;
     private Dice dice;  // Instance de la classe Dice pour gérer les lancers
     private int[] desInterdits = new int[5];	// tableau pour les dés qui ne devront pas être relancés
-    private int score = 0;
-    
-    
+    private int pointsCumules = 0;
+    private boolean finTour = false;
+    private int pointsLancer = 0;
     
 	private String[] prenomsJoueurs = null;
 	
@@ -100,7 +99,7 @@ public class Control {
 
 	    Runnable arreterAction = () -> {
 	        // Logique pour l'action du bouton Arrêter (si nécessaire)
-	    	finirTour();
+	    	finirLancer();
 	    };
 	    
 		panCommands.updateButtons("Lancer les des", lancerAction, "Arreter le tour", arreterAction);
@@ -147,10 +146,11 @@ public class Control {
 		    }
 		});
 		
-		score = this.verificationDes(dice.getValeursDes());
+		pointsLancer = this.verificationDes(dice.getValeursDes());
+		pointsCumules = pointsCumules + pointsLancer;
 		
-		//affichage du score sur le panneauEast
-		panScoreEast.setScore(score);
+		//affichage du score du lancer sur le panneauEast
+		panScoreEast.setScore(pointsLancer);
 		panScoreEast.repaint();
 		
 		//TODO Le joueur souhaite-t'il relancer les dés ?
@@ -158,28 +158,54 @@ public class Control {
 			//S'il ne réalise pas de score au prochain lancer, le joueur perd tout son score
 		//si non, on ajoute le score actuel au score du joueur
 		
-		pan_center.setMessage("Le score de votre lancer est de " + score + " points");
+		pan_center.setMessage("Le score de votre lancer est de " + pointsLancer + " points");
 		pan_center.setMessage2("Souhaitez vous relancer au risque de tout perdre ?");
 		pan_center.repaint();
 	}//	fin lancerDes()
 	
-	public void finirTour() {
+	public void finirLancer() {
 		System.out.println("Control - void finirTour()");
 		
 		//Lorsque le joueur arrete son tour, il faut ajouter le score actuel au score du joueur et l'afficher dans panneau north
 		//Il est alors demandé au joueur suivant de jouer
 		
 		//On met le score du joueur actuel à jour
-		int retour = joueurs[joueurActuel].setNbrePts(score);
+		int retour = joueurs[joueurActuel].setNbrePts(pointsCumules);
 
 		//L'entier retour aura la valeur 0  par défaut, 1 si le joueur a gagné et -1 si le score passe en négatif
 		
 		switch(retour) {
-			case 0:
+			case 0://joueur gagne
 				System.out.println("Control - void finirTour() - switch(" + retour + ")");
-				this.gagne();
+
+				//On affiche le score du joueur actuel dans son panneau de score north
+				panScores_north.setScorePanScores(joueurs[joueurActuel]);
+				panScores_north.repaint();
+				
+				//Message de félicitations
+				pan_center.setMessage("Bravo " + joueurs[joueurActuel].getPrenom() + " vous avez gagné !");
+				pan_center.setMessage2("");
+				pan_center.repaint();
+				
+				//PanneauScore du joueur actuel et gagnant en vert.
+		    	panScores_north.updateBackgroundColorsWinner(joueurActuel);
+				
+			    Runnable restartAction = () -> {
+			        // Logique pour commencer une nouvelle partie
+			        cadre.dispose();
+			    	this.restartLogic(); // Ou this::restartApplication si JAR
+
+			    };
+		    	
+			    Runnable arreterAction = () -> {
+			        // Logique pour fermer le jeu
+			    	System.exit(0);
+			    };
+		    	
+				panCommands.updateButtons("Rejouer", restartAction, "Arreter le jeu", arreterAction);
+				
 				break;
-			case 1:
+			case 1://Joueur arrete et prend les poins
 				System.out.println("Control - void finirTour() - switch(" + retour + ")");
 
 				//On affiche le score du joueur actuel dans son panneau de score north
@@ -188,6 +214,10 @@ public class Control {
 				
 				//on passe au joueur suivant
 				this.setJoueurActuel();
+
+				pointsCumules = 0;
+				pointsLancer = 0;
+				finTour = true;
 				
 				//message pour le joueur suivant
 				pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
@@ -195,72 +225,46 @@ public class Control {
 				pan_center.repaint();
 				
 				break;
-			case -1:
+			case -1://Score négatif
 				System.out.println("Control - void finirTour() - switch(" + retour + ")");
-				this.scoreNegatif();
+
+				pointsCumules = 0;
+				pointsLancer = 0;
+				finTour = true;
+				
+				
+				panCommands.enableBoutons(false);
+				
+				//Message de félicitations
+				pan_center.setMessage("Votre lancer est supérieur à votre score.");
+				pan_center.setMessage2("");
+				pan_center.repaint();
+				
+
+				attendre(2000, () -> {
+					//Message de félicitations
+					pan_center.setMessage("Passez votre tour");
+					pan_center.repaint();
+
+					finTour = true;
+					
+			        attendre(2000, () -> {
+			            // Message pour le joueur suivant sans changer immédiatement de joueur
+			            int joueurSuivant = (joueurActuel + 1) % joueurs.length;
+			            pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurSuivant].getPrenom());
+			            pan_center.repaint();
+
+			            // On passe au joueur suivant après l'affichage du message
+			            attendre(500, this::setJoueurActuel);
+			            
+			            panCommands.enableBoutons(true);
+			        });
+				});
+				
 				break;
 		}
 	}
 
-	public void gagne() {
-		System.out.println("Control - void gagne()");
-		//On affiche le score du joueur actuel dans son panneau de score north
-		panScores_north.setScorePanScores(joueurs[joueurActuel]);
-		panScores_north.repaint();
-		
-		//Message de félicitations
-		pan_center.setMessage("Bravo " + joueurs[joueurActuel].getPrenom() + " vous avez gagné !");
-		pan_center.setMessage2("");
-		pan_center.repaint();
-		
-		//PanneauScore du joueur actuel et gagnant en vert.
-    	panScores_north.updateBackgroundColorsWinner(joueurActuel);
-		
-	    Runnable restartAction = () -> {
-	        // Logique pour fermer le jeu
-	        cadre.dispose();
-	    	this.restartLogic(); // Ou this::restartApplication si JAR
-
-	    };
-    	
-	    Runnable arreterAction = () -> {
-	        // Logique pour fermer le jeu
-	    	System.exit(0);
-	    };
-    	
-		panCommands.updateButtons("Rejouer", restartAction, "Arreter le jeu", arreterAction);
-	}
-	
-	public void scoreNegatif() {
-		System.out.println("Control - void scoreNegatif()");
-		
-		panCommands.enableBoutons(false);
-		
-		//Message de félicitations
-		pan_center.setMessage("Votre lancer est supérieur à votre score.");
-		pan_center.setMessage2("");
-		pan_center.repaint();
-		
-
-		attendre(2000, () -> {
-			//Message de félicitations
-			pan_center.setMessage("Passez votre tour");
-			pan_center.repaint();
-
-	        attendre(2000, () -> {
-	            // Message pour le joueur suivant sans changer immédiatement de joueur
-	            int joueurSuivant = (joueurActuel + 1) % joueurs.length;
-	            pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurSuivant].getPrenom());
-	            pan_center.repaint();
-
-	            // On passe au joueur suivant après l'affichage du message
-	            attendre(500, this::setJoueurActuel);
-	            
-	            panCommands.enableBoutons(true);
-	        });
-		});
-	}
-	
 	//Méthode pour paramétrer les ActionPerformed des boutons
 	public void updatePanCommands(String lancerText, Runnable lancerAction, String arreterText, Runnable arreterAction) {
 	    panCommands.updateButtons(lancerText, lancerAction, arreterText, arreterAction);
@@ -291,9 +295,8 @@ public class Control {
 
 	private int verificationDes(int[] lancers) {
 		System.out.println("Control - int verificationDes(int[] lancers)");
-		
-		//évaluation du score
-		int _score = 0;
+
+		pointsLancer = 0;
 		
 		// Création d'une Map pour stocker les variables dynamiques
         Map<String, Integer> nbres = new HashMap<>();
@@ -364,30 +367,30 @@ public class Control {
 			if((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1)
 				|| (nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1)){
 				
-				_score = _score + 500;
+				pointsLancer = pointsLancer + 500;
 			
 			//Vérification des autres possibilités
 			}else{
 				if(nbres.get("nbre1") != 0){
 					switch(nbres.get("nbre1")){
 						case 1:
-							_score = _score + 100;
+							pointsLancer = pointsLancer + 100;
 								//nbreDesRestants = nbreDesRestants - 1;
 							break;
 						case 2:
-							_score = _score + 200;
+							pointsLancer = pointsLancer + 200;
 	//						nbreDesRestants = nbreDesRestants - 2;
 							break;
 						case 3:
-							_score = _score + 1000;
+							pointsLancer = pointsLancer + 1000;
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
-							_score = _score + 2000;
+							pointsLancer = pointsLancer + 2000;
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
-							_score = _score + 3000;
+							pointsLancer = pointsLancer + 3000;
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre1
@@ -396,15 +399,15 @@ public class Control {
 				if(nbres.get("nbre2") == 3 || nbres.get("nbre2") == 4 || nbres.get("nbre2") == 5){
 					switch(nbres.get("nbre2")){
 						case 3:
-							_score = _score + 200;
+							pointsLancer = pointsLancer + 200;
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
-							_score = _score + 400;
+							pointsLancer = pointsLancer + 400;
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
-							_score = _score + 600;
+							pointsLancer = pointsLancer + 600;
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre2
@@ -413,15 +416,15 @@ public class Control {
 				if(nbres.get("nbre3") > 2){
 					switch(nbres.get("nbre3")){
 						case 3:
-							_score = _score + 300;
+							pointsLancer = pointsLancer + 300;
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
-							_score = _score + 600;
+							pointsLancer = pointsLancer + 600;
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
-							_score = _score + 900;
+							pointsLancer = pointsLancer + 900;
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre3
@@ -430,15 +433,15 @@ public class Control {
 				if(nbres.get("nbre4") > 2){
 					switch(nbres.get("nbre4")){
 						case 3:
-							_score = _score + 400;
+							pointsLancer = pointsLancer + 400;
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
-							_score = _score + 800;
+							pointsLancer = pointsLancer + 800;
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
-							_score = _score + 1200;
+							pointsLancer = pointsLancer + 1200;
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre4
@@ -447,23 +450,23 @@ public class Control {
 				if(nbres.get("nbre5") != 0){
 					switch(nbres.get("nbre5")){
 						case 1:
-							_score = _score + 50;
+							pointsLancer = pointsLancer + 50;
 	//						nbreDesRestants = nbreDesRestants - 1;
 							break;
 						case 2:
-							_score = _score + 100;
+							pointsLancer = pointsLancer + 100;
 	//						nbreDesRestants = nbreDesRestants - 2;
 							break;
 						case 3:
-							_score = _score + 500;
+							pointsLancer = pointsLancer + 500;
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
-							_score = _score + 1000;
+							pointsLancer = pointsLancer + 1000;
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
-							_score = _score + 1500;
+							pointsLancer = pointsLancer + 1500;
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre5
@@ -472,15 +475,15 @@ public class Control {
 				if(nbres.get("nbre6") > 2){
 					switch(nbres.get("nbre6")){
 						case 3:
-							_score = _score + 600;
+							pointsLancer = pointsLancer + 600;
 	//						nbreDesRestants = nbreDesRestants - 3;
 							break;
 						case 4:
-							_score = _score + 1200;
+							pointsLancer = pointsLancer + 1200;
 	//						nbreDesRestants = nbreDesRestants - 4;
 							break;
 						case 5:
-							_score = _score + 1800;
+							pointsLancer = pointsLancer + 1800;
 	//						nbreDesRestants = nbreDesRestants - 5;
 							break;
 					}	//fin switch nbre6
@@ -488,7 +491,7 @@ public class Control {
 			}//	fin du else
 		}
 
-		return _score;
+		return pointsLancer;
 	}//	fin de verificationDes(int[] lancers)
 	
 	//*********GETTERS AND SETTERS*********
