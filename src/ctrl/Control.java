@@ -397,7 +397,7 @@ public class Control {
 			if((nbres.get("nbre2") >= 3 || nbres.get("nbre3") >= 3 || nbres.get("nbre4") >= 3 || nbres.get("nbre6") >= 3 
 					|| nbres.get("nbre1") >= 1 || nbres.get("nbre5") >= 1)) {
 				//je dois calculer le score
-
+				
 				//ré initialiser le tableau desInterdits
 				for(int i = 0; i<= 4; i++) {
 					desInterdits[i] = 0;
