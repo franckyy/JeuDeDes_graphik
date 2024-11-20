@@ -10,10 +10,19 @@ public class Dice {
         valeursDes = new int[nombreDeDes];
     }
 
-    public void lancerDes() {
+    public void lancerDes(int[] desInterdits, boolean premierLancer) {
         Random rand = new Random();
-        for (int i = 0; i < valeursDes.length; i++) {
-            valeursDes[i] = rand.nextInt(MAX_FACE) + 1;  // Lancer un dé entre 1 et 6
+        
+        if(premierLancer == true) {
+            for (int i = 0; i < valeursDes.length; i++) {
+                valeursDes[i] = rand.nextInt(MAX_FACE) + 1;  // Lancer un dé entre 1 et 6
+            }
+        } else {
+            for(int i = 0; i < desInterdits.length; i++) {// permet de ne lancer que les dés qui doivent être lancés
+            	if(desInterdits[i] == -1) {
+            		valeursDes[i] = rand.nextInt(MAX_FACE) + 1;  // Lancer un dé entre 1 et 6
+            	}
+            }	
         }
     }
 

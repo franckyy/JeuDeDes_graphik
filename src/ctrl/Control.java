@@ -30,11 +30,12 @@ public class Control {
 	private PanActualScore_east panScoreEast = null;
 	private int nbreJoueurs = 0;
 	private int joueurActuel = 0;
+	private boolean premierLancer = true;
     private Dice dice;  // Instance de la classe Dice pour gérer les lancers
     private int[] desInterdits = new int[5];	// tableau pour les dés qui ne devront pas être relancés
-    private int pointsCumules = 0;
+    private int pointsCumules = 0;	//C'est le total des points de tous les lancers
     private boolean finTour = false;
-    private int pointsLancer = 0;
+    private int pointsLancer = 0;//C'est le total des points donnés par les dés lors d'un seul lancer
     
 	private String[] prenomsJoueurs = null;
 	
@@ -90,13 +91,13 @@ public class Control {
 		//création et affichage de l'interface graphique
 		cadre = new Cadre(this, joueurs);
 		
-		//Définir l'état des boutons par la méthode updateBoutons afin de pouvoir ultérieurement les redéfinir
+		//Définition de l'état des boutons par la méthode updateBoutons afin de pouvoir ultérieurement les redéfinir
 	    Runnable lancerAction = () -> {
 	        lancerDes();
             panCommands.enableBoutons(false);
 	    };
 		
-
+		//Définition de l'état des boutons par la méthode updateBoutons afin de pouvoir ultérieurement les redéfinir
 	    Runnable arreterAction = () -> {
 	        // Logique pour l'action du bouton Arrêter (si nécessaire)
 	    	finirLancer();
@@ -131,7 +132,7 @@ public class Control {
 	public void lancerDes() {
 		System.out.println("Control - void lancerDes()");
 		
-		dice.lancerDes();  // Lancer les dés
+		dice.lancerDes(desInterdits, premierLancer);  // Lancer les dés
                 
 		//affiche les valeurs des dés dans le panneau Des et rempli le tableau
 		panDes.setValeursDes(dice.getValeursDes());
@@ -208,6 +209,11 @@ public class Control {
 			case 1://Joueur arrete et prend les poins
 				System.out.println("Control - void finirTour() - switch(" + retour + ")");
 
+				//ré initialiser le tableau desInterdits seulement si nous sommes dans le dernier lancer du tour
+				for(int i = 0; i<= 4; i++) {
+					desInterdits[i] = 0;
+				}
+
 				//On affiche le score du joueur actuel dans son panneau de score north
 				panScores_north.setScorePanScores(joueurs[joueurActuel]);
 				panScores_north.repaint();
@@ -247,6 +253,11 @@ public class Control {
 					pan_center.repaint();
 
 					finTour = true;
+
+					//ré initialiser le tableau desInterdits seulement si nous sommes dans le dernier lancer du tour
+					for(int i = 0; i<= 4; i++) {
+						desInterdits[i] = 0;
+					}
 					
 			        attendre(2000, () -> {
 			            // Message pour le joueur suivant sans changer immédiatement de joueur
@@ -296,6 +307,7 @@ public class Control {
 	private int verificationDes(int[] lancers) {
 		System.out.println("Control - int verificationDes(int[] lancers)");
 
+		//Il ne faut vérifier que les dés qui ont été grisés ou la totalité des dés du premier lancer
 		pointsLancer = 0;
 		
 		// Création d'une Map pour stocker les variables dynamiques
@@ -308,10 +320,11 @@ public class Control {
         nbres.put("nbre5", 0);
         nbres.put("nbre6", 0);
 		
-		for(int chiffre : lancers) {
-		
+		for(int i = 0; i < 5; i++) {
+			int chiffre = lancers[i];
+			
 			//vérification des lancers
-				
+			if(premierLancer == true || desInterdits[1] == 0) {
 				switch(chiffre){
 					case 1:
 						nbres.put("nbre1", nbres.get("nbre1") + 1);
@@ -331,11 +344,13 @@ public class Control {
 					case 6:
 						nbres.put("nbre6", nbres.get("nbre6") + 1);
 						break;
-				}	//end switch			
+				}	//end switch
+			}//end if(premierLancer == true || desInterdits[1] == 0)
 		}// fin de for(int chiffre : lancers) 
 		
 		// voir si il n'y a aucun score :
 		int rangLancers = 0;
+		
 		//Si nous avons une suite, aucun dé n'est interdit
 		if(!((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 &&nbres.get("nbre3") == 1 &&nbres.get("nbre4") == 1 &&nbres.get("nbre5") == 1) 
 					|| (nbres.get("nbre2") == 1 &&nbres.get("nbre3") == 1 &&nbres.get("nbre4") == 1 &&nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1))) {
@@ -351,16 +366,11 @@ public class Control {
 				rangLancers++;
 			}
 		}
+		
 		//demander au panneauDes de griser les dés qui ne font pas de scores
 		panDes.griserDes(desInterdits);
 		
-		//ré initialiser le tableau desInterdits
-		for(int i = 0; i<= 4; i++) {
-			desInterdits[i] = 0;
-		}
-		
-		//Avant de vérifier, je dois voir si tous les dés ne sont pas interdits.
-		
+		//Avant de vérifier, je dois voir si tous les dés ne sont pas interdits. s'ils sont tous interdits, c'est inutile de compter ....
 		if(Arrays.stream(desInterdits).anyMatch(x -> x == 0)) {			
 			
 			//Vérification d'une suite 
@@ -368,6 +378,13 @@ public class Control {
 				|| (nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1)){
 				
 				pointsLancer = pointsLancer + 500;
+
+				premierLancer = true;
+				
+				//ré initialiser le tableau desInterdits seulement si nous sommes dans le dernier lancer du tour
+				for(int i = 0; i<= 4; i++) {
+					desInterdits[i] = 0;
+				}
 			
 			//Vérification des autres possibilités
 			}else{
@@ -489,8 +506,11 @@ public class Control {
 					}	//fin switch nbre6
 				}	//fin if nbre6		
 			}//	fin du else
-		}
 
+			//Lorsque nous avons fini de compter les points, on sait que le premier lancer du joueur est terminé et qu'il va passer au lancer suivant
+			premierLancer = false;
+		}
+		
 		return pointsLancer;
 	}//	fin de verificationDes(int[] lancers)
 	
@@ -525,6 +545,9 @@ public class Control {
 
 	public void setJoueurActuel() {
 		System.out.println("Control - void setJoueurActuel()");
+		//lorsqu'on passe au joueur suivant, le joueur suivant fait son premier lancer de son tour !
+		premierLancer = true;
+		
 		//si le joueur actuel est le dernier, il faut alors réinitialiser pour revenir au premier joueur
 		//sinon, on incrémente
 		if(this.joueurActuel == joueurs.length - 1) {
