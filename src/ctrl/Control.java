@@ -36,6 +36,7 @@ public class Control {
     private int pointsCumules = 0;	//C'est le total des points de tous les lancers
     private boolean finTour = false;
     private int pointsLancer = 0;//C'est le total des points donnés par les dés lors d'un seul lancer
+    private Map<String, Integer> nbres = null;
     
 	private String[] prenomsJoueurs = null;
 	
@@ -311,7 +312,7 @@ public class Control {
 		pointsLancer = 0;
 		
 		// Création d'une Map pour stocker les variables dynamiques
-        Map<String, Integer> nbres = new HashMap<>();
+        nbres = new HashMap<>();
 		
         nbres.put("nbre1", 0);
         nbres.put("nbre2", 0);
@@ -416,155 +417,137 @@ public class Control {
 					desInterdits[i] = 0;
 				}
 			}
-		}
-		
-		
+		}		
 		//TODO voir les lignes d'avant jusqu'au TODO
-		
-		//Avant de vérifier, je dois voir si tous les dés ne sont pas interdits. s'ils sont tous interdits, c'est inutile de compter ....
-		if(Arrays.stream(desInterdits).anyMatch(x -> x == 0)) {			
 			
-			//Vérification d'une suite 
-			if((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1)
-				|| (nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1)){
-				
-				pointsLancer = pointsLancer + 500;
-
-				premierLancer = true;
-				
-				//ré initialiser le tableau desInterdits seulement si nous sommes dans le dernier lancer du tour
-				for(int i = 0; i<= 4; i++) {
-					desInterdits[i] = 0;
-				}
-			
-			//Vérification des autres possibilités
-			}else{
-				if(nbres.get("nbre1") != 0){
-					switch(nbres.get("nbre1")){
-						case 1:
-							pointsLancer = pointsLancer + 100;
-								//nbreDesRestants = nbreDesRestants - 1;
-							break;
-						case 2:
-							pointsLancer = pointsLancer + 200;
-	//						nbreDesRestants = nbreDesRestants - 2;
-							break;
-						case 3:
-							pointsLancer = pointsLancer + 1000;
-	//						nbreDesRestants = nbreDesRestants - 3;
-							break;
-						case 4:
-							pointsLancer = pointsLancer + 2000;
-	//						nbreDesRestants = nbreDesRestants - 4;
-							break;
-						case 5:
-							pointsLancer = pointsLancer + 3000;
-	//						nbreDesRestants = nbreDesRestants - 5;
-							break;
-					}	//fin switch nbre1
-				}	//fin if nbre1
-				
-				if(nbres.get("nbre2") == 3 || nbres.get("nbre2") == 4 || nbres.get("nbre2") == 5){
-					switch(nbres.get("nbre2")){
-						case 3:
-							pointsLancer = pointsLancer + 200;
-	//						nbreDesRestants = nbreDesRestants - 3;
-							break;
-						case 4:
-							pointsLancer = pointsLancer + 400;
-	//						nbreDesRestants = nbreDesRestants - 4;
-							break;
-						case 5:
-							pointsLancer = pointsLancer + 600;
-	//						nbreDesRestants = nbreDesRestants - 5;
-							break;
-					}	//fin switch nbre2
-				}	//fin du if nbre2
-				
-				if(nbres.get("nbre3") > 2){
-					switch(nbres.get("nbre3")){
-						case 3:
-							pointsLancer = pointsLancer + 300;
-	//						nbreDesRestants = nbreDesRestants - 3;
-							break;
-						case 4:
-							pointsLancer = pointsLancer + 600;
-	//						nbreDesRestants = nbreDesRestants - 4;
-							break;
-						case 5:
-							pointsLancer = pointsLancer + 900;
-	//						nbreDesRestants = nbreDesRestants - 5;
-							break;
-					}	//fin switch nbre3
-				}	//fin if nbre3
-				
-				if(nbres.get("nbre4") > 2){
-					switch(nbres.get("nbre4")){
-						case 3:
-							pointsLancer = pointsLancer + 400;
-	//						nbreDesRestants = nbreDesRestants - 3;
-							break;
-						case 4:
-							pointsLancer = pointsLancer + 800;
-	//						nbreDesRestants = nbreDesRestants - 4;
-							break;
-						case 5:
-							pointsLancer = pointsLancer + 1200;
-	//						nbreDesRestants = nbreDesRestants - 5;
-							break;
-					}	//fin switch nbre4
-				}	//fin if nbre4
-				
-				if(nbres.get("nbre5") != 0){
-					switch(nbres.get("nbre5")){
-						case 1:
-							pointsLancer = pointsLancer + 50;
-	//						nbreDesRestants = nbreDesRestants - 1;
-							break;
-						case 2:
-							pointsLancer = pointsLancer + 100;
-	//						nbreDesRestants = nbreDesRestants - 2;
-							break;
-						case 3:
-							pointsLancer = pointsLancer + 500;
-	//						nbreDesRestants = nbreDesRestants - 3;
-							break;
-						case 4:
-							pointsLancer = pointsLancer + 1000;
-	//						nbreDesRestants = nbreDesRestants - 4;
-							break;
-						case 5:
-							pointsLancer = pointsLancer + 1500;
-	//						nbreDesRestants = nbreDesRestants - 5;
-							break;
-					}	//fin switch nbre5
-				}	//fin if nbre5
-				
-				if(nbres.get("nbre6") > 2){
-					switch(nbres.get("nbre6")){
-						case 3:
-							pointsLancer = pointsLancer + 600;
-	//						nbreDesRestants = nbreDesRestants - 3;
-							break;
-						case 4:
-							pointsLancer = pointsLancer + 1200;
-	//						nbreDesRestants = nbreDesRestants - 4;
-							break;
-						case 5:
-							pointsLancer = pointsLancer + 1800;
-	//						nbreDesRestants = nbreDesRestants - 5;
-							break;
-					}	//fin switch nbre6
-				}	//fin if nbre6		
-			}//	fin du else
-
-			//Lorsque nous avons fini de compter les points, on sait que le premier lancer du joueur est terminé et qu'il va passer au lancer suivant
-			premierLancer = false;
-		}
-		
-		return pointsLancer;
+		return calculPoints(lancers);
 	}//	fin de verificationDes(int[] lancers)
 	
+	private int calculPoints(int[] lancers) {
+
+		if(nbres.get("nbre1") != 0){
+			switch(nbres.get("nbre1")){
+				case 1:
+					pointsLancer = pointsLancer + 100;
+						//nbreDesRestants = nbreDesRestants - 1;
+					break;
+				case 2:
+					pointsLancer = pointsLancer + 200;
+//					nbreDesRestants = nbreDesRestants - 2;
+					break;
+				case 3:
+					pointsLancer = pointsLancer + 1000;
+//					nbreDesRestants = nbreDesRestants - 3;
+					break;
+				case 4:
+					pointsLancer = pointsLancer + 2000;
+//					nbreDesRestants = nbreDesRestants - 4;
+					break;
+				case 5:
+					pointsLancer = pointsLancer + 3000;
+//					nbreDesRestants = nbreDesRestants - 5;
+					break;
+			}	//fin switch nbre1
+		}	//fin if nbre1
+		
+		if(nbres.get("nbre2") == 3 || nbres.get("nbre2") == 4 || nbres.get("nbre2") == 5){
+			switch(nbres.get("nbre2")){
+				case 3:
+					pointsLancer = pointsLancer + 200;
+//					nbreDesRestants = nbreDesRestants - 3;
+					break;
+				case 4:
+					pointsLancer = pointsLancer + 400;
+//					nbreDesRestants = nbreDesRestants - 4;
+					break;
+				case 5:
+					pointsLancer = pointsLancer + 600;
+//					nbreDesRestants = nbreDesRestants - 5;
+					break;
+			}	//fin switch nbre2
+		}	//fin du if nbre2
+		
+		if(nbres.get("nbre3") > 2){
+			switch(nbres.get("nbre3")){
+				case 3:
+					pointsLancer = pointsLancer + 300;
+//					nbreDesRestants = nbreDesRestants - 3;
+					break;
+				case 4:
+					pointsLancer = pointsLancer + 600;
+//					nbreDesRestants = nbreDesRestants - 4;
+					break;
+				case 5:
+					pointsLancer = pointsLancer + 900;
+//					nbreDesRestants = nbreDesRestants - 5;
+					break;
+			}	//fin switch nbre3
+		}	//fin if nbre3
+		
+		if(nbres.get("nbre4") > 2){
+			switch(nbres.get("nbre4")){
+				case 3:
+					pointsLancer = pointsLancer + 400;
+//					nbreDesRestants = nbreDesRestants - 3;
+					break;
+				case 4:
+					pointsLancer = pointsLancer + 800;
+//					nbreDesRestants = nbreDesRestants - 4;
+					break;
+				case 5:
+					pointsLancer = pointsLancer + 1200;
+//					nbreDesRestants = nbreDesRestants - 5;
+					break;
+			}	//fin switch nbre4
+		}	//fin if nbre4
+		
+		if(nbres.get("nbre5") != 0){
+			switch(nbres.get("nbre5")){
+				case 1:
+					pointsLancer = pointsLancer + 50;
+//					nbreDesRestants = nbreDesRestants - 1;
+					break;
+				case 2:
+					pointsLancer = pointsLancer + 100;
+//					nbreDesRestants = nbreDesRestants - 2;
+					break;
+				case 3:
+					pointsLancer = pointsLancer + 500;
+//					nbreDesRestants = nbreDesRestants - 3;
+					break;
+				case 4:
+					pointsLancer = pointsLancer + 1000;
+//					nbreDesRestants = nbreDesRestants - 4;
+					break;
+				case 5:
+					pointsLancer = pointsLancer + 1500;
+//					nbreDesRestants = nbreDesRestants - 5;
+					break;
+			}	//fin switch nbre5
+		}	//fin if nbre5
+		
+		if(nbres.get("nbre6") > 2){
+			switch(nbres.get("nbre6")){
+				case 3:
+					pointsLancer = pointsLancer + 600;
+//					nbreDesRestants = nbreDesRestants - 3;
+					break;
+				case 4:
+					pointsLancer = pointsLancer + 1200;
+//					nbreDesRestants = nbreDesRestants - 4;
+					break;
+				case 5:
+					pointsLancer = pointsLancer + 1800;
+//					nbreDesRestants = nbreDesRestants - 5;
+					break;
+			}	//fin switch nbre6
+		}	//fin if nbre6		
+
+		//Lorsque nous avons fini de compter les points, on sait que le premier lancer du joueur est terminé et qu'il va passer au lancer suivant
+		premierLancer = false;
+	
+		return pointsLancer;
+	}
 	//*********GETTERS AND SETTERS*********
 	public int getNbreJoueurs() {
 		return this.nbreJoueurs;
