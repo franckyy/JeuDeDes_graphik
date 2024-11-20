@@ -374,34 +374,47 @@ public class Control {
 		
 		// si tous les dés sont interdits, on passe au joueur suivant
 		if(Arrays.stream(desInterdits).anyMatch(x -> x == 0)) {	
-			
-		}
-		
-		//si tous les dés font un score mais que ce n'est pas une suite, ils devront être relancés et ce sera compté comme un premier lancer
-		/*
-		 * Conditions :
-		 * 
-		 * -Aucun dés interdits
-		 * -j'ai des 1, des 5 ou des triples 2, 3, 4 ou 6
-		 */
-		if(Arrays.stream(desInterdits).anyMatch(x -> x != 0) && 
-				(nbres.get("nbre2") >= 3 || nbres.get("nbre3") >= 3 || nbres.get("nbre4") >= 3 || nbres.get("nbre6") >= 3 
-				|| nbres.get("nbre1") >= 1 || nbres.get("nbre5") >= 1)) {
-			
-		}
-		
-		//si j'ai une suite, on connait le score et on reste sur premier lancer, le joueur va pouvoir rejouer
-		//Vérification d'une suite 
-		if(Arrays.stream(desInterdits).anyMatch(x -> x != 0) && ((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1)
-			|| (nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1))){
-			
-			pointsLancer = pointsLancer + 500;
+			//je passe au joueur suivant sans calcul de score car score = 0
+			//Ce sera le premier lancer du joueur suivant
+			this.setJoueurActuel();
+			premierLancer = true;
+		} else if(Arrays.stream(desInterdits).anyMatch(x -> x != 0)){
 
+			//si tous les dés font un score :
+			
+			// -> ils pourront être relancés par le joueur actuel
+			// -> ce sera compté comme un premier lancer pour le joueur actuel
 			premierLancer = true;
 			
-			//ré initialiser le tableau desInterdits seulement si nous sommes dans le dernier lancer du tour
-			for(int i = 0; i<= 4; i++) {
-				desInterdits[i] = 0;
+			//si ce n'est pas une suite, ils pourront être relancés et ce sera compté comme un premier lancer
+			/*
+			 * Conditions :
+			 * 
+			 * -Aucun dés interdits
+			 * -j'ai des 1, des 5 ou des triples 2, 3, 4 ou 6
+			 * 
+			 */
+			if((nbres.get("nbre2") >= 3 || nbres.get("nbre3") >= 3 || nbres.get("nbre4") >= 3 || nbres.get("nbre6") >= 3 
+					|| nbres.get("nbre1") >= 1 || nbres.get("nbre5") >= 1)) {
+				//je dois calculer le score
+
+				//ré initialiser le tableau desInterdits
+				for(int i = 0; i<= 4; i++) {
+					desInterdits[i] = 0;
+				}
+			}
+			
+			//si j'ai une suite, on connait le score
+			//Vérification d'une suite 
+			if(((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1)
+				|| (nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1))){
+				
+				pointsLancer = pointsLancer + 500;
+				
+				//ré initialiser le tableau desInterdits
+				for(int i = 0; i<= 4; i++) {
+					desInterdits[i] = 0;
+				}
 			}
 		}
 		
