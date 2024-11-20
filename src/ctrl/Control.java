@@ -323,7 +323,7 @@ public class Control {
 		for(int i = 0; i < 5; i++) {
 			int chiffre = lancers[i];
 			
-			//vérification des lancers
+			//vérification des valeurs des dés pour préparer la vérification du score
 			if(premierLancer == true || desInterdits[1] == 0) {
 				switch(chiffre){
 					case 1:
@@ -369,6 +369,44 @@ public class Control {
 		
 		//demander au panneauDes de griser les dés qui ne font pas de scores
 		panDes.griserDes(desInterdits);
+		
+		//TODO voir les points suivants jusqu'au prochain TODO
+		
+		// si tous les dés sont interdits, on passe au joueur suivant
+		if(Arrays.stream(desInterdits).anyMatch(x -> x == 0)) {	
+			
+		}
+		
+		//si tous les dés font un score mais que ce n'est pas une suite, ils devront être relancés et ce sera compté comme un premier lancer
+		/*
+		 * Conditions :
+		 * 
+		 * -Aucun dés interdits
+		 * -j'ai des 1, des 5 ou des triples 2, 3, 4 ou 6
+		 */
+		if(Arrays.stream(desInterdits).anyMatch(x -> x != 0) && 
+				(nbres.get("nbre2") >= 3 || nbres.get("nbre3") >= 3 || nbres.get("nbre4") >= 3 || nbres.get("nbre6") >= 3 
+				|| nbres.get("nbre1") >= 1 || nbres.get("nbre5") >= 1)) {
+			
+		}
+		
+		//si j'ai une suite, on connait le score et on reste sur premier lancer, le joueur va pouvoir rejouer
+		//Vérification d'une suite 
+		if(Arrays.stream(desInterdits).anyMatch(x -> x != 0) && ((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1)
+			|| (nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1))){
+			
+			pointsLancer = pointsLancer + 500;
+
+			premierLancer = true;
+			
+			//ré initialiser le tableau desInterdits seulement si nous sommes dans le dernier lancer du tour
+			for(int i = 0; i<= 4; i++) {
+				desInterdits[i] = 0;
+			}
+		}
+		
+		
+		//TODO voir les lignes d'avant jusqu'au TODO
 		
 		//Avant de vérifier, je dois voir si tous les dés ne sont pas interdits. s'ils sont tous interdits, c'est inutile de compter ....
 		if(Arrays.stream(desInterdits).anyMatch(x -> x == 0)) {			
