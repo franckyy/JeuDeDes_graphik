@@ -149,13 +149,8 @@ public class Control {
 		    }
 		});
 		
-		pointsLancer = this.verificationDes(dice.getValeursDes());
-		pointsCumules = pointsCumules + pointsLancer;
-		
-		//affichage des scores du lancer sur le panneauEast
-		panScoreEast.setScore(pointsLancer);
-		panScoreEast.setScoreCumul(pointsCumules);
-		panScoreEast.repaint();
+		this.setPointsLancer(this.verificationDes(dice.getValeursDes()));
+		this.setPointsCumules(pointsCumules + pointsLancer);
 		
 		//TODO Le joueur souhaite-t'il relancer les dés ?
 		//si oui, il va falloir ajouter le score actuel avec le score du prochain lancer
@@ -163,15 +158,36 @@ public class Control {
 		//si non, on ajoute le score actuel au score du joueur
 		
 		if(pointsLancer == 0) {
+			/*Le score est nuldonc 
+			 * on passe au joueur suivant 
+			 * le joueur actuel ne peut pas relancer les dés
+			 * Les scores sont remis à 0
+			 */
 			pan_center.setMessage("Le score de votre lancer est de " + pointsLancer + " points");
 			pan_center.setMessage2("Vous ne pouvez pas relancer les des et passez votre tour !");
 			pan_center.repaint();
+			
+			attendre(500, () -> {
+				this.setJoueurActuel();
+				
+				attendre(1000, () -> {
+					
+					this.setPointsLancer(0);
+					this.setPointsCumules(0);
+					
+					attendre(1000, () -> {
+						pan_center.setMessage("");
+						pan_center.setMessage2("A toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
+						pan_center.repaint();
+					});
+				});
+			});
+			
+			
 		} else {		
 			pan_center.setMessage("Le score de votre lancer est de " + pointsLancer + " points");
 			pan_center.setMessage2("Souhaitez vous relancer au risque de tout perdre ?");
 			pan_center.repaint();
-			
-			this.setJoueurActuel();
 		}
 	}//	fin lancerDes()
 	
@@ -335,7 +351,7 @@ public class Control {
 			int chiffre = lancers[i];
 			
 			//vérification des valeurs des dés pour préparer la vérification du score
-			if(premierLancer == true || desInterdits[1] == 0) {
+			if(premierLancer == true || desInterdits[i] == 0) {
 				switch(chiffre){
 					case 1:
 						nbres.put("nbre1", nbres.get("nbre1") + 1);
@@ -384,12 +400,12 @@ public class Control {
 		//TODO voir les points suivants jusqu'au prochain TODO
 		
 		// si tous les dés sont interdits, on passe au joueur suivant
-		if(Arrays.stream(desInterdits).anyMatch(x -> x == 0)) {	
+		if(Arrays.stream(desInterdits).allMatch(x -> x == 0)) {	
 			//je passe au joueur suivant sans calcul de score car score = 0
 			//Ce sera le premier lancer du joueur suivant
 			this.setJoueurActuel();
 			premierLancer = true;
-		} else if(Arrays.stream(desInterdits).anyMatch(x -> x != 0)){
+		} else if(Arrays.stream(desInterdits).allMatch(x -> x != 0)){
 
 			//si tous les dés font un score :
 			
@@ -610,5 +626,25 @@ public class Control {
 
 	public int getJoueurActuel() {
 		return joueurActuel;
+	}
+
+	public int getPointsCumules() {
+		return pointsCumules;
+	}
+
+	public void setPointsCumules(int pointsCumules) {
+		this.pointsCumules = pointsCumules;
+		panScoreEast.setScoreCumul(pointsCumules);
+		panScoreEast.repaint();
+	}
+
+	public int getPointsLancer() {
+		return pointsLancer;
+	}
+
+	public void setPointsLancer(int pointsLancer) {
+		this.pointsLancer = pointsLancer;
+		panScoreEast.setScore(pointsLancer);
+		panScoreEast.repaint();
 	}
 }
