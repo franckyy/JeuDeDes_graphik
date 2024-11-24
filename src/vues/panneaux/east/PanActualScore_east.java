@@ -21,6 +21,7 @@ public class PanActualScore_east extends JPanel {
     
 	int xTextPos, yTextPos;
 	int score = 0;
+	int scoreCumul = 0;
 	
 	Dimension dim = null;
 	Control ctrl = null;
@@ -89,6 +90,11 @@ public class PanActualScore_east extends JPanel {
         g.drawString("Total", xTextPos, yTextPos + 330);
         g.setColor(coulTextes);
         g.drawString("" + score, xTextPos + 5, yTextPos + 360);
+
+        g.setColor(coulTextesTitres);
+        g.drawString("Total cumulé", xTextPos, yTextPos + 410);
+        g.setColor(coulTextes);
+        g.drawString("" + scoreCumul, xTextPos + 5, yTextPos + 440);
     }
 
 	public void setDes(int[] valeursDes) {
