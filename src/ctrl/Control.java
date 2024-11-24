@@ -141,6 +141,7 @@ public class Control {
 		//affiche les valeurs de chaque dé dans le panneau actual score east
 		panScoreEast.setDes(dice.getValeursDes());
 		
+		//Dégrise les boutons
 		SwingUtilities.invokeLater(new Runnable() {
 		    @Override
 		    public void run() {
@@ -161,9 +162,17 @@ public class Control {
 			//S'il ne réalise pas de score au prochain lancer, le joueur perd tout son score
 		//si non, on ajoute le score actuel au score du joueur
 		
-		pan_center.setMessage("Le score de votre lancer est de " + pointsLancer + " points");
-		pan_center.setMessage2("Souhaitez vous relancer au risque de tout perdre ?");
-		pan_center.repaint();
+		if(pointsLancer == 0) {
+			pan_center.setMessage("Le score de votre lancer est de " + pointsLancer + " points");
+			pan_center.setMessage2("Vous ne pouvez pas relancer les des et passez votre tour !");
+			pan_center.repaint();
+		} else {		
+			pan_center.setMessage("Le score de votre lancer est de " + pointsLancer + " points");
+			pan_center.setMessage2("Souhaitez vous relancer au risque de tout perdre ?");
+			pan_center.repaint();
+			
+			this.setJoueurActuel();
+		}
 	}//	fin lancerDes()
 	
 	public void finirLancer() {
