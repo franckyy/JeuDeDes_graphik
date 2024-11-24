@@ -151,8 +151,9 @@ public class Control {
 		pointsLancer = this.verificationDes(dice.getValeursDes());
 		pointsCumules = pointsCumules + pointsLancer;
 		
-		//affichage du score du lancer sur le panneauEast
+		//affichage des scores du lancer sur le panneauEast
 		panScoreEast.setScore(pointsLancer);
+		panScoreEast.setScoreCumul(pointsCumules);
 		panScoreEast.repaint();
 		
 		//TODO Le joueur souhaite-t'il relancer les dés ?

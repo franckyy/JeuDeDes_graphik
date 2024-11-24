@@ -112,4 +112,12 @@ public class PanActualScore_east extends JPanel {
 	public void setScore(int score) {
 		this.score = score;
 	}
+
+	public int getScoreCumul() {
+		return scoreCumul;
+	}
+
+	public void setScoreCumul(int scoreCumul) {
+		this.scoreCumul = scoreCumul;
+	}
 }
