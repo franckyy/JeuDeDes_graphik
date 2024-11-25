@@ -162,6 +162,7 @@ public class Control {
 			 * on passe au joueur suivant 
 			 * le joueur actuel ne peut pas relancer les dés
 			 * Les scores sont remis à 0
+			 * premierLancer = true
 			 */
 			pan_center.setMessage("Le score de votre lancer est de " + pointsLancer + " points");
 			pan_center.setMessage2("Vous ne pouvez pas relancer les des et passez votre tour !");
@@ -183,7 +184,7 @@ public class Control {
 				});
 			});
 			
-			
+			this.setPremierLancer(true);
 		} else {		
 			pan_center.setMessage("Le score de votre lancer est de " + pointsLancer + " points");
 			pan_center.setMessage2("Souhaitez vous relancer au risque de tout perdre ?");
@@ -378,9 +379,12 @@ public class Control {
 		// voir si il n'y a aucun score :
 		int rangLancers = 0;
 		
-		//Si nous avons une suite, aucun dé n'est interdit
-		if(!((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 &&nbres.get("nbre3") == 1 &&nbres.get("nbre4") == 1 &&nbres.get("nbre5") == 1) 
-					|| (nbres.get("nbre2") == 1 &&nbres.get("nbre3") == 1 &&nbres.get("nbre4") == 1 &&nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1))) {
+		/*Si nous avons une suite :
+		 * aucun dé n'est interdit et tout peut être relancé
+		 * premierLancer = true
+		 */
+		if(!((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1) 
+					|| (nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1))) {
 
 			for(int chiffre : lancers) {
 				//je dois recréer le nom de la variable nbrex avec le chiffre du dé
@@ -404,7 +408,7 @@ public class Control {
 			//je passe au joueur suivant sans calcul de score car score = 0
 			//Ce sera le premier lancer du joueur suivant
 			this.setJoueurActuel();
-			premierLancer = true;
+			this.setPremierLancer(true);
 		} else if(Arrays.stream(desInterdits).allMatch(x -> x != 0)){
 
 			//si tous les dés font un score :
@@ -646,5 +650,13 @@ public class Control {
 		this.pointsLancer = pointsLancer;
 		panScoreEast.setScore(pointsLancer);
 		panScoreEast.repaint();
+	}
+
+	public boolean isPremierLancer() {
+		return premierLancer;
+	}
+
+	public void setPremierLancer(boolean premierLancer) {
+		this.premierLancer = premierLancer;
 	}
 }
