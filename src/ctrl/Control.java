@@ -375,9 +375,8 @@ public class Control {
 				}	//end switch
 			}//end if(premierLancer == true || desInterdits[1] == 0)
 		}// fin de for(int chiffre : lancers) 
-		
-		// voir si il n'y a aucun score :
-		int rangLancers = 0;
+
+		int rangLancers = 0;//sert à déterminer le rang du dé pour remplir desInterdits[]
 		
 		/*Si nous n'avons pas une suite :
 		 * tous les dés différents de 1 et 5, puis étant en quantité inférieure à 3 :
