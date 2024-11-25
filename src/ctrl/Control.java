@@ -379,9 +379,10 @@ public class Control {
 		// voir si il n'y a aucun score :
 		int rangLancers = 0;
 		
-		/*Si nous avons une suite :
-		 * aucun dé n'est interdit et tout peut être relancé
-		 * premierLancer = true
+		/*Si nous n'avons pas une suite :
+		 * tous les dés différents de 1 et 5, puis étant en quantité inférieure à 3 :
+		 * doivent être grisés
+		 * ne pourront pas être relancés
 		 */
 		if(!((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1) 
 					|| (nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1))) {
