@@ -391,7 +391,7 @@ public class Control {
 				String valeurDe = "nbre" + chiffre;
 	
 				if(chiffre != 1 && chiffre != 5 && nbres.get(valeurDe) <= 2) {
-					desInterdits[rangLancers] = -1;
+					desInterdits[rangLancers] = -1;// les dés grisés sont les -1
 				}
 				
 				rangLancers++;
@@ -422,7 +422,7 @@ public class Control {
 			 * Conditions :
 			 * 
 			 * -Aucun dés interdits
-			 * -j'ai des 1, des 5 ou des triples 2, 3, 4 ou 6
+			 * -j'ai des 1, des 5 ou des triples 2, 3, 4 ou 6 ou des quadruples ou une quinte
 			 * 
 			 */
 			if((nbres.get("nbre2") >= 3 || nbres.get("nbre3") >= 3 || nbres.get("nbre4") >= 3 || nbres.get("nbre6") >= 3 
