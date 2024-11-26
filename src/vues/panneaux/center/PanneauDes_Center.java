@@ -51,9 +51,11 @@ public class PanneauDes_Center extends JPanel {
 
     public void griserDes(int[] griserDes) {
         for (int i = 0; i < griserDes.length; i++) {
-            if (griserDes[i] == -1) {
+            if (griserDes[i] == -1) {//dés sans valeur
                 couleursDes[i] = Color.gray;
-            } else {
+            } else if(griserDes[i] == 1){// dés ayant déjà participé au score
+                couleursDes[i] = Color.red;
+            } else {//le dés avec valeur
                 couleursDes[i] = Color.white;
             }
         }

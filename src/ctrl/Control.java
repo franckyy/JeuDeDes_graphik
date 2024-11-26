@@ -80,7 +80,7 @@ public class Control {
         }
         
         //instanciation des dés
-        this.dice = new Dice(5);  // Par exemple, 5 dés par joueur
+        this.dice = new Dice(5, this);  // Par exemple, 5 dés par joueur
         
         //Instanciation des joueurs
         joueurs = new Joueur[nbreJoueurs];
@@ -133,7 +133,7 @@ public class Control {
 	public void lancerDes() {
 		System.out.println("Control - void lancerDes()");
 		
-		dice.lancerDes(desInterdits, premierLancer);  // Lancer les dés
+		dice.lancerDes(premierLancer);  // Lancer les dés
                 
 		//affiche les valeurs des dés dans le panneau Des et rempli le tableau
 		panDes.setValeursDes(dice.getValeursDes());
@@ -378,7 +378,8 @@ public class Control {
 
 		int rangLancers = 0;//sert à déterminer le rang du dé pour remplir desInterdits[]
 		
-		/*Si nous n'avons pas une suite :
+		/*Si :
+		 * nous n'avons pas une suite
 		 * tous les dés différents de 1 et 5, puis étant en quantité inférieure à 3 :
 		 * doivent être grisés
 		 * ne pourront pas être relancés
@@ -404,12 +405,12 @@ public class Control {
 		//TODO voir les points suivants jusqu'au prochain TODO
 		
 		// si tous les dés sont interdits, on passe au joueur suivant
-		if(Arrays.stream(desInterdits).allMatch(x -> x == 0)) {	
+		if(Arrays.stream(desInterdits).allMatch(x -> x == -1)) {	
 			//je passe au joueur suivant sans calcul de score car score = 0
 			//Ce sera le premier lancer du joueur suivant
 			this.setJoueurActuel();
 			this.setPremierLancer(true);
-		} else if(Arrays.stream(desInterdits).allMatch(x -> x != 0)){
+		} else if(Arrays.stream(desInterdits).allMatch(x -> x != -1)){
 
 			//si tous les dés font un score :
 			
@@ -428,6 +429,7 @@ public class Control {
 			if((nbres.get("nbre2") >= 3 || nbres.get("nbre3") >= 3 || nbres.get("nbre4") >= 3 || nbres.get("nbre6") >= 3 
 					|| nbres.get("nbre1") >= 1 || nbres.get("nbre5") >= 1)) {
 				//je dois calculer le score
+				pointsLancer = this.calculPoints(lancers);
 				
 				//ré initialiser le tableau desInterdits
 				for(int i = 0; i<= 4; i++) {
@@ -658,5 +660,13 @@ public class Control {
 
 	public void setPremierLancer(boolean premierLancer) {
 		this.premierLancer = premierLancer;
+	}
+
+	public int[] getDesInterdits() {
+		return desInterdits;
+	}
+
+	public void setDesInterdits(int value, int rank) {
+		this.desInterdits[rank] = value;
 	}
 }
