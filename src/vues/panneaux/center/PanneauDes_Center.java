@@ -19,7 +19,7 @@ public class PanneauDes_Center extends JPanel {
     private Color frameColor = PaletteColors.SECOND_VERT_4; // Couleur par défaut du cadre
 
     private Control ctrl = null;
-    private int[] valeursDes = {1, 2, 3, 4, 5};
+    private int[] valeursDes = {0, 0, 0, 0, 0};
     private Color[] couleursDes = {Color.white, Color.white, Color.white, Color.white, Color.white};
 
     public PanneauDes_Center(Control ctrl_) {
