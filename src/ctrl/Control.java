@@ -401,9 +401,7 @@ public class Control {
 		
 		//demander au panneauDes de griser les dés qui ne font pas de scores
 		panDes.griserDes(desInterdits);
-		
-		//TODO voir les points suivants jusqu'au prochain TODO
-		
+				
 		// si tous les dés sont interdits, on passe au joueur suivant
 		if(Arrays.stream(desInterdits).allMatch(x -> x == -1)) {	
 			//je passe au joueur suivant sans calcul de score car score = 0
@@ -614,12 +612,18 @@ public class Control {
 		//lorsqu'on passe au joueur suivant, le joueur suivant fait son premier lancer de son tour !
 		premierLancer = true;
 		
+		//griser les boutons
+		panCommands.enableBoutons(false);
+		
 		//les dés doivent revenir à l'état initial
 		panDes.initValeursDes();
 		
 		//le grisage des dés doit être ré initialisé
-		this.desInterdits= new  int[] {0, 0, 0, 0, 0};
-		panDes.griserDes(this.getDesInterdits());
+		attendre(2000, () -> {
+			this.desInterdits= new  int[] {0, 0, 0, 0, 0};
+			panDes.griserDes(this.getDesInterdits());
+			panCommands.enableBoutons(true);
+		});
 		
 		//si le joueur actuel est le dernier, il faut alors réinitialiser pour revenir au premier joueur
 		//sinon, on incrémente
