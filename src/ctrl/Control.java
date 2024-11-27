@@ -614,6 +614,13 @@ public class Control {
 		//lorsqu'on passe au joueur suivant, le joueur suivant fait son premier lancer de son tour !
 		premierLancer = true;
 		
+		//les dés doivent revenir à l'état initial
+		panDes.initValeursDes();
+		
+		//le grisage des dés doit être ré initialisé
+		this.desInterdits= new  int[] {0, 0, 0, 0, 0};
+		panDes.griserDes(this.getDesInterdits());
+		
 		//si le joueur actuel est le dernier, il faut alors réinitialiser pour revenir au premier joueur
 		//sinon, on incrémente
 		if(this.joueurActuel == joueurs.length - 1) {
@@ -627,7 +634,6 @@ public class Control {
 		    	panScores_north.updateBackgroundColors(joueurActuel);
 		    }
 		}
-//		this.joueurActuel = joueurActuel;
 	}
 
 	public int getJoueurActuel() {
@@ -666,7 +672,7 @@ public class Control {
 		return desInterdits;
 	}
 
-	public void setDesInterdits(int value, int rank) {
+	public void setDesInterdits(int rank, int value) {
 		this.desInterdits[rank] = value;
 	}
 }

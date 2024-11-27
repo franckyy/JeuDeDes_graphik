@@ -48,6 +48,10 @@ public class PanneauDes_Center extends JPanel {
             repaint();
         }
     }
+    
+    public void initValeursDes() {
+    	this.valeursDes = new int[] {0, 0, 0, 0, 0};
+    }
 
     public void griserDes(int[] griserDes) {
         for (int i = 0; i < griserDes.length; i++) {
@@ -163,4 +167,8 @@ public class PanneauDes_Center extends JPanel {
         // Optionnel: Dessiner un cercle central pour l'axe
         g2d.fillOval(centerX - 5, centerY - 5, 10, 10);
     }
+
+	public int[] getValeursDes() {
+		return valeursDes;
+	}
 }
