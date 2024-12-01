@@ -448,7 +448,6 @@ public class Control {
 				}
 			}
 		}		
-		//TODO voir les lignes d'avant jusqu'au TODO
 			
 		return calculPoints(lancers);
 	}//	fin de verificationDes(int[] lancers)
