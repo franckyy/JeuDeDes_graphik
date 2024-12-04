@@ -133,6 +133,10 @@ public class Control {
 	public void lancerDes() {
 		System.out.println("Control - void lancerDes()");
 		
+		if(premierLancer == false && Arrays.stream(desInterdits).allMatch(x -> (x == 1 || x == 0))){
+			premierLancer = true;
+		}
+		
 		dice.lancerDes(premierLancer);  // Lancer les dés
                 
 		//affiche les valeurs des dés dans le panneau Des et rempli le tableau
@@ -237,7 +241,7 @@ public class Control {
 			case 1://Joueur arrete et prend les poins
 				System.out.println("Control - void finirTour() - switch(" + retour + ")");
 
-				//ré initialiser le tableau desInterdits seulement si nous sommes dans le dernier lancer du tour
+				//ré initialiser le tableau desInterdits
 				for(int i = 0; i<= 4; i++) {
 					desInterdits[i] = 0;
 				}
@@ -251,7 +255,7 @@ public class Control {
 
 				pointsCumules = 0;
 				pointsLancer = 0;
-				finTour = true;
+				premierLancer = true;
 				
 				//message pour le joueur suivant
 				pan_center.setMessage("à toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
@@ -264,7 +268,6 @@ public class Control {
 
 				pointsCumules = 0;
 				pointsLancer = 0;
-				finTour = true;
 				
 				
 				panCommands.enableBoutons(false);
@@ -280,7 +283,7 @@ public class Control {
 					pan_center.setMessage("Passez votre tour");
 					pan_center.repaint();
 
-					finTour = true;
+					premierLancer = true;
 
 					//ré initialiser le tableau desInterdits seulement si nous sommes dans le dernier lancer du tour
 					for(int i = 0; i<= 4; i++) {
@@ -435,6 +438,7 @@ public class Control {
 				//je dois calculer le score
 				pointsLancer = this.calculPoints(lancers);
 				
+				premierLancer = true;
 				//ré initialiser le tableau desInterdits
 				for(int i = 0; i<= 4; i++) {
 					desInterdits[i] = 0;
@@ -447,6 +451,7 @@ public class Control {
 				|| (nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1))){
 				
 				pointsLancer = pointsLancer + 500;
+				premierLancer = true;
 				
 				//ré initialiser le tableau desInterdits
 				for(int i = 0; i<= 4; i++) {
