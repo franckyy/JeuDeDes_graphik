@@ -391,7 +391,13 @@ public class Control {
 				//je dois recréer le nom de la variable nbrex avec le chiffre du dé
 				String valeurDe = "nbre" + chiffre;
 	
-				if(chiffre != 1 && chiffre != 5 && nbres.get(valeurDe) <= 2) {
+				/*je grise les dés
+				 * qui ne sont pas des 1
+				 * qui ne sont pas des 5
+				 * si ils sont en desInterdits == 0 et nbres <= 2
+				 * si ils sont en desInterdits == 1 -> je ne grise pas
+				 */
+				if(chiffre != 1 && chiffre != 5 && nbres.get(valeurDe) <= 2 && desInterdits[rangLancers] != 1) {
 					desInterdits[rangLancers] = -1;// les dés grisés sont les -1
 				}
 				

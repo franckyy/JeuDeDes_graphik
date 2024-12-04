@@ -26,8 +26,8 @@ public class Dice {
             }
         } else {
             for(int i = 0; i < ctrl.getDesInterdits().length; i++) {// permet de ne lancer que les dés qui doivent être lancés
-            	//ici, il faut dégriser les dés -1 et peut-être passer les dés 0 en status 1
-            	//qui prendraient une autre couleur signifiant qu'ils ont déjà participé au score
+            	//ici, il faut dégriser les dés -1 et passer les dés en status 1
+            	//pour prendre une autre couleur signifiant qu'ils ont déjà participé au score
             	if(ctrl.getDesInterdits()[i] == -1) {
             		valeursDes[i] = rand.nextInt(MAX_FACE) + 1;  // Lancer un dé entre 1 et 6
             		ctrl.setDesInterdits(i, 0);
