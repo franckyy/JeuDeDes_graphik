@@ -439,20 +439,17 @@ public class Control {
 				
 				//je dois calculer le score
 				pointsLancer = this.calculPoints(lancers);
-				
-				premierLancer = true;
 				//ré initialiser le tableau desInterdits
 				for(int i = 0; i<= 4; i++) {
 					desInterdits[i] = 0;
 				}
-			}else if(((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1)
-				|| (nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1))){
+			}else if(((nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1)
+				&& (nbres.get("nbre1") == 1 || nbres.get("nbre6") == 1))){
 
 				//si j'ai une suite, on connait le score
 				//Vérification d'une suite 
 				
 				pointsLancer = pointsLancer + 500;
-				premierLancer = true;
 				
 				//ré initialiser le tableau desInterdits
 				for(int i = 0; i<= 4; i++) {
