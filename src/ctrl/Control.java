@@ -425,16 +425,18 @@ public class Control {
 			// -> ce sera compté comme un premier lancer pour le joueur actuel
 			premierLancer = true;
 			
-			//si ce n'est pas une suite, ils pourront être relancés et ce sera compté comme un premier lancer
-			/*
-			 * Conditions :
-			 * 
-			 * -Aucun dés interdits
-			 * -j'ai des 1, des 5 ou des triples 2, 3, 4 ou 6 ou des quadruples ou une quinte
-			 * 
-			 */
 			if((nbres.get("nbre2") >= 3 || nbres.get("nbre3") >= 3 || nbres.get("nbre4") >= 3 || nbres.get("nbre6") >= 3 
 					|| nbres.get("nbre1") >= 1 || nbres.get("nbre5") >= 1)) {
+
+				//si ce n'est pas une suite, ils pourront être relancés et ce sera compté comme un premier lancer
+				/*
+				 * Conditions :
+				 * 
+				 * -Aucun dés interdits
+				 * -j'ai des 1, des 5 ou des triples 2, 3, 4 ou 6 ou des quadruples ou une quinte
+				 * 
+				 */
+				
 				//je dois calculer le score
 				pointsLancer = this.calculPoints(lancers);
 				
@@ -443,12 +445,11 @@ public class Control {
 				for(int i = 0; i<= 4; i++) {
 					desInterdits[i] = 0;
 				}
-			}
-			
-			//si j'ai une suite, on connait le score
-			//Vérification d'une suite 
-			if(((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1)
+			}else if(((nbres.get("nbre1") == 1 && nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1)
 				|| (nbres.get("nbre2") == 1 && nbres.get("nbre3") == 1 && nbres.get("nbre4") == 1 && nbres.get("nbre5") == 1 && nbres.get("nbre6") == 1))){
+
+				//si j'ai une suite, on connait le score
+				//Vérification d'une suite 
 				
 				pointsLancer = pointsLancer + 500;
 				premierLancer = true;
@@ -458,9 +459,11 @@ public class Control {
 					desInterdits[i] = 0;
 				}
 			}
+		}else {
+			pointsLancer = calculPoints(lancers);
 		}		
 			
-		return calculPoints(lancers);
+		return pointsLancer;
 	}//	fin de verificationDes(int[] lancers)
 	
 	private int calculPoints(int[] lancers) {
