@@ -68,7 +68,7 @@ public class Control {
             
             // Demande le prénom de chaque joueur
             for (int i = 0; i <= nbreJoueurs - 1; i++) {
-                String prenom = JOptionPane.showInputDialog(null, "Veuillez entrer le prénom du joueur " + i + " :", "Demande de prénom", JOptionPane.QUESTION_MESSAGE);
+                String prenom = JOptionPane.showInputDialog(null, "Veuillez entrer le prénom du joueur " + (i + 1) + " :", "Demande de prénom", JOptionPane.QUESTION_MESSAGE);
                 if (prenom != null && !prenom.trim().isEmpty()) {
                     prenomsJoueurs[i] = prenom;
                 } else {
