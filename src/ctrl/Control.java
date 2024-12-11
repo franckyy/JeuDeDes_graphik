@@ -469,23 +469,18 @@ public class Control {
 			switch(nbres.get("nbre1")){
 				case 1:
 					pointsLancer = pointsLancer + 100;
-						//nbreDesRestants = nbreDesRestants - 1;
 					break;
 				case 2:
 					pointsLancer = pointsLancer + 200;
-//					nbreDesRestants = nbreDesRestants - 2;
 					break;
 				case 3:
 					pointsLancer = pointsLancer + 1000;
-//					nbreDesRestants = nbreDesRestants - 3;
 					break;
 				case 4:
 					pointsLancer = pointsLancer + 2000;
-//					nbreDesRestants = nbreDesRestants - 4;
 					break;
 				case 5:
 					pointsLancer = pointsLancer + 3000;
-//					nbreDesRestants = nbreDesRestants - 5;
 					break;
 			}	//fin switch nbre1
 		}	//fin if nbre1
@@ -494,15 +489,12 @@ public class Control {
 			switch(nbres.get("nbre2")){
 				case 3:
 					pointsLancer = pointsLancer + 200;
-//					nbreDesRestants = nbreDesRestants - 3;
 					break;
 				case 4:
 					pointsLancer = pointsLancer + 400;
-//					nbreDesRestants = nbreDesRestants - 4;
 					break;
 				case 5:
 					pointsLancer = pointsLancer + 600;
-//					nbreDesRestants = nbreDesRestants - 5;
 					break;
 			}	//fin switch nbre2
 		}	//fin du if nbre2
@@ -511,15 +503,12 @@ public class Control {
 			switch(nbres.get("nbre3")){
 				case 3:
 					pointsLancer = pointsLancer + 300;
-//					nbreDesRestants = nbreDesRestants - 3;
 					break;
 				case 4:
 					pointsLancer = pointsLancer + 600;
-//					nbreDesRestants = nbreDesRestants - 4;
 					break;
 				case 5:
 					pointsLancer = pointsLancer + 900;
-//					nbreDesRestants = nbreDesRestants - 5;
 					break;
 			}	//fin switch nbre3
 		}	//fin if nbre3
@@ -528,15 +517,12 @@ public class Control {
 			switch(nbres.get("nbre4")){
 				case 3:
 					pointsLancer = pointsLancer + 400;
-//					nbreDesRestants = nbreDesRestants - 3;
 					break;
 				case 4:
 					pointsLancer = pointsLancer + 800;
-//					nbreDesRestants = nbreDesRestants - 4;
 					break;
 				case 5:
 					pointsLancer = pointsLancer + 1200;
-//					nbreDesRestants = nbreDesRestants - 5;
 					break;
 			}	//fin switch nbre4
 		}	//fin if nbre4
@@ -545,23 +531,18 @@ public class Control {
 			switch(nbres.get("nbre5")){
 				case 1:
 					pointsLancer = pointsLancer + 50;
-//					nbreDesRestants = nbreDesRestants - 1;
 					break;
 				case 2:
 					pointsLancer = pointsLancer + 100;
-//					nbreDesRestants = nbreDesRestants - 2;
 					break;
 				case 3:
 					pointsLancer = pointsLancer + 500;
-//					nbreDesRestants = nbreDesRestants - 3;
 					break;
 				case 4:
 					pointsLancer = pointsLancer + 1000;
-//					nbreDesRestants = nbreDesRestants - 4;
 					break;
 				case 5:
 					pointsLancer = pointsLancer + 1500;
-//					nbreDesRestants = nbreDesRestants - 5;
 					break;
 			}	//fin switch nbre5
 		}	//fin if nbre5
@@ -570,15 +551,12 @@ public class Control {
 			switch(nbres.get("nbre6")){
 				case 3:
 					pointsLancer = pointsLancer + 600;
-//					nbreDesRestants = nbreDesRestants - 3;
 					break;
 				case 4:
 					pointsLancer = pointsLancer + 1200;
-//					nbreDesRestants = nbreDesRestants - 4;
 					break;
 				case 5:
 					pointsLancer = pointsLancer + 1800;
-//					nbreDesRestants = nbreDesRestants - 5;
 					break;
 			}	//fin switch nbre6
 		}	//fin if nbre6		
