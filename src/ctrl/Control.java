@@ -414,8 +414,7 @@ public class Control {
 		// si tous les dés sont interdits, on passe au joueur suivant
 		if(Arrays.stream(desInterdits).allMatch(x -> x == -1)) {	
 			//je passe au joueur suivant sans calcul de score car score = 0
-			//Ce sera le premier lancer du joueur suivant
-			this.setJoueurActuel();
+			
 			this.setPremierLancer(true);
 		} else if(Arrays.stream(desInterdits).allMatch(x -> x != -1)){
 
