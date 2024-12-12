@@ -58,7 +58,7 @@ public class PanneauDes_Center extends JPanel {
             if (griserDes[i] == -1) {//dés sans valeur
                 couleursDes[i] = Color.gray;
             } else if(griserDes[i] == 1){// dés ayant déjà participé au score
-                couleursDes[i] = Color.red;
+                couleursDes[i] = PaletteColors.SECOND_ROSE_5_FONCE;
             } else {//le dés avec valeur
                 couleursDes[i] = Color.white;
             }
