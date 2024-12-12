@@ -173,7 +173,6 @@ public class Control {
 			pan_center.repaint();
 			
 			attendre(500, () -> {
-				this.setJoueurActuel();
 				
 				attendre(1000, () -> {
 					
@@ -184,6 +183,7 @@ public class Control {
 						pan_center.setMessage("");
 						pan_center.setMessage2("A toi de lancer les dés " + joueurs[joueurActuel].getPrenom());
 						pan_center.repaint();
+						this.setJoueurActuel();
 					});
 				});
 			});
@@ -411,10 +411,8 @@ public class Control {
 		//demander au panneauDes de griser les dés qui ne font pas de scores
 		panDes.griserDes(desInterdits);
 				
-		// si tous les dés sont interdits, on passe au joueur suivant
-		if(Arrays.stream(desInterdits).allMatch(x -> x == -1)) {	
-			//je passe au joueur suivant sans calcul de score car score = 0
-			
+		// si tous les dés sont interdits
+		if(Arrays.stream(desInterdits).allMatch(x -> x == -1)) {				
 			this.setPremierLancer(true);
 		} else if(Arrays.stream(desInterdits).allMatch(x -> x != -1)){
 
@@ -606,9 +604,11 @@ public class Control {
 		panDes.initValeursDes();
 		
 		//le grisage des dés doit être ré initialisé
+
+		this.desInterdits= new  int[] {0, 0, 0, 0, 0};
+		panDes.griserDes(this.getDesInterdits());
+		
 		attendre(2000, () -> {
-			this.desInterdits= new  int[] {0, 0, 0, 0, 0};
-			panDes.griserDes(this.getDesInterdits());
 			panCommands.enableBoutons(true);
 		});
 		
